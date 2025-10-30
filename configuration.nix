@@ -117,9 +117,11 @@
     ];
   };
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    LIBVIRT_DEFAULT_URI = "qemu:///system";
+  environment = {
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      LIBVIRT_DEFAULT_URI = "qemu:///system";
+    };
   };
 
   hardware = {
