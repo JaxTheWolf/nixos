@@ -6,6 +6,11 @@
 }:
 
 {
+
+  environment.systemPackages = with pkgs; [
+    zram-generator
+  ];
+
   services = {
     lact.enable = true;
     printing.enable = true;
@@ -88,5 +93,63 @@
     };
     hardware.openrgb.motherboard = "amd";
     hardware.openrgb.enable = true;
+    journald.extraConfig = ''
+      SystemMaxUse=2G
+      RuntimeMaxUse=1G
+      SystemMaxFiles=100
+    '';
+    zram-generator = {
+      enable = true;
+      settings = {
+        "zram0" = {
+          "zram-size" = "ram*1.5";
+          "compression-algorithm" = "zstd";
+        };
+      };
+    };
+  };
+  systemd = {
+    services."fstrim-all" = {
+      description = "Run fstrim on all mounted filesystems";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.util-linux}/bin/fstrim -av";
+      };
+    };
+    timers."fstrim-all" = {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "weekly";
+        Persistent = true;
+      };
+    };
+    services."btrfs-scrub-root" = {
+      description = "Run btrfs scrub on / (monthly)";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.btrfs-progs}/bin/btrfs scrub start -B -R /";
+      };
+    };
+    timers."btrfs-scrub-root" = {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "monthly";
+        Persistent = true;
+      };
+    };
+    services."btrfs-scrub-home" = {
+      description = "Run btrfs scrub on /home (monthly)";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.btrfs-progs}/bin/btrfs scrub start -B -R /home";
+      };
+    };
+    timers."btrfs-scrub-home" = {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "monthly";
+        Persistent = true;
+      };
+    };
   };
 }
