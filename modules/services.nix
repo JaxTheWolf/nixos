@@ -6,7 +6,6 @@
 }:
 
 {
-
   environment.systemPackages = with pkgs; [
     zram-generator
   ];
@@ -14,6 +13,7 @@
   services = {
     lact.enable = true;
     printing.enable = true;
+    
     flatpak = {
       enable = true;
       remotes = [
@@ -39,10 +39,6 @@
           appId = "org.gtk.Gtk3theme.Adwaita-dark";
           origin = "flathub";
         }
-        # {
-        #   appId = "org.freedesktop.Platform.ffmpeg-full";
-        #   origin = "flathub";
-        # }
         {
           appId = "org.gtk.Gtk3theme.Flat-Remix-GTK-Red-Darkest";
           origin = "flathub";
@@ -51,23 +47,13 @@
           appId = "com.github.iwalton3.jellyfin-media-player";
           origin = "flathub";
         }
-        # {
-        #   appId = "com.github.tchx84.Flatseal";
-        #   origin = "flathub";
-        # }
-        # {
-        #   appId = "com.github.tchx84.Flatseal";
-        #   origin = "flathub";
-        # }
-        # {
-        #   appId = "com.github.tchx84.Flatseal";
-        #   origin = "flathub";
-        # }
       ];
     };
+
     sshd.enable = true;
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
+
     xserver = {
       enable = true;
       excludePackages = with pkgs; [
@@ -78,6 +64,7 @@
         variant = "";
       };
     };
+
     pulseaudio.enable = false;
     pipewire = {
       enable = true;
@@ -91,13 +78,16 @@
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
+
     hardware.openrgb.motherboard = "amd";
     hardware.openrgb.enable = true;
+
     journald.extraConfig = ''
       SystemMaxUse=2G
       RuntimeMaxUse=1G
       SystemMaxFiles=100
     '';
+
     zram-generator = {
       enable = true;
       settings = {
@@ -107,50 +97,21 @@
         };
       };
     };
+
+    btrfs = {
+      autoScrub = {
+        enable = true;
+        interval = "monthly";
+      };
+    };
+
+    fstrim = {
+      enable = true;
+      interval = "weekly";
+    };
   };
+
   systemd = {
-    services."fstrim-all" = {
-      description = "Run fstrim on all mounted filesystems";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.util-linux}/bin/fstrim -av";
-      };
-    };
-    timers."fstrim-all" = {
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "weekly";
-        Persistent = true;
-      };
-    };
-    services."btrfs-scrub-root" = {
-      description = "Run btrfs scrub on / (monthly)";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.btrfs-progs}/bin/btrfs scrub start -B -R /";
-      };
-    };
-    timers."btrfs-scrub-root" = {
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "monthly";
-        Persistent = true;
-      };
-    };
-    services."btrfs-scrub-home" = {
-      description = "Run btrfs scrub on /home (monthly)";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.btrfs-progs}/bin/btrfs scrub start -B -R /home";
-      };
-    };
-    timers."btrfs-scrub-home" = {
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "monthly";
-        Persistent = true;
-      };
-    };
     services."nix-prune-generations" = {
       description = "Keep only 5 system generations and run nix-collect-garbage";
       serviceConfig = {
@@ -162,6 +123,7 @@
         Nice = "10";
       };
     };
+
     timers."nix-prune-generations" = {
       wantedBy = [ "timers.target" ];
       timerConfig = {

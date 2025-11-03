@@ -14,14 +14,17 @@
             numlock-state = true;
             remember-numlock-state = true;
           };
+
           "org/gnome/desktop/peripherals/mouse" = {
             speed-profile = "flat";
             speed = -0.5;
           };
+
           "org/gnome/desktop/peripherals/touchpad" = {
             speed-profile = "flat";
             speed = -0.5;
           };
+
           "org/gnome/desktop/interface" = {
             color-scheme = "prefer-dark";
             gtk-theme = "Flat-Remix-GTK-Red-Darkest";
@@ -29,21 +32,25 @@
             cursor-theme = "Bibata-Modern-Classic";
             clock-format = "24h";
           };
+          
           "org/gnome/shell/portal" = {
             color-scheme = "prefer-dark";
           };
         };
       }
     ];
+
     adb.enable = true;
     bat.enable = true;
     zsh.enable = true;
     gamemode.enable = true;
     firefox.enable = true;
+
     git = {
       enable = true;
       lfs.enable = true;
     };
+    
     nh = {
       clean = {
         enable = true;
@@ -52,6 +59,7 @@
       enable = true;
       flake = "/etc/nixos";
     };
+
     nix-ld = {
       enable = true;
       libraries = with pkgs; [ ];
@@ -64,6 +72,7 @@
     #     wlrobs
     #   ];
     # };
+
     steam = {
       dedicatedServer.openFirewall = true;
       enable = true;
