@@ -12,8 +12,7 @@
 
   services = {
     lact.enable = true;
-    printing.enable = true;
-    
+
     flatpak = {
       enable = true;
       remotes = [
@@ -81,6 +80,19 @@
 
     hardware.openrgb.motherboard = "amd";
     hardware.openrgb.enable = true;
+
+    printing = {
+      enable = true;
+      drivers = [
+        pkgs.brlaser
+      ];
+    };
+
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
 
     journald.extraConfig = ''
       SystemMaxUse=2G
