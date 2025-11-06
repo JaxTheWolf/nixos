@@ -8,7 +8,6 @@
 {
   environment.gnome.excludePackages = with pkgs; [
     decibels
-    evince
     epiphany
     geary
     gnome-connections
@@ -55,12 +54,14 @@
       curl
       czkawka
       ddcutil
+      discord-krisp
       distrobox
       docker-compose
       dog
       eza
       ffmpeg
       ffmpegthumbnailer
+      file
       flat-remix-gnome
       flat-remix-gtk
       flatpak-xdg-utils
@@ -84,6 +85,7 @@
       krita
       kooha
       lact
+      libnotify
       libreoffice
       linux-firmware
       lm_sensors
@@ -125,6 +127,7 @@
       vkbasalt
       vlc
       vscode-fhs
+      wireshark
       wev
       weylus
       wget

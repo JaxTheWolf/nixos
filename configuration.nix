@@ -18,6 +18,8 @@
     ./modules/programs.nix
   ];
 
+  chaotic.mesa-git.enable = true;
+
   boot = {
     initrd.kernelModules = [ ];
     initrd.verbose = false;
@@ -90,8 +92,12 @@
     };
     libvirtd = {
       enable = true;
-      qemu.swtpm.enable = true;
-
+      qemu = {
+        swtpm.enable = true;
+      };
+      extraConfig = ''
+        unix_sock_group = "qemu-libvirtd"
+      '';
     };
   };
 
@@ -103,7 +109,7 @@
       "networkmanager"
       "wheel"
       "docker"
-      "libvirtd"
+      "qemu-libvirtd"
     ];
     shell = pkgs.zsh;
     #packages = with pkgs; [ ];
@@ -111,10 +117,12 @@
 
   # Allow unfree packages
   nixpkgs = {
-    config.allowUnfree = true;
-    config.permittedInsecurePackages = [
-      "ventoy-gtk3-1.1.07"
-    ];
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "ventoy-gtk3-1.1.07"
+      ];
+    };
   };
 
   environment = {
@@ -125,8 +133,10 @@
   };
 
   hardware = {
-    amdgpu.initrd.enable = true;
-    amdgpu.overdrive.enable = true;
+    amdgpu = {
+      initrd.enable = true;
+      overdrive.enable = true;
+    };
     bluetooth = {
       enable = true;
       package = pkgs.bluez.overrideAttrs (old: {
@@ -160,6 +170,15 @@
     enable = true;
   };
 
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+        if (action.id == "org.libvirt.unix.manage" &&
+            subject.isInGroup("qemu-libvirtd")) {
+            return polkit.Result.YES;
+        }
+    });
+  '';
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -173,14 +192,14 @@
       "nix-command"
     ];
     warn-dirty = false;
-    substituters = [
-      "https://nyx.chaotic.cx"
-      "https://cache.nixos.org/"
-    ];
-    trusted-public-keys = [
-      "chaotic-nyx.cachix.org-1:Z94nz89Kd721HGLrYPYiWnL3izUZoofuA+3ykIbE+Bs="
-      "cache.nixos.org-1:6NCHdD59MDW/s82/h4RZcnxaz2bYcxoZb0qwYf5ED+w="
-    ];
+    /*
+      substituters = [
+        "https://cache.nixos.org/"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59MDW/s82/h4RZcnxaz2bYcxoZb0qwYf5ED+w="
+      ];
+    */
   };
 
   system.stateVersion = "25.05";
