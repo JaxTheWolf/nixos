@@ -51,7 +51,6 @@
       bubblemail
       bzip2
       ccache
-      compress
       curl
       czkawka
       ddcutil
@@ -76,12 +75,13 @@
       gotop
       gparted
       gvfs
-      gz
+      gzip
       htop
       i2c-tools
       iftop
       inkscape
       iotop
+      jq
       killall
       kooha
       krita
