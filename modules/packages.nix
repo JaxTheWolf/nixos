@@ -51,6 +51,7 @@
       bubblemail
       bzip2
       ccache
+      compress
       curl
       czkawka
       ddcutil
@@ -65,7 +66,6 @@
       flat-remix-gnome
       flat-remix-gtk
       flatpak-xdg-utils
-      freecad
       freerdp
       fuse
       fuse3
@@ -76,20 +76,25 @@
       gotop
       gparted
       gvfs
+      gz
       htop
       i2c-tools
       iftop
       inkscape
       iotop
       killall
-      krita
       kooha
+      krita
       lact
       libnotify
       libreoffice
       linux-firmware
       lm_sensors
+      lrzip
       lsof
+      lz4
+      lzip
+      lzop
       mangohud
       mesa-demos
       mission-center
@@ -101,6 +106,8 @@
       nvtopPackages.amd
       openrgb-with-all-plugins
       papirus-icon-theme
+      pbzip2
+      pigz
       plymouth
       poppler-utils
       prismlauncher-unwrapped
@@ -127,13 +134,14 @@
       vkbasalt
       vlc
       vscode-fhs
-      wireshark
       wev
       weylus
       wget
       which
       wine
+      wireshark
       xfce.tumbler
+      xz
       yt-dlp
       zenmonitor
       zip
@@ -142,6 +150,7 @@
       zsh-completions
       zsh-history-substring-search
       zsh-syntax-highlighting
+      zstd
       zulu8
       zulu17
       zulu23

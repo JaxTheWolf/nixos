@@ -46,6 +46,10 @@
           appId = "com.github.iwalton3.jellyfin-media-player";
           origin = "flathub";
         }
+        {
+          appId = "org.freecad.FreeCAD";
+          origin = "flathub";
+        }
       ];
     };
 
