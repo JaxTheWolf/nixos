@@ -12,10 +12,12 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/packages.nix
-    ./modules/services.nix
+    ./modules/flatpak.nix
     ./modules/gdm-monitors.nix
+    ./modules/gnome.nix
+    ./modules/packages.nix
     ./modules/programs.nix
+    ./modules/services.nix
   ];
 
   chaotic.mesa-git.enable = true;
@@ -41,7 +43,7 @@
         windows = {
           "w" = {
             title = "Windows";
-            efiDeviceHandle = "HD(1,GPT,ee23cd4d-b501-4b9d-9ca0-971fa6be44cf,0x800,0x32000)"; # ?????????
+            efiDeviceHandle = "HD3b";
           };
         };
       };
@@ -123,6 +125,20 @@
         "ventoy-gtk3-1.1.07"
       ];
     };
+    overlays = [
+      (final: prev: {
+        nautilus = prev.nautilus.overrideAttrs (nprev: {
+          buildInputs =
+            nprev.buildInputs
+            ++ (with pkgs.gst_all_1; [
+              gst-plugins-good
+              gst-plugins-bad
+              gst-plugins-ugly
+              gst-plugins-base
+            ]);
+        });
+      })
+    ];
   };
 
   environment = {
@@ -130,6 +146,11 @@
       NIXOS_OZONE_WL = "1";
       LIBVIRT_DEFAULT_URI = "qemu:///system";
     };
+    systemPackages = [
+      pkgs.libheif
+      pkgs.libheif.out
+    ];
+    pathsToLink = [ "share/thumbnailers" ];
   };
 
   hardware = {

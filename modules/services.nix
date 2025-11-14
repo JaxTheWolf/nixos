@@ -86,26 +86,4 @@
       interval = "weekly";
     };
   };
-
-  systemd = {
-    services."nix-prune-generations" = {
-      description = "Keep only 5 system generations and run nix-collect-garbage";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = ''
-          ${pkgs.nix}/bin/nix-env -p /nix/var/nix/profiles/system --delete-generations +5 || true
-          ${pkgs.nix}/bin/nix-collect-garbage -d || true
-        '';
-        Nice = "10";
-      };
-    };
-
-    timers."nix-prune-generations" = {
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "weekly";
-        Persistent = true;
-      };
-    };
-  };
 }
