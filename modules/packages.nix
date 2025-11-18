@@ -12,6 +12,10 @@
     android-tools
     appstream
     arch-install-scripts
+    aspell
+    aspellDicts.cs
+    aspellDicts.en
+    aspellDicts.es
     bibata-cursors
     binwalk
     brscan4
@@ -32,6 +36,7 @@
     ffmpeg
     ffmpegthumbnailer
     file
+    file-roller
     flat-remix-gnome
     flat-remix-gtk
     flatpak-xdg-utils
@@ -44,13 +49,13 @@
     gnome.gvfs
     gotop
     gparted
-    gst_all_1.gstreamer
-    gst_all_1.gst-vaapi
     gst_all_1.gst-libav
     gst_all_1.gst-plugins-bad
+    gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
     gst_all_1.gst-plugins-ugly
-    gst_all_1.gst-plugins-base
+    gst_all_1.gst-vaapi
+    gst_all_1.gstreamer
     gvfs
     gzip
     htop
@@ -63,6 +68,7 @@
     kooha
     krita
     lact
+    libgsf
     libnotify
     libreoffice
     linux-firmware
@@ -80,6 +86,7 @@
     nixfmt-rfc-style
     noisetorch
     ntfs3g
+    nufraw-thumbnailer
     nvtopPackages.amd
     openrgb-with-all-plugins
     papirus-icon-theme
@@ -111,6 +118,7 @@
     vkbasalt
     vlc
     vscode-fhs
+    webp-pixbuf-loader
     wev
     weylus
     wget
@@ -128,9 +136,9 @@
     zsh-history-substring-search
     zsh-syntax-highlighting
     zstd
+    zulu
     zulu8
     zulu17
-    zulu23
   ];
 
   fonts = {
