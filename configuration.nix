@@ -100,6 +100,7 @@
       extraConfig = ''
         unix_sock_group = "qemu-libvirtd"
       '';
+      onBoot = "ignore";
     };
   };
 
