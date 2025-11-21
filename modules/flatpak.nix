@@ -8,6 +8,7 @@
 {
   services.flatpak = {
     enable = true;
+    update.auto.enable = true;
     remotes = [
       {
         name = "flathub";
