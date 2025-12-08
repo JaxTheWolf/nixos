@@ -20,8 +20,6 @@
     ./modules/services.nix
   ];
 
-  chaotic.mesa-git.enable = true;
-
   boot = {
     initrd.kernelModules = [ ];
     initrd.verbose = false;
@@ -102,6 +100,7 @@
       '';
       onBoot = "ignore";
     };
+    spiceUSBRedirection.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -113,6 +112,10 @@
       "wheel"
       "docker"
       "qemu-libvirtd"
+      "camera"
+      "video"
+      "render"
+      "input"
     ];
     shell = pkgs.zsh;
     #packages = with pkgs; [ ];
@@ -181,14 +184,19 @@
       enable = true;
       enable32Bit = true;
       package = pkgs.mesa;
+      extraPackages = with pkgs; [
+        rocmPackages.clr.icd # The ROCm OpenCL ICD
+        rocmPackages.rocminfo # The utility you want to run
+        rocmPackages.rocm-smi # Useful for general GPU health checks
+      ];
     };
-    # amdgpu.opencl.enable = true; ROCM
+    amdgpu.opencl.enable = true; # ROCM
   };
 
   # QT stuff
   qt = {
-    style = "gtk2";
     platformTheme = "qt5ct";
+    style = "adwaita-dark";
     enable = true;
   };
 

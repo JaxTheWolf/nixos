@@ -45,6 +45,10 @@
     zsh.enable = true;
     gamemode.enable = true;
     firefox.enable = true;
+    virt-manager.enable = true;
+    weylus.enable = true;
+    gamescope.enable = true;
+    noisetorch.enable = true;
 
     git = {
       enable = true;
@@ -64,14 +68,18 @@
       enable = true;
       libraries = with pkgs; [ ];
     };
-    # obs-studio = {
-    #   enable = true;
-    #   plugins = with pkgs.obs-studio-plugins; [
-    #     obs-vaapi
-    #     obs-vkcapture
-    #     wlrobs
-    #   ];
-    # };
+
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+        obs-vaapi # optional AMD hardware acceleration
+        obs-gstreamer
+        obs-vkcapture
+      ];
+    };
 
     steam = {
       dedicatedServer.openFirewall = true;
@@ -81,6 +89,5 @@
       protontricks.enable = true;
       remotePlay.openFirewall = true;
     };
-    virt-manager.enable = true;
   };
 }

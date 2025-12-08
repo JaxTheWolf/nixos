@@ -25,15 +25,16 @@
     bzip2
     ccache
     curl
-    czkawka
+    czkawka-full
     ddcutil
-    discord-krisp
+    # discord
     distrobox
     docker-buildx
     docker-compose
     dog
     eza
-    ffmpeg
+    fahclient
+    ffmpeg-full
     ffmpegthumbnailer
     file
     file-roller
@@ -49,6 +50,7 @@
     gnome.gvfs
     gotop
     gparted
+    gphoto2
     gst_all_1.gst-libav
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-base
@@ -71,6 +73,7 @@
     libgsf
     libnotify
     libreoffice
+    libsForQt5.qtstyleplugins
     linux-firmware
     lm_sensors
     lrzip
@@ -84,7 +87,6 @@
     ncdu
     nil
     nixfmt-rfc-style
-    noisetorch
     ntfs3g
     nufraw-thumbnailer
     nvtopPackages.amd
@@ -97,6 +99,8 @@
     prismlauncher-unwrapped
     protonup-qt
     radeontop
+    rocmPackages.rocm-smi
+    rocmPackages.rocminfo
     rquickshare
     scrcpy
     screen
@@ -120,7 +124,6 @@
     vscode-fhs
     webp-pixbuf-loader
     wev
-    weylus
     wget
     which
     wine
