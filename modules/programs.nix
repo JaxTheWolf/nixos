@@ -50,6 +50,11 @@
     gamescope.enable = true;
     noisetorch.enable = true;
 
+    ccache = {
+      enable = true;
+      cacheDir = "/media/Data/.ccache";
+    };
+
     git = {
       enable = true;
       lfs.enable = true;
