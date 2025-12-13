@@ -136,6 +136,19 @@
     ];
   };
 
+  fileSystems."/media/pipa/pixelage" = {
+    device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
+    fsType = "btrfs";
+    options = [
+      "subvol=pixelage"
+      "ssd"
+      "space_cache=v2"
+      "noatime"
+      "compress=zstd:10"
+      "autodefrag"
+    ];
+  };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
