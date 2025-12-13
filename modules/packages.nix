@@ -27,7 +27,7 @@
     curl
     czkawka-full
     ddcutil
-    # discord
+    discord
     distrobox
     docker-buildx
     docker-compose
