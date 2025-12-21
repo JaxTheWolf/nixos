@@ -86,7 +86,7 @@
   virtualisation = {
     docker = {
       enable = true;
-      autoPrune.enable = true;
+      autoPrune.enable = false;
       storageDriver = "btrfs";
       enableOnBoot = true;
     };
