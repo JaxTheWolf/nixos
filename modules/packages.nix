@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  czkawka-master,
   ...
 }:
 
@@ -25,7 +26,7 @@
     bzip2
     ccache
     curl
-    czkawka-full
+    czkawka-master.packages.${pkgs.system}.default
     ddcutil
     discord
     distrobox
