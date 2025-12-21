@@ -93,6 +93,7 @@
     openrgb-with-all-plugins
     papirus-icon-theme
     pbzip2
+    pciutils
     pigz
     plymouth
     poppler-utils
@@ -117,6 +118,7 @@
     tree
     unrar
     unzip
+    usbutils
     ventoy-full-gtk
     vesktop
     vkbasalt
