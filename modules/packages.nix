@@ -8,6 +8,30 @@
 }:
 
 {
+  # Allow unfree packages
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "ventoy-gtk3-1.1.07"
+      ];
+    };
+    overlays = [
+      (final: prev: {
+        nautilus = prev.nautilus.overrideAttrs (nprev: {
+          buildInputs =
+            nprev.buildInputs
+            ++ (with pkgs.gst_all_1; [
+              gst-plugins-good
+              gst-plugins-bad
+              gst-plugins-ugly
+              gst-plugins-base
+            ]);
+        });
+      })
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     abootimg
     amdgpu_top

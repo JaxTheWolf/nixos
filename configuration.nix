@@ -23,7 +23,7 @@
   boot = {
     initrd.kernelModules = [ ];
     initrd.verbose = false;
-    kernelModules = [ "nct6683" ];
+    kernelModules = [ "nct6683" "hid-logitech-dj" "hid-logiztech-hidpp" ];
     blacklistedKernelModules = [ "k10temp" ];
     kernelParams = [
       "amdgpu.seamless=1"
@@ -53,6 +53,11 @@
   networking = {
     hostName = "epiquev2";
     networkmanager.enable = true;
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    firewall.enable = false;
   };
 
   # Set your time zone.
@@ -81,7 +86,20 @@
 
   xdg.portal.enable = true;
 
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    sudo.extraConfig = ''
+      Defaults insults
+    '';
+    polkit.extraConfig = ''
+      polkit.addRule(function(action, subject) {
+          if (action.id == "org.libvirt.unix.manage" &&
+              subject.isInGroup("qemu-libvirtd")) {
+              return polkit.Result.YES;
+          }
+      });
+    '';
+  };
 
   virtualisation = {
     docker = {
@@ -119,30 +137,6 @@
     ];
     shell = pkgs.zsh;
     #packages = with pkgs; [ ];
-  };
-
-  # Allow unfree packages
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        "ventoy-gtk3-1.1.07"
-      ];
-    };
-    overlays = [
-      (final: prev: {
-        nautilus = prev.nautilus.overrideAttrs (nprev: {
-          buildInputs =
-            nprev.buildInputs
-            ++ (with pkgs.gst_all_1; [
-              gst-plugins-good
-              gst-plugins-bad
-              gst-plugins-ugly
-              gst-plugins-base
-            ]);
-        });
-      })
-    ];
   };
 
   environment = {
@@ -204,21 +198,6 @@
     enable = true;
   };
 
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-        if (action.id == "org.libvirt.unix.manage" &&
-            subject.isInGroup("qemu-libvirtd")) {
-            return polkit.Result.YES;
-        }
-    });
-  '';
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
-
   nix.settings = {
     auto-optimise-store = true;
     experimental-features = [
@@ -226,14 +205,6 @@
       "nix-command"
     ];
     warn-dirty = false;
-    /*
-      substituters = [
-        "https://cache.nixos.org/"
-      ];
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59MDW/s82/h4RZcnxaz2bYcxoZb0qwYf5ED+w="
-      ];
-    */
   };
 
   system.stateVersion = "25.05";
