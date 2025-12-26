@@ -51,7 +51,8 @@
     bzip2
     ccache
     curl
-    czkawka-master.packages.${pkgs.system}.default
+    # czkawka
+    czkawka-master.packages.${pkgs.stdenv.hostPlatform.system}.default
     ddcutil
     discord
     distrobox
@@ -64,6 +65,7 @@
     ffmpegthumbnailer
     file
     file-roller
+    firmware-manager
     flat-remix-gnome
     flat-remix-gtk
     flatpak-xdg-utils
@@ -131,7 +133,7 @@
     rquickshare
     saber
     # solaar
-    solaar-master.packages.${pkgs.system}.default
+    solaar-master.packages.${pkgs.stdenv.hostPlatform.system}.default
     logitech-udev-rules
     scrcpy
     screen

@@ -2,11 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
     czkawka-master.url = "path:./flakes/czkawka-master";
     solaar-master.url = "path:./flakes/solaar-master";
   };

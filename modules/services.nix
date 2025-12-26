@@ -85,5 +85,7 @@
       enable = true;
       interval = "weekly";
     };
+
+    fwupd.enable = true;
   };
 }

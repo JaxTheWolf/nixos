@@ -67,10 +67,5 @@
           install -Dm444 -t $out/share/metainfo data/com.github.qarmin.czkawka.metainfo.xml
         '';
       };
-
-      # For 'nix develop' - gives you a shell with cargo/rustc ready
-      devShells.${system}.default = pkgs.mkShell {
-        inherit nativeBuildInputs buildInputs;
-      };
     };
 }
