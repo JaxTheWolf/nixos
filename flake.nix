@@ -7,19 +7,32 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    czkawka-master.url = "path:/etc/nixos/flakes/czkawka-master";
+    czkawka-master.url = "path:./flakes/czkawka-master";
+    solaar-master.url = "path:./flakes/solaar-master";
   };
 
-  outputs = { self, nixpkgs, nix-flatpak, czkawka-master, ... }: {
-    nixosConfigurations = {
-      epiquev2 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit czkawka-master; };
-        modules = [
-          ./configuration.nix
-          nix-flatpak.nixosModules.nix-flatpak
-        ];
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nix-flatpak,
+      czkawka-master,
+      solaar-master,
+      ...
+    }:
+    {
+      nixosConfigurations = {
+        epiquev2 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit czkawka-master;
+            inherit solaar-master;
+          };
+          modules = [
+            ./configuration.nix
+            nix-flatpak.nixosModules.nix-flatpak
+          ];
+        };
       };
     };
-  };
 }

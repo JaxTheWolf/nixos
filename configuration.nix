@@ -191,6 +191,10 @@
       ];
     };
     amdgpu.opencl.enable = true; # ROCM
+    logitech.wireless = {
+      enable = true;
+      enableGraphical = true;
+    };
   };
 
   # QT stuff

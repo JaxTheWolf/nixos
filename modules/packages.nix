@@ -3,6 +3,7 @@
   pkgs,
   lib,
   czkawka-master,
+  solaar-master,
   ...
 }:
 
@@ -104,6 +105,10 @@
     rocmPackages.rocm-smi
     rocmPackages.rocminfo
     rquickshare
+    saber
+    # solaar
+    solaar-master.packages.${pkgs.system}.default
+    logitech-udev-rules
     scrcpy
     screen
     seafile-client

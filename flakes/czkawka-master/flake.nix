@@ -17,7 +17,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, czkawka-src, naersk }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      czkawka-src,
+      naersk,
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -42,7 +48,8 @@
         # Optional: libadwaita if the master branch has switched to it
       ];
 
-    in {
+    in
+    {
       packages.${system}.default = naersk-lib.buildPackage {
         pname = "czkawka";
         version = "master";
@@ -51,7 +58,7 @@
         # Add the dependencies
         inherit nativeBuildInputs buildInputs;
 
-        # We need to manually install the desktop files/icons because Naersk 
+        # We need to manually install the desktop files/icons because Naersk
         # only installs the binaries by default.
         postInstall = ''
           install -Dm444 -t $out/share/applications data/com.github.qarmin.czkawka.desktop

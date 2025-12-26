@@ -38,6 +38,7 @@
       undecorate
       user-themes
       window-is-ready-remover
+      solaar-extension
     ];
   };
 }
