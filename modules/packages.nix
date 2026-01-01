@@ -29,6 +29,20 @@
             ]);
         });
       })
+      (final: prev: {
+        zenmonitor = prev.zenmonitor.overrideAttrs (oldAttrs: {
+          env = (oldAttrs.env or { }) // {
+            NIX_CFLAGS_COMPILE = "-std=gnu17";
+          };
+        });
+      })
+      (final: prev: {
+        nufraw-thumbnailer = prev.nufraw-thumbnailer.overrideAttrs (oldAttrs: {
+          env = (oldAttrs.env or { }) // {
+            NIX_CFLAGS_COMPILE = "-std=gnu17";
+          };
+        });
+      })
     ];
   };
 
@@ -162,7 +176,7 @@
     which
     wine
     wireshark
-    xfce.tumbler
+    tumbler
     xz
     yt-dlp
     zenmonitor
