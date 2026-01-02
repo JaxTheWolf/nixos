@@ -36,13 +36,6 @@
           };
         });
       })
-      (final: prev: {
-        nufraw-thumbnailer = prev.nufraw-thumbnailer.overrideAttrs (oldAttrs: {
-          env = (oldAttrs.env or { }) // {
-            NIX_CFLAGS_COMPILE = "-std=gnu17";
-          };
-        });
-      })
     ];
   };
 
