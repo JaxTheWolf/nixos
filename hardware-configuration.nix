@@ -13,18 +13,36 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-
-  boot.initrd.availableKernelModules = [
-    "nvme"
-    "xhci_pci"
-    "ahci"
-    "uas"
-    "usbhid"
-    "sd_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      kernelModules = [ ];
+      verbose = false;
+      availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "ahci"
+        "uas"
+        "usbhid"
+        "sd_mod"
+      ];
+    };
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelModules = [
+      "kvm-amd"
+      "nct6683"
+      "hid-logitech-dj"
+      "hid-logiztech-hidpp"
+    ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      pkgs.linuxKernel.packages.linux_xanmod_latest.zenpower
+    ];
+    blacklistedKernelModules = [ "k10temp" ];
+    kernelParams = [
+      "amdgpu.seamless=1"
+      "rd.udev.log_priority=3"
+      "vt.global_cursor_default=0"
+    ];
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";

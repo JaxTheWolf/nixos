@@ -21,19 +21,6 @@
   ];
 
   boot = {
-    initrd.kernelModules = [ ];
-    initrd.verbose = false;
-    kernelModules = [ "nct6683" "hid-logitech-dj" "hid-logiztech-hidpp" ];
-    blacklistedKernelModules = [ "k10temp" ];
-    kernelParams = [
-      "amdgpu.seamless=1"
-      "rd.udev.log_priority=3"
-      "vt.global_cursor_default=0"
-    ];
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
-    extraModulePackages = with config.boot.kernelPackages; [
-      pkgs.linuxKernel.packages.linux_xanmod_latest.zenpower
-    ];
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
