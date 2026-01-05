@@ -4,10 +4,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # The source code from GitHub
     czkawka-src = {
-      url = "github:qarmin/czkawka";
-      flake = false; # The upstream repo doesn't have a flake.nix
+      url = "github:qarmin/czkawka/9.0.0";
+      flake = false;
     };
 
     # Naersk: Builds Rust crates without needing a manual cargoHash
@@ -29,7 +28,6 @@
       pkgs = import nixpkgs { inherit system; };
       naersk-lib = pkgs.callPackage naersk { };
 
-      # Czkawka requires these system libraries
       nativeBuildInputs = with pkgs; [
         pkg-config
         wrapGAppsHook4
@@ -45,7 +43,7 @@
         pango
         gdk-pixbuf
         atk
-        # Optional: libadwaita if the master branch has switched to it
+        libadwaita
       ];
 
     in
@@ -55,11 +53,11 @@
         version = "master";
         src = czkawka-src;
 
-        # Add the dependencies
         inherit nativeBuildInputs buildInputs;
 
-        # We need to manually install the desktop files/icons because Naersk
-        # only installs the binaries by default.
+        RUSTFLAGS = "-C target-cpu=native";
+        NIX_CFLAGS_COMPILE = "-march=native -mtune=native";
+
         postInstall = ''
           install -Dm444 -t $out/share/applications data/com.github.qarmin.czkawka.desktop
           install -Dm444 -t $out/share/icons/hicolor/scalable/apps data/icons/com.github.qarmin.czkawka.svg

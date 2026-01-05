@@ -5,7 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
-    # This input automatically tracks the latest commit on master
     solaar-src = {
       url = "github:pwr-Solaar/Solaar/master";
       flake = false;
@@ -29,14 +28,9 @@
         packages.default = pythonPackages.buildPythonApplication rec {
           pname = "solaar";
           version = "master-${solaar-src.shortRev or "dirty"}";
-
           src = solaar-src;
-
-          # --- FIX STARTS HERE ---
-          # 1. Enable pyproject format
           pyproject = true;
 
-          # 2. Add build tools (setuptools/wheel) to nativeBuildInputs
           nativeBuildInputs =
             with pkgs;
             [
@@ -48,7 +42,6 @@
               setuptools
               wheel
             ]);
-          # --- FIX ENDS HERE ---
 
           propagatedBuildInputs = with pythonPackages; [
             pyudev
