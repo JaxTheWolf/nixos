@@ -40,7 +40,6 @@
       }
     ];
 
-    adb.enable = true;
     bat.enable = true;
     zsh.enable = true;
     gamemode.enable = true;

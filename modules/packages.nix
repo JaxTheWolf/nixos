@@ -121,7 +121,7 @@
     mission-center
     ncdu
     nil
-    nixfmt-rfc-style
+    nixfmt
     ntfs3g
     nufraw-thumbnailer
     nvtopPackages.amd
@@ -154,6 +154,7 @@
     thunderbird
     tidal-hifi
     tldr
+    trash-cli
     tree
     unrar
     unzip
