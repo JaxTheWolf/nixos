@@ -41,9 +41,12 @@
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
-
-    hardware.openrgb.motherboard = "amd";
-    hardware.openrgb.enable = true;
+    
+    hardware.openrgb = {
+      enable = true;
+      motherboard = "amd";
+      package = pkgs.openrgb-with-all-plugins;
+    };
 
     printing = {
       enable = true;

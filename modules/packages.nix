@@ -43,6 +43,7 @@
     abootimg
     amdgpu_top
     android-tools
+    anki
     appstream
     arch-install-scripts
     aspell
@@ -125,6 +126,7 @@
     ntfs3g
     nufraw-thumbnailer
     nvtopPackages.amd
+    obsidian
     openrgb-with-all-plugins
     papirus-icon-theme
     pbzip2
