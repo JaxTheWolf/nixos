@@ -88,15 +88,34 @@
       };
     };
 
-    btrbk.instances.localbackup = {
-      onCalendar = "weekly";
-      settings = {
-        snapshot_preserve_min = "3w";
-        target_preserve_min = "6w";
-        volume."/" = {
-          subvolume = "home";
-          target = "/media/data/home-backups";
-          snapshot_dir = "home/.snapshots";
+    btrbk.instances = {
+      daily_ssd = {
+        onCalendar = "daily";
+        settings = {
+          timestamp_format = "long";
+          snapshot_preserve = "7d";
+
+          volume."/" = {
+            subvolume = "home";
+            snapshot_dir = "home/.snapshots";
+          };
+        };
+      };
+
+      weekly_hdd = {
+        onCalendar = "weekly";
+        settings = {
+          timestamp_format = "long";
+
+          snapshot_preserve_min = "latest";
+
+          target_preserve = "20w";
+
+          volume."/" = {
+            subvolume = "home";
+            snapshot_dir = "home/.snapshots";
+            target = "/media/data/home-backups";
+          };
         };
       };
     };
