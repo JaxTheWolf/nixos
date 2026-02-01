@@ -41,7 +41,7 @@
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
-    
+
     hardware.openrgb = {
       enable = true;
       motherboard = "amd";
@@ -65,6 +65,10 @@
       SystemMaxUse=2G
       RuntimeMaxUse=1G
       SystemMaxFiles=100
+    '';
+
+    udev.extraRules = ''
+      SUBSYSTEM=="block", ENV{ID_FS_UUID}=="39c48cb1-233c-4921-a614-3a193574df67", ENV{UDISKS_IGNORE}="1"
     '';
 
     zram-generator = {
