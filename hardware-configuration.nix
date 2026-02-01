@@ -31,7 +31,7 @@
       "kvm-amd"
       "nct6683"
       "hid-logitech-dj"
-      "hid-logiztech-hidpp"
+      "hid-logitech-hidpp"
     ];
     extraModulePackages = with config.boot.kernelPackages; [
       pkgs.linuxKernel.packages.linux_xanmod_latest.zenpower
@@ -52,7 +52,7 @@
       "ssd"
       "space_cache=v2"
       "noatime"
-      "compress=zstd:5"
+      "compress=zstd:8"
       "autodefrag"
     ];
   };
@@ -65,7 +65,20 @@
       "ssd"
       "space_cache=v2"
       "noatime"
-      "compress=zstd:5"
+      "compress=zstd:7"
+      "autodefrag"
+    ];
+  };
+
+  fileSystems."/home/jax/.local/share/Steam" = {
+    device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
+    fsType = "btrfs";
+    options = [
+      "subvol=steam"
+      "ssd"
+      "space_cache=v2"
+      "noatime"
+      "compress=zstd:8"
       "autodefrag"
     ];
   };
@@ -92,7 +105,7 @@
       "ssd"
       "space_cache=v2"
       "noatime"
-      "compress=zstd:7"
+      "compress=zstd:10"
       "autodefrag"
     ];
   };
@@ -112,7 +125,7 @@
     options = [
       "subvol=Data"
       "space_cache=v2"
-      "compress=zstd:5"
+      "compress=zstd:8"
       "noatime"
       "autodefrag"
     ];
@@ -130,23 +143,11 @@
     ];
   };
 
-  fileSystems."/media/home-backup" = {
-    device = "/dev/disk/by-uuid/4c0c8b24-6fca-49c1-8e34-e00e240576e3";
-    fsType = "btrfs";
-    options = [
-      "subvol=home-backup"
-      "space_cache=v2"
-      "compress=zstd:10"
-      "noatime"
-      "autodefrag"
-    ];
-  };
-
   fileSystems."/media/pipa" = {
     device = "/dev/disk/by-uuid/0013f713-acf4-496b-b43f-25258283b884";
     fsType = "f2fs";
     options = [
-      "compress_algorithm=zstd:6"
+      "compress_algorithm=zstd:10"
       "compress_chksum"
       "atgc"
       "gc_merge"
