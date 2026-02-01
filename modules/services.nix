@@ -84,6 +84,19 @@
       };
     };
 
+    btrbk.instances.localbackup = {
+      onCalendar = "weekly";
+      settings = {
+        snapshot_preserve_min = "3w";
+        target_preserve_min = "6w";
+        volume."/" = {
+          subvolume = "home";
+          target = "/media/data/home-backups";
+          snapshot_dir = "home/.snapshots";
+        };
+      };
+    };
+
     fstrim = {
       enable = true;
       interval = "weekly";
