@@ -4,6 +4,7 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     czkawka-master.url = "path:./flakes/czkawka-master";
+    # czkawka-git.url = "github:qarmin/czkawka?dir=misc/nix";
     solaar-master.url = "path:./flakes/solaar-master";
   };
 
