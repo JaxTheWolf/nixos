@@ -19,11 +19,11 @@
     "czkawka-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1769933380,
-        "narHash": "sha256-Gu1cg0d5aXBc+jYikLjvBwMzCgy+349KqQjVrzTe2pE=",
+        "lastModified": 1770285649,
+        "narHash": "sha256-OGvDPAU68pXm1jCotJdtMfQe+5jsF455hz4Mx1AncEY=",
         "owner": "qarmin",
         "repo": "czkawka",
-        "rev": "ba45d0f5299e0460f9410d3192f81bbb8a2b5826",
+        "rev": "76f4e03bea141bdfda4f54d27b2139dc8cfb0a8b",
         "type": "github"
       },
       "original": {
@@ -112,11 +112,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1769789167,
-        "narHash": "sha256-kKB3bqYJU5nzYeIROI82Ef9VtTbu4uA3YydSk/Bioa8=",
+        "lastModified": 1770197578,
+        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "62c8382960464ceb98ea593cb8321a2cf8f9e3e5",
+        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
         "type": "github"
       },
       "original": {
@@ -128,11 +128,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1769944092,
-        "narHash": "sha256-yX+M8Bv4uu7I43tTx9Po/5MTgGZ9l3i+juPEY+oeYSE=",
+        "lastModified": 1770328555,
+        "narHash": "sha256-FkRxi4byWqMol4IFoWTAS72iBHoGImK6ZT1RK5gkIgY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8e883f431f048f270b4c62dcea2e751b124210d7",
+        "rev": "60dbab5d04ffce502b6cfb21a89c2d2fb2c3deb3",
         "type": "github"
       },
       "original": {
@@ -144,11 +144,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1769789167,
-        "narHash": "sha256-kKB3bqYJU5nzYeIROI82Ef9VtTbu4uA3YydSk/Bioa8=",
+        "lastModified": 1770197578,
+        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "62c8382960464ceb98ea593cb8321a2cf8f9e3e5",
+        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
         "type": "github"
       },
       "original": {
@@ -202,11 +202,11 @@
     "solaar-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1768764116,
-        "narHash": "sha256-31LCC/HhzC25k1vXpbS7MEu7vf57FD2UwA5NZUrIJmI=",
+        "lastModified": 1770306649,
+        "narHash": "sha256-IEGTggLf2UzXAqCZQm4R0ogohQJHm+sKXEnJJVhM1r8=",
         "owner": "pwr-Solaar",
         "repo": "Solaar",
-        "rev": "a79bb24da54fc22b3dcf13c4cdb81d3e8853abc4",
+        "rev": "42e0e391b525695a3c959351df48c92e8171585c",
         "type": "github"
       },
       "original": {

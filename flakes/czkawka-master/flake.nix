@@ -74,12 +74,12 @@
           wrapProgram $out/bin/krokiet \
             --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath runtimeLibs}
 
-          install -Dm444 -t $out/share/applications data/io.github.qarmin.czkawka.krokiet.desktop
+          install -Dm444 -t $out/share/applications data/io.github.qarmin.krokiet.desktop
 
           install -Dm444 data/icons/io.github.qarmin.czkawka.krokiet.svg \
             $out/share/icons/hicolor/scalable/apps/io.github.qarmin.krokiet.svg
 
-          install -Dm444 -t $out/share/metainfo data/io.github.qarmin.czkawka.krokiet.metainfo.xml
+          install -Dm444 -t $out/share/metainfo data/io.github.qarmin.krokiet.metainfo.xml
         '';
       };
     };
