@@ -38,10 +38,10 @@
         libxkbcommon
         libglvnd
         fontconfig
-        xorg.libX11
-        xorg.libXcursor
-        xorg.libXi
-        xorg.libXrandr
+        libX11
+        libXcursor
+        libXi
+        libXrandr
       ];
 
     in
