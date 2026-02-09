@@ -4,6 +4,7 @@
   lib,
   czkawka-master,
   solaar-master,
+  fet,
   ...
 }:
 
@@ -61,6 +62,7 @@
     curl
     # czkawka
     czkawka-master.packages.${pkgs.stdenv.hostPlatform.system}.default
+    fet.packages.${pkgs.stdenv.hostPlatform.system}.default
     # czkawka-git.packages.${pkgs.stdenv.hostPlatform.system}.czkawka-gui-wayland
     ddcutil
     discord

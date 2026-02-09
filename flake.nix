@@ -6,6 +6,7 @@
     czkawka-master.url = "path:./flakes/czkawka-master";
     # czkawka-git.url = "github:qarmin/czkawka?dir=misc/nix";
     solaar-master.url = "path:./flakes/solaar-master";
+    fet.url = "path:./flakes/fet";
   };
 
   outputs =
@@ -15,6 +16,7 @@
       nix-flatpak,
       czkawka-master,
       solaar-master,
+      fet,
       ...
     }:
     {
@@ -24,6 +26,7 @@
           specialArgs = {
             inherit czkawka-master;
             inherit solaar-master;
+            inherit fet;
           };
           modules = [
             ./configuration.nix
