@@ -138,6 +138,7 @@ let
               <width>1920</width>
               <height>1080</height>
               <rate>74.973</rate>
+              <ratemode>variable</ratemode>
             </mode>
           </monitor>
         </logicalmonitor>
