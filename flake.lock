@@ -19,11 +19,11 @@
     "czkawka-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1770553979,
-        "narHash": "sha256-Y1iqHvN5rhcOmawAnSznsk44Kr1rwPVYPm/2UpwExUg=",
+        "lastModified": 1770876278,
+        "narHash": "sha256-8wzQV1Ft0VgNauArgog5wY6OmDq5gKIYF6LKJ8qGq9g=",
         "owner": "qarmin",
         "repo": "czkawka",
-        "rev": "a33c1f0566876fbe7b783b0e02c695f489ad1096",
+        "rev": "cc4d357238246d9d95867801f9c58773710c009d",
         "type": "github"
       },
       "original": {
@@ -177,11 +177,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1770720068,
-        "narHash": "sha256-S8s8l0CfMYsFMNS0hXZaQV9sOTkUB6qdXdTSEs2aTT8=",
+        "lastModified": 1770861900,
+        "narHash": "sha256-zeNZTIO0FyNht31Vd1Rwur5THhvwNwmIP5LW3smjhwY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8ee95bcb238069810a968efbf2bba8e4d6ff11a6",
+        "rev": "bdea685ed95455a82fcb77295bd4222820b297ac",
         "type": "github"
       },
       "original": {

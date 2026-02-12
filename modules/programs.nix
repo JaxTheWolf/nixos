@@ -43,7 +43,10 @@
     bat.enable = true;
     zsh.enable = true;
     gamemode.enable = true;
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      languagePacks = ["cs" "en-GB" "en-US"];
+    };
     virt-manager.enable = true;
     weylus.enable = true;
     gamescope.enable = true;
@@ -51,7 +54,7 @@
 
     ccache = {
       enable = true;
-      cacheDir = "/media/Data/.ccache";
+      cacheDir = "/media/data/.ccache";
     };
 
     git = {
