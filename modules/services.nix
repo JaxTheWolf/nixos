@@ -97,7 +97,7 @@
 
           volume."/" = {
             subvolume = "home";
-            snapshot_dir = "home/.snapshots";
+            snapshot_dir = "home/.snapshots/daily";
           };
         };
       };
@@ -106,15 +106,14 @@
         onCalendar = "weekly";
         settings = {
           timestamp_format = "long";
-
           snapshot_preserve_min = "latest";
-
+          snapshot_preserve = "no";
           target_preserve = "20w";
 
           volume."/" = {
             subvolume = "home";
-            snapshot_dir = "home/.snapshots";
-            target = "/media/data/home-backups";
+            snapshot_dir = "home/.snapshots/weekly";
+            target = "/media/home-backup";
           };
         };
       };

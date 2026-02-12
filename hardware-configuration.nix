@@ -143,6 +143,18 @@
     ];
   };
 
+  fileSystems."/media/home-backup" = {
+    device = "/dev/disk/by-uuid/4c0c8b24-6fca-49c1-8e34-e00e240576e3";
+    fsType = "btrfs";
+    options = [
+      "subvol=home-backup"
+      "space_cache=v2"
+      "compress=zstd:10"
+      "noatime"
+      "autodefrag"
+    ];
+  };
+
   fileSystems."/media/pipa" = {
     device = "/dev/disk/by-uuid/0013f713-acf4-496b-b43f-25258283b884";
     fsType = "f2fs";
