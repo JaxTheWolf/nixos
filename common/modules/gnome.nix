@@ -24,7 +24,6 @@
     ];
 
     systemPackages = with pkgs.gnomeExtensions; [
-      # thanatophobia
       alphabetical-app-grid
       appindicator
       blur-my-shell
@@ -32,7 +31,6 @@
       bubblemail
       color-picker
       dash-to-dock
-      # Not for G49 yet
       # favorites-to-applications-grid
       middle-click-to-close-in-overview
       undecorate

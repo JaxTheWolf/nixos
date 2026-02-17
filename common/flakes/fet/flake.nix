@@ -20,11 +20,11 @@
       {
         packages.default = pkgs.stdenv.mkDerivation rec {
           pname = "fet";
-          version = "7.7.5"; # Current stable version as of Feb 2026
+          version = "7.7.6";
 
           src = pkgs.fetchurl {
             url = "https://lalescu.ro/liviu/fet/download/fet-${version}.tar.xz";
-            sha256 = "0ajvpqjxswjxk3mjjh9mc0ks96f07d26pl8vashqs8jfc1isxrd0";
+            sha256 = "06vvxxl5kza3a2v0fkw6bylavpickk8a5ybgabbhylmi59c1q1ns";
           };
 
           enableParallelBuilding = true;
@@ -43,7 +43,6 @@
             qmake fet.pro
           '';
 
-          # This creates the .desktop file automatically
           desktopItems = [
             (pkgs.makeDesktopItem {
               name = "fet";
@@ -64,7 +63,6 @@
             mkdir -p $out/bin
             cp fet $out/bin/
 
-            # Install the icon (FET usually provides icons in the source)
             mkdir -p $out/share/icons/hicolor/128x128/apps
             cp icons/fet.png $out/share/icons/hicolor/128x128/apps/fet.png
 

@@ -13,6 +13,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+  
   boot = {
     initrd = {
       kernelModules = [ ];
@@ -26,6 +27,7 @@
         "sd_mod"
       ];
     };
+
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     kernelModules = [
       "kvm-amd"
@@ -33,9 +35,11 @@
       "hid-logitech-dj"
       "hid-logitech-hidpp"
     ];
+
     extraModulePackages = with config.boot.kernelPackages; [
       pkgs.linuxKernel.packages.linux_xanmod_latest.zenpower
     ];
+
     blacklistedKernelModules = [ "k10temp" ];
     kernelParams = [
       "amdgpu.seamless=1"
@@ -191,5 +195,4 @@
   # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = true;
 }

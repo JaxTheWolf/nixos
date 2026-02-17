@@ -9,7 +9,6 @@
 }:
 
 {
-  # Allow unfree packages
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -42,15 +41,14 @@
 
   environment.systemPackages = with pkgs; [
     abootimg
-    amdgpu_top
     android-tools
     anki
     appstream
-    arch-install-scripts
     aspell
     aspellDicts.cs
     aspellDicts.en
     aspellDicts.es
+    attic-client
     bibata-cursors
     binwalk
     brscan4
@@ -58,20 +56,16 @@
     btrfs-progs
     bubblemail
     bzip2
-    ccache
     curl
-    # czkawka
-    czkawka-master.packages.${pkgs.stdenv.hostPlatform.system}.default
     fet.packages.${pkgs.stdenv.hostPlatform.system}.default
-    # czkawka-git.packages.${pkgs.stdenv.hostPlatform.system}.czkawka-gui-wayland
     ddcutil
     discord
     distrobox
     docker-buildx
     docker-compose
     dog
+    element-desktop
     eza
-    fahclient
     ffmpeg-full
     ffmpegthumbnailer
     file
@@ -108,7 +102,6 @@
     killall
     kooha
     krita
-    lact
     libgsf
     libnotify
     libreoffice
@@ -128,7 +121,6 @@
     nixfmt
     ntfs3g
     nufraw-thumbnailer
-    nvtopPackages.amd
     obsidian
     openrgb-with-all-plugins
     papirus-icon-theme
@@ -139,12 +131,8 @@
     poppler-utils
     prismlauncher-unwrapped
     protonup-qt
-    radeontop
-    rocmPackages.rocm-smi
-    rocmPackages.rocminfo
     rquickshare
     saber
-    # solaar
     solaar-master.packages.${pkgs.stdenv.hostPlatform.system}.default
     logitech-udev-rules
     scrcpy
@@ -153,7 +141,6 @@
     smartmontools
     starship
     sushi
-    swtpm
     telegram-desktop
     testdisk
     thunderbird
@@ -178,7 +165,6 @@
     tumbler
     xz
     yt-dlp
-    zenmonitor
     zip
     zram-generator
     zsh-autosuggestions

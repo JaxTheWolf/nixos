@@ -40,40 +40,11 @@
       }
     ];
 
-    bat.enable = true;
-    zsh.enable = true;
-    gamemode.enable = true;
-    firefox = {
-      enable = true;
-      languagePacks = ["cs" "en-GB" "en-US"];
-    };
     virt-manager.enable = true;
-    weylus.enable = true;
-    gamescope.enable = true;
-    noisetorch.enable = true;
 
     ccache = {
       enable = true;
       cacheDir = "/media/data/.ccache";
-    };
-
-    git = {
-      enable = true;
-      lfs.enable = true;
-    };
-
-    nh = {
-      clean = {
-        enable = true;
-        extraArgs = "--keep-since 7d --keep 10";
-      };
-      enable = true;
-      flake = "/etc/nixos";
-    };
-
-    nix-ld = {
-      enable = true;
-      libraries = with pkgs; [ ];
     };
 
     obs-studio = {
@@ -82,19 +53,10 @@
         wlrobs
         obs-backgroundremoval
         obs-pipewire-audio-capture
-        obs-vaapi # optional AMD hardware acceleration
+        obs-vaapi
         obs-gstreamer
         obs-vkcapture
       ];
-    };
-
-    steam = {
-      dedicatedServer.openFirewall = true;
-      enable = true;
-      extest.enable = true;
-      gamescopeSession.enable = true;
-      protontricks.enable = true;
-      remotePlay.openFirewall = true;
     };
   };
 }

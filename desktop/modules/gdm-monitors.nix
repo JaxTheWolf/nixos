@@ -295,7 +295,6 @@ let
 in
 {
   systemd.tmpfiles.rules = [
-    # L+ means to create a symbolic link (L) and create the directory if it doesn't exist (+)
     "L+ /run/gdm/.config/monitors.xml - - - - ${gdmMonitorsXml}"
   ];
 }

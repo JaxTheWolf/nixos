@@ -7,11 +7,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "path": "./flakes/czkawka-master",
+        "path": "./common/flakes/czkawka-master",
         "type": "path"
       },
       "original": {
-        "path": "./flakes/czkawka-master",
+        "path": "./common/flakes/czkawka-master",
         "type": "path"
       },
       "parent": []
@@ -19,11 +19,11 @@
     "czkawka-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1770876278,
-        "narHash": "sha256-8wzQV1Ft0VgNauArgog5wY6OmDq5gKIYF6LKJ8qGq9g=",
+        "lastModified": 1771313751,
+        "narHash": "sha256-0mqQAmaa7N7NgOKUgstRed5Ss6PcbfJzh/vOsS9Dg6c=",
         "owner": "qarmin",
         "repo": "czkawka",
-        "rev": "cc4d357238246d9d95867801f9c58773710c009d",
+        "rev": "f665807d2e06b72950e0c0f1857ab9efefc32ac6",
         "type": "github"
       },
       "original": {
@@ -61,11 +61,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "path": "./flakes/fet",
+        "path": "./common/flakes/fet",
         "type": "path"
       },
       "original": {
-        "path": "./flakes/fet",
+        "path": "./common/flakes/fet",
         "type": "path"
       },
       "parent": []
@@ -145,11 +145,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1770841267,
-        "narHash": "sha256-9xejG0KoqsoKEGp2kVbXRlEYtFFcDTHjidiuX8hGO44=",
+        "lastModified": 1771008912,
+        "narHash": "sha256-gf2AmWVTs8lEq7z/3ZAsgnZDhWIckkb+ZnAo5RzSxJg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ec7c70d12ce2fc37cb92aff673dcdca89d187bae",
+        "rev": "a82ccc39b39b621151d6732718e3e250109076fa",
         "type": "github"
       },
       "original": {
@@ -161,11 +161,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1770841267,
-        "narHash": "sha256-9xejG0KoqsoKEGp2kVbXRlEYtFFcDTHjidiuX8hGO44=",
+        "lastModified": 1771008912,
+        "narHash": "sha256-gf2AmWVTs8lEq7z/3ZAsgnZDhWIckkb+ZnAo5RzSxJg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ec7c70d12ce2fc37cb92aff673dcdca89d187bae",
+        "rev": "a82ccc39b39b621151d6732718e3e250109076fa",
         "type": "github"
       },
       "original": {
@@ -177,11 +177,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1770956962,
-        "narHash": "sha256-dakX5wYFRTckgej29qy//68/DjFsEA/XNYfnltnaDlo=",
+        "lastModified": 1771264603,
+        "narHash": "sha256-iCDYLFNZ2kZdfyDa6praAuPZGnI4TAO6r6pBEXicGqA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2c4dbe7e217aa8f06a0e5a76169cc28f5de10b4b",
+        "rev": "2859feb957fc4ef8220705fd5524e770b21d7f7d",
         "type": "github"
       },
       "original": {
@@ -193,11 +193,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1770841267,
-        "narHash": "sha256-9xejG0KoqsoKEGp2kVbXRlEYtFFcDTHjidiuX8hGO44=",
+        "lastModified": 1771008912,
+        "narHash": "sha256-gf2AmWVTs8lEq7z/3ZAsgnZDhWIckkb+ZnAo5RzSxJg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ec7c70d12ce2fc37cb92aff673dcdca89d187bae",
+        "rev": "a82ccc39b39b621151d6732718e3e250109076fa",
         "type": "github"
       },
       "original": {
@@ -240,11 +240,11 @@
         "solaar-src": "solaar-src"
       },
       "locked": {
-        "path": "./flakes/solaar-master",
+        "path": "./common/flakes/solaar-master",
         "type": "path"
       },
       "original": {
-        "path": "./flakes/solaar-master",
+        "path": "./common/flakes/solaar-master",
         "type": "path"
       },
       "parent": []
