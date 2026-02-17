@@ -1,4 +1,7 @@
-{ ... }: {
+{
+  ...
+}:
+{
   nix.settings = {
     substituters = [
       "https://attic.awroo.fun/my-config"
@@ -6,10 +9,13 @@
     ];
 
     trusted-public-keys = [
-      "my-config:zMLOKdd9wxVtJDK2jgI2fW6Uehtdc4WLyU0bOjNpyxM="
+      "my-config:51aC90S8+3+gS/UzwdnL7a7lu1NnY896SZp5njMwFDk="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
 
-    trusted-users = [ "root" "@wheel" ];
+    trusted-users = [
+      "root"
+      "@wheel"
+    ];
   };
 }

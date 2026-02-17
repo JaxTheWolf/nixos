@@ -14,19 +14,24 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "ahci"
-    "nvme"
-    "uas"
-    "sd_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "xhci_pci"
+        "ahci"
+        "nvme"
+        "uas"
+        "sd_mod"
+      ];
+      kernelModules = [ ];
+    };
+
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
+  };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/02dad628-066d-4fba-ada7-bfdfbc2e4ca3";
+    device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
     fsType = "btrfs";
     options = [
       "subvol=@nix"
@@ -39,7 +44,7 @@
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/02dad628-066d-4fba-ada7-bfdfbc2e4ca3";
+    device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
     fsType = "btrfs";
     options = [
       "subvol=@home"
@@ -52,7 +57,7 @@
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/02dad628-066d-4fba-ada7-bfdfbc2e4ca3";
+    device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
     fsType = "btrfs";
     options = [
       "subvol=@nix_nix"
@@ -65,7 +70,7 @@
   };
 
   fileSystems."/var" = {
-    device = "/dev/disk/by-uuid/02dad628-066d-4fba-ada7-bfdfbc2e4ca3";
+    device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
     fsType = "btrfs";
     options = [
       "subvol=@nix_var"
@@ -78,7 +83,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/C871-B294";
+    device = "/dev/disk/by-uuid/477C-4D52";
     fsType = "vfat";
     options = [
       "fmask=0022"
@@ -86,8 +91,16 @@
     ];
   };
 
-  swapDevices = [ ];
+  swapDevices = [
+    {
+      device = "/dev/disk/by-uuid/bea07563-dc23-415b-b12f-ba53138bd492";
+      priority = 0;
+      options = [
+        "defaults"
+      ];
+
+    }
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

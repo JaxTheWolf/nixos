@@ -28,12 +28,9 @@
       ];
     };
 
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     kernelModules = [
       "kvm-amd"
       "nct6683"
-      "hid-logitech-dj"
-      "hid-logitech-hidpp"
     ];
 
     extraModulePackages = with config.boot.kernelPackages; [
