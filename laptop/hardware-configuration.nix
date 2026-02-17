@@ -28,6 +28,13 @@
 
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
+
+    kernelParams = [
+      "snd_hda_intel.power_save=1"
+      "mem_sleep_default=deep"
+      "i915.enable_guc=3"
+      "i915.enable_fbc=1"
+    ];
   };
 
   fileSystems."/" = {
