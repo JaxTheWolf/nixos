@@ -18,6 +18,7 @@
       gnome-music
       gnome-software
       gnome-system-monitor
+      showtime
       snapshot
       totem
       yelp

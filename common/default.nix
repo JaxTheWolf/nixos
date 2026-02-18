@@ -11,6 +11,8 @@
     ./hardware-configuration.nix
   ];
 
+  documentation.nixos.enable = false;
+
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
