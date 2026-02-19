@@ -64,14 +64,12 @@
     distrobox
     docker-buildx
     docker-compose
-    dog
     element-desktop
     eza
     ffmpeg-full
     ffmpegthumbnailer
     file
     file-roller
-    firmware-manager
     flat-remix-gnome
     flat-remix-gtk
     flatpak-xdg-utils
@@ -120,6 +118,7 @@
     ncdu
     nil
     nixfmt
+    nixfmt-tree
     ntfs3g
     nufraw-thumbnailer
     obsidian

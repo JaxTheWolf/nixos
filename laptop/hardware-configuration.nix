@@ -36,7 +36,7 @@
       "i915.enable_fbc=1"
       "i915.enable_psr=0"
       "i915.fastboot=1"
-      "i915.enable_dc=2" 
+      "i915.enable_dc=2"
       "video=eDP-1:1920x1080@60e"
     ];
   };
