@@ -3,8 +3,6 @@
   pkgs,
   lib,
   czkawka-master,
-  solaar-master,
-  fet,
   ...
 }:
 
@@ -24,19 +22,4 @@
     swtpm
     zenmonitor
   ];
-
-  fonts = {
-    packages = with pkgs; [
-      fira-code
-      font-awesome
-      nerd-fonts.fira-code
-      nerd-fonts.fira-mono
-      nerd-fonts.symbols-only
-      nerd-fonts.ubuntu-mono
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-color-emoji
-      ubuntu-classic
-    ];
-  };
 }

@@ -7,9 +7,19 @@
 
 {
   programs = {
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
+
+    fuse = {
+      enable = true;
+    };
+
     bat.enable = true;
     zsh.enable = true;
     gamemode.enable = true;
+
     firefox = {
       enable = true;
       languagePacks = [
