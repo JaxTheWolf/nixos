@@ -28,6 +28,7 @@
       alphabetical-app-grid
       appindicator
       blur-my-shell
+      bluetooth-quick-connect
       bubblemail
       color-picker
       dash-to-dock
