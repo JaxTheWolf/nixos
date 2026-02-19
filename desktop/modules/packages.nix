@@ -17,6 +17,7 @@
     fahclient
     lact
     nvtopPackages.amd
+    openrgb-with-all-plugins
     radeontop
     rocmPackages.rocm-smi
     rocmPackages.rocminfo

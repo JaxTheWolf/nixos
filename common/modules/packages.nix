@@ -122,7 +122,6 @@
     ntfs3g
     nufraw-thumbnailer
     obsidian
-    openrgb-with-all-plugins
     papirus-icon-theme
     pbzip2
     pciutils
