@@ -28,7 +28,6 @@
       alphabetical-app-grid
       appindicator
       blur-my-shell
-      control-monitor-brightness-and-volume-with-ddcutil
       bubblemail
       color-picker
       dash-to-dock
