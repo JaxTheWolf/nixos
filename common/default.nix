@@ -25,7 +25,13 @@
   };
 
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      plugins = with pkgs; [
+        networkmanager-openconnect
+      ];
+    };
+    
     firewall.enable = false;
   };
 

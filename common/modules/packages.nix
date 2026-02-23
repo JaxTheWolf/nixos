@@ -109,6 +109,7 @@
     mesa-demos
     mission-center
     ncdu
+    networkmanager-openconnect
     nil
     nixfmt
     nixfmt-tree
