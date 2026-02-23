@@ -126,7 +126,7 @@
     protonup-qt
     rquickshare
     saber
-    solaar-master.packages.${pkgs.stdenv.hostPlatform.system}.default
+    solaar
     logitech-udev-rules
     scrcpy
     screen

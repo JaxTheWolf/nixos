@@ -3,7 +3,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     czkawka-master.url = "path:./common/flakes/czkawka-master";
-    solaar-master.url = "path:./common/flakes/solaar-master";
     fet.url = "path:./common/flakes/fet";
   };
 
@@ -15,7 +14,7 @@
       ...
     }@inputs:
     let
-      specialArgs = { inherit (inputs) czkawka-master solaar-master fet; };
+      specialArgs = { inherit (inputs) czkawka-master fet; };
     in
     {
       nixosConfigurations = {

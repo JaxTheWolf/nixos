@@ -88,24 +88,6 @@
         "type": "github"
       }
     },
-    "flake-utils_2": {
-      "inputs": {
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "naersk": {
       "inputs": {
         "fenix": "fenix",
@@ -191,29 +173,12 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1771369470,
-        "narHash": "sha256-0NBlEBKkN3lufyvFegY4TYv5mCNHbi5OmBDrzihbBMQ=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "0182a361324364ae3f436a63005877674cf45efb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "czkawka-master": "czkawka-master",
         "fet": "fet",
         "nix-flatpak": "nix-flatpak",
-        "nixpkgs": "nixpkgs_3",
-        "solaar-master": "solaar-master"
+        "nixpkgs": "nixpkgs_3"
       }
     },
     "rust-analyzer-src": {
@@ -233,55 +198,7 @@
         "type": "github"
       }
     },
-    "solaar-master": {
-      "inputs": {
-        "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_4",
-        "solaar-src": "solaar-src"
-      },
-      "locked": {
-        "path": "./common/flakes/solaar-master",
-        "type": "path"
-      },
-      "original": {
-        "path": "./common/flakes/solaar-master",
-        "type": "path"
-      },
-      "parent": []
-    },
-    "solaar-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1770306649,
-        "narHash": "sha256-IEGTggLf2UzXAqCZQm4R0ogohQJHm+sKXEnJJVhM1r8=",
-        "owner": "pwr-Solaar",
-        "repo": "Solaar",
-        "rev": "42e0e391b525695a3c959351df48c92e8171585c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pwr-Solaar",
-        "ref": "master",
-        "repo": "Solaar",
-        "type": "github"
-      }
-    },
     "systems": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_2": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
