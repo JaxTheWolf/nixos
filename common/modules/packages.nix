@@ -36,7 +36,7 @@
   environment.systemPackages = with pkgs; [
     abootimg
     android-tools
-    anki
+    # anki
     appstream
     aspell
     aspellDicts.cs
@@ -93,7 +93,7 @@
     jq
     killall
     kooha
-    krita
+    # krita
     libgsf
     libnotify
     libreoffice
