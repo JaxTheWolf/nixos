@@ -90,6 +90,7 @@
     iftop
     inkscape
     iotop
+    jetbrains.clion
     jq
     killall
     kooha
