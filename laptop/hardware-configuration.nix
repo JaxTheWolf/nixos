@@ -28,6 +28,7 @@
 
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
+    resumeDevice = "/dev/disk/by-uuid/bea07563-dc23-415b-b12f-ba53138bd492";
 
     kernelParams = [
       "snd_hda_intel.power_save=1"

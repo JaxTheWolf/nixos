@@ -27,4 +27,19 @@
       MEM_SLEEP_ON_BAT = "deep";
     };
   };
+
+  services.logind = {
+    # Use 'settings' for modern NixOS Unstable/Stable
+    settings = {
+      Login = {
+        HandleLidSwitch = "suspend-then-hibernate";
+        HandleLidSwitchExternalPower = "suspend";
+        HandleLidSwitchDocked = "ignore"; # Keeps external monitors alive
+      };
+    };
+  };
+
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=10min
+  '';
 }
