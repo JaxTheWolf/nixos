@@ -1,8 +1,9 @@
 {
+  pkgs,
   ...
 }:
 {
-  services.thermald.enable = true; # Prevents overheating/throttling
+  services.thermald.enable = true;
   services.power-profiles-daemon.enable = false;
   services.tlp = {
     enable = true;
@@ -29,17 +30,25 @@
   };
 
   services.logind = {
-    # Use 'settings' for modern NixOS Unstable/Stable
     settings = {
       Login = {
         HandleLidSwitch = "suspend-then-hibernate";
         HandleLidSwitchExternalPower = "suspend";
-        HandleLidSwitchDocked = "ignore"; # Keeps external monitors alive
+        HandleLidSwitchDocked = "ignore";
       };
     };
   };
 
   systemd.sleep.extraConfig = ''
-    HibernateDelaySec=10min
+    HibernateDelaySec=5min
   '';
+
+  systemd.services.disable-problematic-wakeup = {
+    description = "Disable only specific noisy wakeup sources";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash -c 'for device in XHC RP09 RP10 RP13; do if grep -q \"$device.*enabled\" /proc/acpi/wakeup; then echo $device > /proc/acpi/wakeup; fi; done'";
+    };
+  };
 }
