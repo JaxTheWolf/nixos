@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./attic.nix
     ./desktop-files.nix
     ./flatpak.nix
     ./gnome.nix
