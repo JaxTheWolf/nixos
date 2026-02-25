@@ -155,8 +155,7 @@
     wev
     wget
     which
-    wine64Packages.waylandFull
-    winePackages.waylandFull
+    wineWow64Packages.waylandFull
     wireshark
     tumbler
     xz
