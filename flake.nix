@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     czkawka-master.url = "path:./common/flakes/czkawka-master";
     fet.url = "path:./common/flakes/fet";

@@ -97,7 +97,7 @@
     # krita
     libgsf
     libnotify
-    libreoffice
+    libreoffice-fresh
     libsForQt5.qtstyleplugins
     linux-firmware
     lm_sensors

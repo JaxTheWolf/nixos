@@ -31,7 +31,7 @@
         networkmanager-openconnect
       ];
     };
-    
+
     firewall.enable = false;
   };
 
