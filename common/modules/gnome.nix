@@ -29,10 +29,10 @@
       appindicator
       blur-my-shell
       bluetooth-quick-connect
+      caffeine
       bubblemail
       color-picker
       dash-to-dock
-      # favorites-to-applications-grid
       middle-click-to-close-in-overview
       undecorate
       user-themes

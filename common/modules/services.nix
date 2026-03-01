@@ -69,7 +69,7 @@
 
     btrfs = {
       autoScrub = {
-        enable = true;
+        enable = (lib.any (fs: fs.fsType == "btrfs") (lib.attrValues config.fileSystems));
         interval = "monthly";
       };
     };

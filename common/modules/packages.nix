@@ -36,7 +36,7 @@
   environment.systemPackages = with pkgs; [
     abootimg
     android-tools
-    # anki
+    anki
     appstream
     aspell
     aspellDicts.cs
@@ -92,9 +92,8 @@
     iotop
     jetbrains.clion
     jq
+    just
     killall
-    kooha
-    # krita
     libgsf
     libnotify
     libreoffice-fresh
@@ -134,7 +133,6 @@
     screen
     seafile-client
     smartmontools
-    starship
     sushi
     telegram-desktop
     testdisk
@@ -162,10 +160,6 @@
     yt-dlp
     zip
     zram-generator
-    zsh-autosuggestions
-    zsh-completions
-    zsh-history-substring-search
-    zsh-syntax-highlighting
     zstd
     zulu
     zulu8

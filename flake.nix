@@ -2,6 +2,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     czkawka-master.url = "path:./common/flakes/czkawka-master";
     fet.url = "path:./common/flakes/fet";
   };
@@ -11,6 +16,7 @@
       self,
       nixpkgs,
       nix-flatpak,
+      home-manager,
       ...
     }@inputs:
     let
@@ -25,6 +31,20 @@
             ./common
             ./desktop
             nix-flatpak.nixosModules.nix-flatpak
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.jax = {
+                  imports = [
+                    ./common/modules/home
+                    ./desktop/modules/home
+                  ];
+                };
+              };
+            }
           ];
         };
 
@@ -35,6 +55,19 @@
             ./common
             ./laptop
             nix-flatpak.nixosModules.nix-flatpak
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.jax = {
+                  imports = [
+                    ./common/modules/home
+                    ./laptop/modules/home
+                  ];
+                };
+              };
+            }
           ];
         };
       };
