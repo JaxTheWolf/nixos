@@ -1,3 +1,5 @@
+default: switch build-laptop upload clean
+
 vm-desktop:
     nix build .#nixosConfigurations.epiquev2.config.system.build.vm
     ./result/bin/run-epiquev2-vm
@@ -6,9 +8,8 @@ vm-laptop:
     nix build .#nixosConfigurations.dalaptop.config.system.build.vm
     ./result/bin/run-dalaptop-vm
 
-build:
-    nix build .#nixosConfigurations.epiquev2.config.system.build.vm
-    nix build .#nixosConfigurations.dalaptop.config.system.build.vm
+build-laptop:
+    nix build .#nixosConfigurations.dalaptop.config.system.build.toplevel
 
 upload:
     attic push my-config /run/current-system
