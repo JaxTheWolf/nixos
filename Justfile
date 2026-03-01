@@ -6,6 +6,14 @@ vm-laptop:
     nix build .#nixosConfigurations.dalaptop.config.system.build.vm
     ./result/bin/run-dalaptop-vm
 
+build:
+    nix build .#nixosConfigurations.epiquev2.config.system.build.vm
+    nix build .#nixosConfigurations.dalaptop.config.system.build.vm
+
+upload:
+    attic push my-config /run/current-system
+    attic push my-config result
+
 clean:
     rm -rf result
     rm -rf *.qcow2

@@ -8,6 +8,7 @@
     enable = true;
     settings = {
       format = lib.concatStrings [
+        "$hostname"
         "\${custom.ssh_status}"
         "\${custom.distrobox}"
         "\${nix_shell}"
@@ -109,6 +110,12 @@
         format = "[$symbol$output]($style) ";
         symbol = "📦 ";
         style = "bold purple";
+      };
+
+      hostname = {
+        ssh_only = true;
+        format = "[](fg:#1E91D6)[$hostname](bg:#1E91D6 fg:#FFFFFF)[](fg:#1E91D6) ";
+        disabled = false;
       };
     };
   };
