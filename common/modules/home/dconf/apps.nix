@@ -11,12 +11,12 @@
     };
 
     "org/gnome/Console" = {
-      custom-font = lib.mkDefault "FiraCode Nerd Font Mono 11";
+      custom-font = lib.mkDefault "FiraCode Nerd Font 11";
       use-system-font = false;
     };
 
     "org/gnome/TextEditor" = {
-      custom-font = lib.mkDefault "Fira Code weight=450 11";
+      custom-font = lib.mkDefault "Fira Code Nerd Font weight=450 11";
       use-system-font = false;
     };
 

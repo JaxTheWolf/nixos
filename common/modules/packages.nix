@@ -53,6 +53,7 @@
     curl
     fet.packages.${pkgs.stdenv.hostPlatform.system}.default
     ddcutil
+    direnv
     discord
     distrobox
     docker-buildx

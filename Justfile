@@ -19,6 +19,9 @@ clean:
     rm -rf result
     rm -rf *.qcow2
 
+format:
+    treefmt .
+
 switch:
     nh os switch
 
