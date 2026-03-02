@@ -39,7 +39,11 @@
     };
 
     initContent = ''
-      # Completion Styling
+      zstyle ':completion:*' completer _complete _match _approximate
+      zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+      zstyle ':completion:*' menu select
+
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
       zstyle ':completion:*:(scp|rsync):*' tag-order ' hosts:-ipaddr:ip\ address hosts:-host:host files'
       zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
@@ -75,17 +79,6 @@
         echo "Found device at $IP:$PORT"
         adb pair "$IP:$PORT"
       }
-
-      if ! command -v starship >/dev/null 2>&1; then
-        if [[ -f "/home/jax/.cargo/bin/starship" ]]; then
-          eval "$(/home/jax/.cargo/bin/starship init zsh)"
-        fi
-      fi
-
-      # Your specific Android environment override
-      if [[ -n "$IN_ANDROID_ENV" ]]; then
-          eval "$(starship init zsh)"
-      fi
     '';
   };
 
