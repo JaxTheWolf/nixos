@@ -26,5 +26,13 @@
         };
       };
     };
+
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        vaapi-intel-hybrid
+        vpl-gpu-rt
+      ];
+    };
   };
 }
