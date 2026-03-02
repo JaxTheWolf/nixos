@@ -31,6 +31,7 @@
 
     weylus.enable = true;
     gamescope.enable = true;
+    virt-manager.enable = true;
 
     git = {
       enable = true;

@@ -40,8 +40,6 @@
       }
     ];
 
-    virt-manager.enable = true;
-
     ccache = {
       enable = true;
       cacheDir = "/media/data/.ccache";
