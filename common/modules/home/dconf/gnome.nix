@@ -92,6 +92,10 @@
       ];
     };
 
+    "org/gnome/desktop/app-folders" = {
+      folder-children = [ ];
+    };
+
     "org/gnome/desktop/datetime" = {
       automatic-timezone = true;
     };
