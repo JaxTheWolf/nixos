@@ -101,7 +101,7 @@
     };
 
     "org/gnome/system/location" = {
-      enabled = false;
+      enabled = true;
     };
   };
 }
