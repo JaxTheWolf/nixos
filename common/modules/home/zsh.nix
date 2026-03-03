@@ -50,6 +50,8 @@
       zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
       zstyle ':completion:*' matcher-list "" 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
 
+      eval "$(direnv hook zsh)"
+
       # Path Management
       export PATH="$HOME/.local/bin:/usr/local/LinkServer/:$PATH"
 
