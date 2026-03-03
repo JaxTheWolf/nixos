@@ -7,39 +7,6 @@
 
 {
   programs = {
-    dconf.profiles.gdm.databases = [
-      {
-        settings = {
-          "org/gnome/desktop/peripherals/keyboard" = {
-            numlock-state = true;
-            remember-numlock-state = true;
-          };
-
-          "org/gnome/desktop/peripherals/mouse" = {
-            speed-profile = "flat";
-            speed = -0.5;
-          };
-
-          "org/gnome/desktop/peripherals/touchpad" = {
-            speed-profile = "flat";
-            speed = -0.5;
-          };
-
-          "org/gnome/desktop/interface" = {
-            color-scheme = "prefer-dark";
-            gtk-theme = "Flat-Remix-GTK-Red-Darkest";
-            icon-theme = "Papirus-Dark";
-            cursor-theme = "Bibata-Modern-Classic";
-            clock-format = "24h";
-          };
-
-          "org/gnome/shell/portal" = {
-            color-scheme = "prefer-dark";
-          };
-        };
-      }
-    ];
-
     ccache = {
       enable = true;
       cacheDir = "/media/data/.ccache";
