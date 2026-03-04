@@ -5,32 +5,6 @@
 }:
 
 {
-  /*
-    xdg.desktopEntries = {
-       "clion" = {
-        name = "CLion (Nix Shell)";
-        genericName = "C/C++ IDE from JetBrains";
-        exec = "nix develop ${config.xdg.configHome}/nix-shells/cpp -c clion %f";
-        icon = "clion";
-        type = "Application";
-        terminal = false;
-        categories = [
-          "Development"
-          "IDE"
-        ];
-        settings = {
-          StartupWMClass = "jetbrains-clion";
-        };
-        mimeType = [
-          "text/x-c++src"
-          "text/x-c++hdr"
-          "text/x-csrc"
-          "text/x-chdr"
-        ];
-      };
-    };
-  */
-
   xdg.dataFile."applications/clion.desktop".text = ''
     [Desktop Entry]
     Type=Application
@@ -42,5 +16,18 @@
     Categories=Development;IDE;
     StartupWMClass=jetbrains-clion
     MimeType=text/x-c++src;text/x-c++hdr;text/x-csrc;text/x-chdr;
+  '';
+
+  xdg.dataFile."applications/cisco-packet-tracer-9.desktop".text = ''
+    [Desktop Entry]
+    StartupWMClass=PacketTracer
+    Name=Cisco Packet Tracer 9.0.0
+    Type=Application
+    Categories=Education;
+    Exec=env QT_STYLE_OVERRIDE=adwaita packettracer9 %f
+    Icon=cisco-packet-tracer-9
+    Terminal=false
+    StartupNotify=true
+    MimeType=application/x-pkt;application/x-pka;application/x-pkz;application/x-pks;application/x-pksz;
   '';
 }

@@ -14,7 +14,7 @@
       allowUnfree = true;
       permittedInsecurePackages = [
         "ventoy-gtk3-1.1.10"
-        "cisco-packet-tracer-8.2.2"
+        "cisco-packet-tracer_9"
       ];
     };
     overlays = [
@@ -117,7 +117,7 @@
     ntfs3g
     nufraw-thumbnailer
     obsidian
-    ciscoPacketTracer8
+    cisco-packet-tracer_9
     papirus-icon-theme
     pbzip2
     pciutils
