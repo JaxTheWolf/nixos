@@ -40,9 +40,9 @@
     };
   };
 
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=5min
-  '';
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec="5min";
+  };
 
   systemd.services.disable-problematic-wakeup = {
     description = "Disable only specific noisy wakeup sources";
