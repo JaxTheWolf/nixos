@@ -80,5 +80,10 @@
     };
 
     fwupd.enable = true;
+
+    udev.packages = with pkgs; [
+      platformio-core.udev
+      openocd
+    ];
   };
 }

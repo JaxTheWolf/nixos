@@ -149,7 +149,14 @@
     vesktop
     vkbasalt
     vlc
-    vscode-fhs
+    (vscode.fhsWithPackages (
+      ps: with ps; [
+        python3
+        zlib
+        gcc
+        gnumake
+      ]
+    ))
     webp-pixbuf-loader
     wev
     wget

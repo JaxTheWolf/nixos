@@ -41,7 +41,7 @@
   };
 
   systemd.sleep.settings.Sleep = {
-    HibernateDelaySec="5min";
+    HibernateDelaySec = "5min";
   };
 
   systemd.services.disable-problematic-wakeup = {

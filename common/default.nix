@@ -102,6 +102,7 @@
       "video"
       "render"
       "input"
+      "dialout"
     ];
     shell = pkgs.zsh;
     #packages = with pkgs; [ ];
