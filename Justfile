@@ -12,8 +12,8 @@ build-laptop:
     nix build .#nixosConfigurations.dalaptop.config.system.build.toplevel
 
 upload:
-    attic push my-config /run/current-system
     attic push my-config result
+    attic push my-config /run/current-system
 
 clean:
     rm -rf result
@@ -24,6 +24,9 @@ format:
 
 switch:
     nh os switch
+
+switch_update:
+    nh os switch --refresh --update
 
 help:
     @just --list
