@@ -71,6 +71,7 @@
     fuse
     fuse3
     fwupd
+    gemini-cli
     gimp
     gnome-tweaks
     gnome.gvfs
