@@ -49,7 +49,7 @@
 
       python = {
         symbol = "󰌠";
-        format = "[](fg:#4B8BBE)[$symbol $version](bg:#4B8BBE fg:#FFFFFF)[](fg:#4B8BBE) ";
+        format = "[](fg:#4B8BBE)[$symbol( $virtualenv )$version](bg:#4B8BBE fg:#FFFFFF)[](fg:#4B8BBE) ";
       };
 
       nodejs = {
