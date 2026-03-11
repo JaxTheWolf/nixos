@@ -38,6 +38,7 @@
     ];
 
     blacklistedKernelModules = [ "k10temp" ];
+
     kernelParams = [
       "amdgpu.seamless=1"
       "rd.udev.log_priority=3"

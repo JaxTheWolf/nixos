@@ -56,6 +56,11 @@
       ];
     };
 
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     weylus.enable = true;
     gamescope.enable = true;
     virt-manager.enable = true;

@@ -20,6 +20,7 @@
         enable = true;
       };
     };
+
     consoleLogLevel = 3;
     plymouth.enable = true;
   };
@@ -62,6 +63,7 @@
     sudo.extraConfig = ''
       Defaults insults
     '';
+
     polkit.extraConfig = ''
       polkit.addRule(function(action, subject) {
           if (action.id == "org.libvirt.unix.manage" &&
@@ -79,6 +81,7 @@
       storageDriver = "btrfs";
       enableOnBoot = true;
     };
+
     libvirtd = {
       enable = true;
       extraConfig = ''
@@ -87,6 +90,7 @@
 
       onBoot = "ignore";
     };
+
     spiceUSBRedirection.enable = true;
   };
 
@@ -104,6 +108,7 @@
       "input"
       "dialout"
     ];
+
     shell = pkgs.zsh;
     #packages = with pkgs; [ ];
   };
@@ -113,10 +118,12 @@
       NIXOS_OZONE_WL = "1";
       LIBVIRT_DEFAULT_URI = "qemu:///system";
     };
+
     systemPackages = [
       pkgs.libheif
       pkgs.libheif.out
     ];
+
     pathsToLink = [ "share/thumbnailers" ];
   };
 
@@ -163,6 +170,7 @@
       "flakes"
       "nix-command"
     ];
+
     warn-dirty = false;
   };
 

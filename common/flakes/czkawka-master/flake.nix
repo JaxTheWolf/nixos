@@ -7,6 +7,7 @@
       url = "github:qarmin/czkawka";
       flake = false;
     };
+
     naersk = {
       url = "github:nix-community/naersk";
       inputs.nixpkgs.follows = "nixpkgs";
