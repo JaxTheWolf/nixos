@@ -1,8 +1,4 @@
-{
-  lib,
-  ...
-}:
-
+{ lib, ... }:
 {
   dconf.settings = {
     "org/gnome/settings-daemon/plugins/media-keys" = {

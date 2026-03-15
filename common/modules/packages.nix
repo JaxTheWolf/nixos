@@ -7,7 +7,6 @@
   fet,
   ...
 }:
-
 {
   nixpkgs = {
     config = {
@@ -23,10 +22,10 @@
           buildInputs =
             nprev.buildInputs
             ++ (with pkgs.gst_all_1; [
-              gst-plugins-good
               gst-plugins-bad
-              gst-plugins-ugly
               gst-plugins-base
+              gst-plugins-good
+              gst-plugins-ugly
             ]);
         });
       })
@@ -35,6 +34,7 @@
 
   environment.systemPackages = with pkgs; [
     abootimg
+    alejandra
     android-tools
     anki
     appstream
@@ -50,8 +50,8 @@
     btrfs-progs
     bubblemail
     bzip2
+    cisco-packet-tracer_9
     curl
-    fet.packages.${pkgs.stdenv.hostPlatform.system}.default
     ddcutil
     discord
     distrobox
@@ -59,6 +59,7 @@
     docker-compose
     element-desktop
     eza
+    fet.packages.${pkgs.stdenv.hostPlatform.system}.default
     ffmpeg-full
     ffmpegthumbnailer
     file
@@ -101,6 +102,7 @@
     libsForQt5.qtstyleplugins
     linux-firmware
     lm_sensors
+    logitech-udev-rules
     lrzip
     lsof
     lz4
@@ -119,7 +121,6 @@
     ntfs3g
     nufraw-thumbnailer
     obsidian
-    cisco-packet-tracer_9
     papirus-icon-theme
     pbzip2
     pciutils
@@ -130,12 +131,11 @@
     protonup-qt
     rquickshare
     saber
-    solaar
-    logitech-udev-rules
     scrcpy
     screen
     seafile-client
     smartmontools
+    solaar
     sushi
     telegram-desktop
     testdisk
@@ -144,6 +144,7 @@
     tldr
     trash-cli
     tree
+    tumbler
     unrar
     unzip
     usbutils
@@ -165,15 +166,14 @@
     which
     wineWow64Packages.waylandFull
     wireshark
-    tumbler
     xz
     yt-dlp
     zip
     zram-generator
     zstd
     zulu
-    zulu8
     zulu17
+    zulu8
   ];
 
   fonts = {

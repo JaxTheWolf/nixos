@@ -1,7 +1,4 @@
-{
-  ...
-}:
-
+{ ... }:
 {
   dconf.settings = {
     "org/gnome/Console" = {

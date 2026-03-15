@@ -4,7 +4,6 @@
   lib,
   ...
 }:
-
 let
   gdmMonitorsXml = pkgs.writeText "gdm-monitor.xml" ''
     <monitors version="2">

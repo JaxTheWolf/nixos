@@ -4,7 +4,6 @@
   lib,
   ...
 }:
-
 {
   programs = {
     ccache = {
@@ -15,12 +14,12 @@
     obs-studio = {
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [
-        wlrobs
         obs-backgroundremoval
+        obs-gstreamer
         obs-pipewire-audio-capture
         obs-vaapi
-        obs-gstreamer
         obs-vkcapture
+        wlrobs
       ];
     };
   };

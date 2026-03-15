@@ -4,7 +4,6 @@
   lib,
   ...
 }:
-
 {
   programs = {
     dconf.profiles.gdm.databases = [
@@ -43,7 +42,6 @@
       enable = true;
     };
 
-    bat.enable = true;
     zsh.enable = true;
     gamemode.enable = true;
 

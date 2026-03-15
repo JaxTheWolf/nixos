@@ -5,7 +5,6 @@
   czkawka-master,
   ...
 }:
-
 {
   environment.systemPackages = with pkgs; [
     amdgpu_top

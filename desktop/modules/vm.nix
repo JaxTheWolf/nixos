@@ -1,8 +1,4 @@
-{
-  lib,
-  ...
-}:
-
+{ lib, ... }:
 {
   virtualisation.vmVariant = {
     virtualisation = {

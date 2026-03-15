@@ -1,7 +1,4 @@
-{
-  ...
-}:
-
+{ ... }:
 {
   nix.settings = {
     substituters = [

@@ -27,24 +27,23 @@
       naersk-lib = pkgs.callPackage naersk { };
 
       nativeBuildInputs = with pkgs; [
-        pkg-config
+        cargo
         cmake
         makeWrapper
-        cargo
+        pkg-config
         rustc
       ];
 
       runtimeLibs = with pkgs; [
-        wayland
-        libxkbcommon
-        libglvnd
         fontconfig
+        libglvnd
         libX11
         libXcursor
         libXi
+        libxkbcommon
         libXrandr
+        wayland
       ];
-
     in
     {
       packages.${system}.default = naersk-lib.buildPackage {

@@ -4,7 +4,6 @@
   lib,
   ...
 }:
-
 {
   imports = [
     ./hardware-configuration.nix
@@ -30,7 +29,6 @@
     graphics = {
       enable = true;
       extraPackages = with pkgs; [
-
         vaapi-intel-hybrid
         vpl-gpu-rt
       ];

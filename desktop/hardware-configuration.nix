@@ -8,7 +8,6 @@
   modulesPath,
   ...
 }:
-
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -96,7 +95,6 @@
       "compress=zstd:10"
       "autodefrag"
     ];
-
   };
 
   fileSystems."/var" = {

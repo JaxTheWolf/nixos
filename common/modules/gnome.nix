@@ -4,7 +4,6 @@
   lib,
   ...
 }:
-
 {
   environment = {
     gnome.excludePackages = with pkgs; [
@@ -27,17 +26,17 @@
     systemPackages = with pkgs.gnomeExtensions; [
       alphabetical-app-grid
       appindicator
-      blur-my-shell
       bluetooth-quick-connect
-      caffeine
+      blur-my-shell
       bubblemail
+      caffeine
       color-picker
       dash-to-dock
       middle-click-to-close-in-overview
+      solaar-extension
       undecorate
       user-themes
       window-is-ready-remover
-      solaar-extension
     ];
   };
 

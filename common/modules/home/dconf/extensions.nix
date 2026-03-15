@@ -1,8 +1,4 @@
-{
-  lib,
-  ...
-}:
-
+{ lib, ... }:
 {
   dconf.settings = {
     "org/gnome/shell/extensions/user-theme" = {
@@ -71,31 +67,31 @@
       pipelines = lib.hm.gvariant.mkValue ''
         {
           'pipeline_default': {
-            'name': <'Default'>, 
+            'name': <'Default'>,
             'effects': <[
               {
-                'type': <'native_static_gaussian_blur'>, 
-                'id': <'effect_27049338116840'>, 
+                'type': <'native_static_gaussian_blur'>,
+                'id': <'effect_27049338116840'>,
                 'params': <@a{sv} {}>
-              }, 
+              },
               {
-                'type': <'noise'>, 
-                'id': <'effect_90950561821691'>, 
+                'type': <'noise'>,
+                'id': <'effect_90950561821691'>,
                 'params': <{'lightness': <0.64>, 'noise': <0.25>}>
               }
             ]>
-          }, 
+          },
           'pipeline_default_rounded': {
-            'name': <'Default rounded'>, 
+            'name': <'Default rounded'>,
             'effects': <[
               {
-                'type': <'native_static_gaussian_blur'>, 
-                'id': <'effect_000000000001'>, 
+                'type': <'native_static_gaussian_blur'>,
+                'id': <'effect_000000000001'>,
                 'params': <{'radius': <30>, 'brightness': <0.6>}>
-              }, 
+              },
               {
-                'type': <'corner'>, 
-                'id': <'effect_000000000002'>, 
+                'type': <'corner'>,
+                'id': <'effect_000000000002'>,
                 'params': <{'radius': <24>}>
               }
             ]>
@@ -156,7 +152,7 @@
       sigma = 30;
     };
 
-    "org/gnome/shell/ectensions/bubblemail" = {
+    "org/gnome/shell/extensions/bubblemail" = {
       newest-first = true;
     };
   };

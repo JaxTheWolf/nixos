@@ -20,23 +20,23 @@
       {
         packages.default = pkgs.stdenv.mkDerivation rec {
           pname = "fet";
-          version = "7.7.7";
+          version = "7.8.0";
 
           src = pkgs.fetchurl {
             url = "https://lalescu.ro/liviu/fet/download/fet-${version}.tar.xz";
-            sha256 = "0ix9h714xdg1fbbij3zays4v9s3arhz3s9n2j1pgnxmabzdxvzg2";
+            sha256 = "01hr3digrg2qs5wh10qzpgwi4clqmzd46d099r0yrx3278qvz9wj";
           };
 
           enableParallelBuilding = true;
 
-          nativeBuildInputs = [
-            pkgs.qt6.qmake
-            pkgs.qt6.wrapQtAppsHook
-            pkgs.copyDesktopItems
+          nativeBuildInputs = with pkgs; [
+            copyDesktopItems
+            qt6.qmake
+            qt6.wrapQtAppsHook
           ];
 
-          buildInputs = [
-            pkgs.qt6.qtbase
+          buildInputs = with pkgs; [
+            qt6.qtbase
           ];
 
           configurePhase = ''

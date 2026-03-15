@@ -8,7 +8,6 @@
   modulesPath,
   ...
 }:
-
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -23,6 +22,7 @@
         "uas"
         "sd_mod"
       ];
+
       kernelModules = [ ];
     };
 
@@ -110,7 +110,6 @@
       options = [
         "defaults"
       ];
-
     }
   ];
 

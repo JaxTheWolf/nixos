@@ -3,7 +3,6 @@
   pkgs,
   ...
 }:
-
 {
   xdg.dataFile."applications/clion.desktop".text = ''
     [Desktop Entry]
