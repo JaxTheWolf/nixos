@@ -44,9 +44,9 @@
       hide-tooltip = false;
       intellihide-mode = "ALL_WINDOWS";
       isolate-workspaces = true;
-      max-alpha = 0.6;
+      max-alpha = 0.4;
       middle-click-action = "launch";
-      min-alpha = 0.10;
+      min-alpha = 0.05;
       preferred-monitor = -2;
       preview-size-scale = 0.5;
       running-indicator-style = "DOTS";
@@ -154,6 +154,15 @@
 
     "org/gnome/shell/extensions/bubblemail" = {
       newest-first = true;
+    };
+
+    "org/gnome/shell/extensions/quick-settings-audio-panel" = {
+      create-applications-volume-sliders = true;
+      create-balance-slider = false;
+      create-mpris-controllers = false;
+      create-perdevice-volume-sliders = false;
+      group-applications-volume-sliders = true;
+      panel-type = "merged-panel";
     };
   };
 }

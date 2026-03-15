@@ -129,6 +129,7 @@
     poppler-utils
     prismlauncher-unwrapped
     protonup-qt
+    pulseaudio
     rquickshare
     saber
     scrcpy

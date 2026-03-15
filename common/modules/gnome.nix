@@ -33,6 +33,7 @@
       color-picker
       dash-to-dock
       middle-click-to-close-in-overview
+      quick-settings-audio-panel
       solaar-extension
       undecorate
       user-themes
