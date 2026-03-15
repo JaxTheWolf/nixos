@@ -116,8 +116,6 @@
     nil
     nix-output-monitor
     nix-your-shell
-    nixfmt
-    nixfmt-tree
     ntfs3g
     nufraw-thumbnailer
     obsidian
@@ -145,6 +143,7 @@
     tldr
     trash-cli
     tree
+    treefmt
     tumbler
     unrar
     unzip
