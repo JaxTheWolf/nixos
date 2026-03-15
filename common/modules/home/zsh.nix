@@ -56,6 +56,10 @@
       # Dart Completion
       [[ -f /home/jax/.dart-cli-completion/zsh-config.zsh ]] && . /home/jax/.dart-cli-completion/zsh-config.zsh || true
 
+      if command -v nix-your-shell > /dev/null; then
+        nix-your-shell zsh | source /dev/stdin
+      fi
+
       adbauto_() {
         local PORT=$(avahi-browse -rt _adb-tls-connect._tcp -p | grep '^=' | cut -d';' -f8,9 | head -n 1 | sed 's/;/ /' | awk '{print $2}')
         local IP=$(avahi-browse -rt _adb-tls-connect._tcp -p | grep '^=' | cut -d';' -f8,9 | head -n 1 | sed 's/;/ /' | awk '{print $1}')

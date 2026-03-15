@@ -9,7 +9,7 @@ vm-laptop:
     ./result/bin/run-dalaptop-vm
 
 build-laptop:
-    nix build .#nixosConfigurations.dalaptop.config.system.build.toplevel
+    nix build .#nixosConfigurations.dalaptop.config.system.build.toplevel --log-format internal-json |& nom --json
 
 upload:
     attic push my-config result

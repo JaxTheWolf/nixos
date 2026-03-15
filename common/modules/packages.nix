@@ -112,6 +112,8 @@
     ncdu
     networkmanager-openconnect
     nil
+    nix-output-monitor
+    nix-your-shell
     nixfmt
     nixfmt-tree
     ntfs3g
