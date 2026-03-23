@@ -118,7 +118,7 @@
     nix-your-shell
     ntfs3g
     nufraw-thumbnailer
-#    obsidian
+    obsidian
     papirus-icon-theme
     pbzip2
     pciutils
