@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.thermald.enable = true;
   services.power-profiles-daemon.enable = false;
   services.tlp = {
@@ -42,7 +41,7 @@
 
   systemd.services.disable-problematic-wakeup = {
     description = "Disable only specific noisy wakeup sources";
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
 
     serviceConfig = {
       Type = "oneshot";

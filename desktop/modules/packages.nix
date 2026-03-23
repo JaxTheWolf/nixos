@@ -4,8 +4,7 @@
   lib,
   czkawka-master,
   ...
-}:
-{
+}: {
   environment.systemPackages = with pkgs; [
     amdgpu_top
     arch-install-scripts

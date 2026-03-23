@@ -14,72 +14,68 @@
     };
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      czkawka-src,
-      naersk,
-    }:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-      naersk-lib = pkgs.callPackage naersk { };
+  outputs = {
+    self,
+    nixpkgs,
+    czkawka-src,
+    naersk,
+  }: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {inherit system;};
+    naersk-lib = pkgs.callPackage naersk {};
 
-      nativeBuildInputs = with pkgs; [
-        cargo
-        cmake
-        makeWrapper
-        pkg-config
-        rustc
-      ];
+    nativeBuildInputs = with pkgs; [
+      cargo
+      cmake
+      makeWrapper
+      pkg-config
+      rustc
+    ];
 
-      runtimeLibs = with pkgs; [
-        fontconfig
-        libglvnd
-        libX11
-        libXcursor
-        libXi
-        libxkbcommon
-        libXrandr
-        wayland
-      ];
-    in
-    {
-      packages.${system}.default = naersk-lib.buildPackage {
-        pname = "krokiet";
-        version = "master";
-        src = czkawka-src;
+    runtimeLibs = with pkgs; [
+      fontconfig
+      libglvnd
+      libX11
+      libXcursor
+      libXi
+      libxkbcommon
+      libXrandr
+      wayland
+    ];
+  in {
+    packages.${system}.default = naersk-lib.buildPackage {
+      pname = "krokiet";
+      version = "master";
+      src = czkawka-src;
 
-        nativeBuildInputs = nativeBuildInputs;
-        buildInputs = runtimeLibs;
+      nativeBuildInputs = nativeBuildInputs;
+      buildInputs = runtimeLibs;
 
-        cargoBuildOptions =
-          x:
-          x
-          ++ [
-            "-p"
-            "krokiet"
-          ];
-
-        buildAndCheckFeatures = [
-          "winit_wayland"
-          "winit_x11"
+      cargoBuildOptions = x:
+        x
+        ++ [
+          "-p"
+          "krokiet"
         ];
 
-        RUSTFLAGS = "-C target-cpu=native";
-        NIX_CFLAGS_COMPILE = "-march=native -mtune=native";
+      buildAndCheckFeatures = [
+        "winit_wayland"
+        "winit_x11"
+      ];
 
-        postInstall = ''
-          wrapProgram $out/bin/krokiet \
-            --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath runtimeLibs}
+      RUSTFLAGS = "-C target-cpu=native";
+      NIX_CFLAGS_COMPILE = "-march=native -mtune=native";
 
-          install -Dm444 -t $out/share/applications data/io.github.qarmin.krokiet.desktop
+      postInstall = ''
+        wrapProgram $out/bin/krokiet \
+          --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath runtimeLibs}
 
-          install -Dm444 -t $out/share/icons/hicolor/scalable/apps data/icons/io.github.qarmin.krokiet.svg \
+        install -Dm444 -t $out/share/applications data/io.github.qarmin.krokiet.desktop
 
-          install -Dm444 -t $out/share/metainfo data/io.github.qarmin.krokiet.metainfo.xml
-        '';
-      };
+        install -Dm444 -t $out/share/icons/hicolor/scalable/apps data/icons/io.github.qarmin.krokiet.svg \
+
+        install -Dm444 -t $out/share/metainfo data/io.github.qarmin.krokiet.metainfo.xml
+      '';
     };
+  };
 }

@@ -3,8 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   services = {
     sshd.enable = true;
     displayManager.gdm.enable = true;

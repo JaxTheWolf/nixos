@@ -3,8 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   services.flatpak = {
     enable = true;
     update.auto.enable = true;

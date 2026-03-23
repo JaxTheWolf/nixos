@@ -1,4 +1,3 @@
-{ ... }:
-{
-  dconf.settings = { };
+{...}: {
+  dconf.settings = {};
 }

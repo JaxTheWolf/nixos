@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./dconf
     ./desktop-files.nix

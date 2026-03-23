@@ -7,8 +7,7 @@
   pkgs,
   modulesPath,
   ...
-}:
-{
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -23,11 +22,11 @@
         "sd_mod"
       ];
 
-      kernelModules = [ ];
+      kernelModules = [];
     };
 
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    kernelModules = ["kvm-intel"];
+    extraModulePackages = [];
     resumeDevice = "/dev/disk/by-uuid/bea07563-dc23-415b-b12f-ba53138bd492";
 
     kernelParams = [

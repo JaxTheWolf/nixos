@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       accent-color = "red";
@@ -33,13 +32,13 @@
     };
 
     "org/gnome/desktop/wm/keybindings" = {
-      move-to-workspace-left = [ "<Shift><Control><Super>Left" ];
-      move-to-workspace-right = [ "<Shift><Control><Super>Right" ];
-      switch-to-workspace-left = [ "<Control><Super>Left" ];
-      switch-to-workspace-right = [ "<Control><Super>Right" ];
-      switch-windows = [ "<Alt>Tab" ];
-      switch-windows-backward = [ "<Shift><Alt>Tab" ];
-      toggle-fullscreen = [ "<Super>F11" ];
+      move-to-workspace-left = ["<Shift><Control><Super>Left"];
+      move-to-workspace-right = ["<Shift><Control><Super>Right"];
+      switch-to-workspace-left = ["<Control><Super>Left"];
+      switch-to-workspace-right = ["<Control><Super>Right"];
+      switch-windows = ["<Alt>Tab"];
+      switch-windows-backward = ["<Shift><Alt>Tab"];
+      toggle-fullscreen = ["<Super>F11"];
     };
 
     "org/gnome/desktop/wm/preferences" = {
@@ -89,7 +88,7 @@
     };
 
     "org/gnome/desktop/app-folders" = {
-      folder-children = [ ];
+      folder-children = [];
     };
 
     "org/gnome/desktop/datetime" = {

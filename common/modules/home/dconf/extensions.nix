@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   dconf.settings = {
     "org/gnome/shell/extensions/user-theme" = {
       name = "Flat-Remix-Darkest-fullPanel";
@@ -109,7 +108,7 @@
       blur = false;
       brightness = 1.0;
       opacity = 217;
-      whitelist = [ "org.gnome.Console" ];
+      whitelist = ["org.gnome.Console"];
     };
 
     "org/gnome/shell/extensions/blur-my-shell/coverflow-alt-tab" = {

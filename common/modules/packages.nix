@@ -6,8 +6,7 @@
   solaar-master,
   fet,
   ...
-}:
-{
+}: {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -153,12 +152,13 @@
     vkbasalt
     vlc
     (vscode.fhsWithPackages (
-      ps: with ps; [
-        python3
-        zlib
-        gcc
-        gnumake
-      ]
+      ps:
+        with ps; [
+          python3
+          zlib
+          gcc
+          gnumake
+        ]
     ))
     webp-pixbuf-loader
     wev

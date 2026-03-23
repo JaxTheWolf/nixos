@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./flatpak.nix
     ./gdm-monitors.nix

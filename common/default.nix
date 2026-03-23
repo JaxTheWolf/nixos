@@ -3,8 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   imports = [
     ./modules
     ./hardware-configuration.nix
@@ -123,16 +122,18 @@
       pkgs.libheif.out
     ];
 
-    pathsToLink = [ "share/thumbnailers" ];
+    pathsToLink = ["share/thumbnailers"];
   };
 
   hardware = {
     bluetooth = {
       enable = true;
       package = pkgs.bluez.overrideAttrs (old: {
-        configureFlags = old.configureFlags ++ [
-          "--enable-sixaxis"
-        ];
+        configureFlags =
+          old.configureFlags
+          ++ [
+            "--enable-sixaxis"
+          ];
       });
 
       powerOnBoot = true;

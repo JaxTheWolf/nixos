@@ -3,8 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   programs = {
     dconf.profiles.gdm.databases = [
       {
@@ -79,7 +78,7 @@
 
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [ ];
+      libraries = with pkgs; [];
     };
 
     steam = {

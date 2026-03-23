@@ -3,8 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   gdmMonitorsXml = pkgs.writeText "gdm-monitor.xml" ''
     <monitors version="2">
       <configuration>
@@ -291,8 +290,7 @@ let
       </configuration>
     </monitors>
   '';
-in
-{
+in {
   systemd.tmpfiles.rules = [
     "L+ /run/gdm/.config/monitors.xml - - - - ${gdmMonitorsXml}"
   ];
