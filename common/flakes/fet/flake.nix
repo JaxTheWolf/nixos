@@ -17,11 +17,11 @@
       in {
         packages.default = pkgs.stdenv.mkDerivation rec {
           pname = "fet";
-          version = "7.8.0";
+          version = "7.8.1";
 
           src = pkgs.fetchurl {
             url = "https://lalescu.ro/liviu/fet/download/fet-${version}.tar.xz";
-            sha256 = "01hr3digrg2qs5wh10qzpgwi4clqmzd46d099r0yrx3278qvz9wj";
+            sha256 = "0b0g20mgawpv6pp6b1vh0vhz6rr0193g2irqiclnxxlnf174bcfr";
           };
 
           enableParallelBuilding = true;
