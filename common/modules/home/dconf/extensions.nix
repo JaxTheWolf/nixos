@@ -28,7 +28,7 @@
 
     "org/gnome/shell/extensions/dash-to-dock" = {
       apply-custom-theme = false;
-      autohide-in-fullscreen = false;
+      autohide-in-fullscreen = true;
       background-color = "rgb(0,0,0)";
       background-opacity = 0.8;
       click-action = "skip";
