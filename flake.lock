@@ -19,11 +19,11 @@
     "czkawka-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1773724747,
-        "narHash": "sha256-wXiP4t5fQlAVrpZyJcIhUJ1Mdjn94eUaAOR4b08cWAI=",
+        "lastModified": 1774297847,
+        "narHash": "sha256-iEgM0Wjhyy2H6HxnqY7YDAHiuDIUaw5rmsE1Zsij/nk=",
         "owner": "qarmin",
         "repo": "czkawka",
-        "rev": "28ae8bae1ebe9858b395364386aefba6bcd40c45",
+        "rev": "7680c07130f7bbfb5019e328362eaaebdce7aece",
         "type": "github"
       },
       "original": {
@@ -95,11 +95,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774293042,
-        "narHash": "sha256-OEBV+Y5I4Ldu98k0KvGXRfJYh+jjE8ocCSL/dxTGs1s=",
+        "lastModified": 1774371786,
+        "narHash": "sha256-ag1HUJv0SDBqKAYxwWlvAE2gBsEk3XYFvWtmdAHFz7E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bc357c75e3142a31b849ba49c5299fb52c61cf59",
+        "rev": "b8cb89f2c4f7006b17b4aa5d8b39b95b93b559d8",
         "type": "github"
       },
       "original": {
@@ -179,11 +179,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1774278863,
-        "narHash": "sha256-wd330g3QU/lA0lBXcxeyeEW3wcq9i8XiU+1rmucZAdo=",
+        "lastModified": 1774321912,
+        "narHash": "sha256-Nna0UkHU2xmhyx0VAel4DDdwpAlA70ZgzAtOD4m3Pc8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ef7d0552079c013552a86ad2fadf058f495b4a70",
+        "rev": "b0d3faa43b2bd4cc22fdf98ee00cac4f2f47ac8a",
         "type": "github"
       },
       "original": {
