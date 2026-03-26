@@ -16,6 +16,7 @@
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = true;
+        memtest86.enable = true;
       };
     };
 
@@ -52,7 +53,10 @@
     };
   };
 
-  console.keyMap = "cz-lat2";
+  console = {
+    keyMap = "cz-lat2";
+    font = "LatArCyrHeb-16";
+  };
 
   xdg.portal.enable = true;
 
@@ -117,9 +121,9 @@
       LIBVIRT_DEFAULT_URI = "qemu:///system";
     };
 
-    systemPackages = [
-      pkgs.libheif
-      pkgs.libheif.out
+    systemPackages = with pkgs; [
+      libheif
+      libheif.out
     ];
 
     pathsToLink = ["share/thumbnailers"];

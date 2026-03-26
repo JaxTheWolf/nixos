@@ -79,6 +79,18 @@
       interval = "weekly";
     };
 
+    kmscon = {
+      enable = true;
+      fonts = [
+        {
+          name = "FiraCode Nerd Font Mono";
+          package = pkgs.nerd-fonts.fira-code;
+        }
+      ];
+      useXkbConfig = true;
+      hwRender = true;
+    };
+
     fwupd.enable = true;
 
     udev.packages = with pkgs; [
