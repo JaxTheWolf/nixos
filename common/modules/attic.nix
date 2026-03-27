@@ -6,7 +6,7 @@
     ];
 
     trusted-public-keys = [
-      "my-config:51aC90S8+3+gS/UzwdnL7a7lu1NnY896SZp5njMwFDk="
+      "my-config:hK+qaX2TdSrf/sp8LjKq9VF9XU0qGksoQCdgVXfgWoQ="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
 
