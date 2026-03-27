@@ -3,6 +3,7 @@
     ./dconf
     ./desktop-files.nix
     ./starship.nix
+    ./services.nix
     ./zsh.nix
   ];
 

@@ -23,7 +23,7 @@ format:
     treefmt .
 
 switch:
-    nh os switch
+    nh os switch --refresh
 
 switch_update:
     nh os switch --refresh --update
