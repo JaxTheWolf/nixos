@@ -9,6 +9,7 @@
 
     czkawka-master.url = "path:./common/flakes/czkawka-master";
     fet.url = "path:./common/flakes/fet";
+    clion-flake.url = "path:./common/flakes/clion-flake";
   };
 
   outputs = {
@@ -18,7 +19,7 @@
     home-manager,
     ...
   } @ inputs: let
-    specialArgs = {inherit (inputs) czkawka-master fet;};
+    specialArgs = {inherit (inputs) czkawka-master fet clion-flake;};
   in {
     nixosConfigurations = {
       epiquev2 = nixpkgs.lib.nixosSystem {

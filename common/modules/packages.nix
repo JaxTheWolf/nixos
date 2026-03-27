@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  clion-flake,
   czkawka-master,
   solaar-master,
   fet,
@@ -15,6 +16,7 @@
         "cisco-packet-tracer_9"
       ];
     };
+
     overlays = [
       (final: prev: {
         nautilus = prev.nautilus.overrideAttrs (nprev: {
@@ -91,7 +93,8 @@
     iftop
     inkscape
     iotop
-    jetbrains.clion
+    #jetbrains.clion
+    clion-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
     jq
     just
     killall
