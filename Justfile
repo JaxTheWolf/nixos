@@ -12,8 +12,8 @@ build-laptop:
     nix build .#nixosConfigurations.dalaptop.config.system.build.toplevel --log-format internal-json |& nom --json
 
 upload:
-    attic push my-config result -j4
-    attic push my-config /run/current-system -j4
+    attic push my-config result -j2
+    attic push my-config /run/current-system -j2
 
 clean:
     rm -rf result
