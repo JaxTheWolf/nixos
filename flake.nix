@@ -1,15 +1,32 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    };
+
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    czkawka-master.url = "path:./common/flakes/czkawka-master";
-    fet.url = "path:./common/flakes/fet";
-    clion-flake.url = "path:./common/flakes/clion-flake";
+    czkawka-master = {
+      url = "path:./common/flakes/czkawka-master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fet = {
+      url = "path:./common/flakes/fet";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    clion-flake = {
+      url = "path:./common/flakes/clion-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
