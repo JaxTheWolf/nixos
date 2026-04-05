@@ -6,16 +6,17 @@
         action=$2
 
         NMCLI="${pkgs.networkmanager}/bin/nmcli"
+        IP="${pkgs.iproute2}/bin/ip"
         LOGFILE="/tmp/wg-dispatcher.log"
 
         echo "[$(date)] Event: $action on $interface (ID: $CONNECTION_ID)" >> $LOGFILE
 
-        # 1. PRE-UP: Attempt to tear down tunnels early to avoid captive portal delays
+        # 1. PRE-UP: Instantly destroy the tunnel interfaces bypassing NM's D-Bus queue.
+        # This guarantees the routing table is clean BEFORE connectivity checks begin,
+        # without needing to background the task or risk a deadlock.
         if [ "$action" = "pre-up" ]; then
-          (
-            $NMCLI connection down wg-home 2>/dev/null || true
-            $NMCLI connection down wg-full 2>/dev/null || true
-          ) &
+          $IP link delete wg-home 2>/dev/null || true
+          $IP link delete wg-full 2>/dev/null || true
           exit 0
         fi
 
@@ -32,7 +33,7 @@
           exit 0
         fi
 
-        # 3. UP: Evaluate and bring up the correct tunnel (enforcing mutual exclusivity)
+        # 3. UP: Evaluate and bring up the correct tunnel
         if [ "$action" = "up" ]; then
           (
             connection_type=$($NMCLI -g connection.type connection show "$CONNECTION_UUID" 2>/dev/null)
