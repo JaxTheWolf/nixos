@@ -13,11 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    czkawka-master = {
-      url = "path:./common/flakes/czkawka-master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     fet = {
       url = "path:./common/flakes/fet";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +31,7 @@
     home-manager,
     ...
   } @ inputs: let
-    specialArgs = {inherit (inputs) czkawka-master fet clion-flake;};
+    specialArgs = {inherit (inputs) fet clion-flake;};
   in {
     nixosConfigurations = {
       epiquev2 = nixpkgs.lib.nixosSystem {

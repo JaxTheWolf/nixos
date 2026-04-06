@@ -3,7 +3,6 @@
   pkgs,
   lib,
   clion-flake,
-  czkawka-master,
   solaar-master,
   fet,
   ...
@@ -52,7 +51,11 @@
     bubblemail
     bzip2
     cisco-packet-tracer_9
+    #jetbrains.clion
+
+    clion-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
     curl
+    czkawka-full
     ddcutil
     discord
     distrobox
@@ -93,8 +96,6 @@
     iftop
     inkscape
     iotop
-    #jetbrains.clion
-    clion-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
     jq
     just
     killall
