@@ -11,7 +11,7 @@
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [
-        "ventoy-gtk3-1.1.10"
+        "ventoy-gtk3-1.1.12"
         "cisco-packet-tracer_9"
       ];
     };
