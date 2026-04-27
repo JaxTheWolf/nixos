@@ -51,9 +51,7 @@
     bubblemail
     bzip2
     cisco-packet-tracer_9
-    #jetbrains.clion
-
-    clion-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # clion-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
     curl
     czkawka-full
     ddcutil
@@ -96,6 +94,7 @@
     iftop
     inkscape
     iotop
+    jetbrains.clion
     jq
     just
     killall
