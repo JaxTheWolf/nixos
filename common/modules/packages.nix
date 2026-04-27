@@ -61,7 +61,7 @@
     docker-compose
     element-desktop
     eza
-    fet.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # fet.packages.${pkgs.stdenv.hostPlatform.system}.default
     ffmpeg-full
     ffmpegthumbnailer
     file
