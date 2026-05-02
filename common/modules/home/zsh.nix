@@ -3,6 +3,7 @@
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
+    autosuggestion.strategy = ["history" "completion" "match_prev_cmd"];
     syntaxHighlighting.enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
 
@@ -27,10 +28,6 @@
 
     sessionVariables = {
       LIBVIRT_DEFAULT_URI = "qemu:///system";
-      ZSH_AUTOSUGGEST_STRATEGY = [
-        "history"
-        "completion"
-      ];
     };
 
     initContent = ''
@@ -80,6 +77,4 @@
       }
     '';
   };
-
-  programs.starship.enable = true;
 }
