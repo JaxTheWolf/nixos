@@ -33,6 +33,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # clion-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # fet.packages.${pkgs.stdenv.hostPlatform.system}.default
     abootimg
     android-tools
     appstream
@@ -46,12 +48,10 @@
     brscan5
     btrfs-progs
     bzip2
-    # clion-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
     curl
     ddcutil
     docker-buildx
     docker-compose
-    # fet.packages.${pkgs.stdenv.hostPlatform.system}.default
     ffmpeg-full
     ffmpegthumbnailer
     file
@@ -65,7 +65,6 @@
     fwupd
     gnome-tweaks
     gnome.gvfs
-    gotop
     gparted
     gphoto2
     gst_all_1.gst-libav
