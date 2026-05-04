@@ -35,7 +35,7 @@
         extraArgs = "--keep-since 7d --keep 10";
       };
       enable = true;
-      flake = "/etc/nixos";
+      flake = "${config.xdg.configHome}/nixos";
     };
 
     vscode = {
