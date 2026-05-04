@@ -48,6 +48,8 @@
       # Path Management
       export PATH="${config.home.homeDirectory}/.local/bin:/usr/local/LinkServer/:$PATH"
 
+      export FLAKE="${config.xdg.configHome}/nixos"
+
       # Dart Completion (Safely quoted to prevent bash from misinterpreting the nix string)
       [[ -f "${config.home.homeDirectory}/.dart-cli-completion/zsh-config.zsh" ]] && . "${config.home.homeDirectory}/.dart-cli-completion/zsh-config.zsh" || true
 

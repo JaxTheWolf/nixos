@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./dconf
+    ./activation.nix
     ./desktop-files.nix
     ./packages.nix
     ./programs.nix

@@ -12,7 +12,7 @@
       ];
     };
 
-    swapDevices = lib.mkForce [ ];
+    swapDevices = lib.mkForce [];
     boot.resumeDevice = lib.mkForce "";
 
     users.users.jax.password = "nixos";

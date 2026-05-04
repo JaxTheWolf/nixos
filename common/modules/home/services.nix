@@ -1,16 +1,21 @@
 {pkgs, ...}: let
   devShellsDir = "$HOME/.config/nix-shells";
-  nixConfigDir = "/etc/nixos";
+  nixConfigDir = "$HOME/.config/nixos";
 
   syncScript = pkgs.writeShellScript "sync-all-repos" ''
+    # --- DRY Variables ---
+    GIT="${pkgs.git}/bin/git"
+    NOTIFY="${pkgs.libnotify}/bin/notify-send"
+
     repos=("${devShellsDir}" "${nixConfigDir}")
 
     for repo in "''${repos[@]}"; do
       echo "Syncing $repo..."
-      if ! ${pkgs.git}/bin/git -C "$repo" pull --rebase --autostash; then
-        ${pkgs.libnotify}/bin/notify-send -u critical "Sync Failed" "Conflict or network error in $repo"
+
+      if ! $GIT -C "$repo" pull --rebase --autostash; then
+        $NOTIFY -u critical "Sync Failed" "Conflict or network error in $repo"
       else
-        ${pkgs.git}/bin/git -C "$repo" add -N . 2>/dev/null || true
+        $GIT -C "$repo" add -N . 2>/dev/null || true
       fi
     done
   '';
