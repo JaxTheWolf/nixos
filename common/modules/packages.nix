@@ -34,9 +34,7 @@
 
   environment.systemPackages = with pkgs; [
     abootimg
-    alejandra
     android-tools
-    anki
     appstream
     aspell
     aspellDicts.cs
@@ -44,23 +42,15 @@
     aspellDicts.es
     attic-client
     bibata-cursors
-    binwalk
     brscan4
     brscan5
     btrfs-progs
-    bubblemail
     bzip2
-    cisco-packet-tracer_9
     # clion-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
     curl
-    czkawka-full
     ddcutil
-    discord
-    distrobox
     docker-buildx
     docker-compose
-    element-desktop
-    eza
     # fet.packages.${pkgs.stdenv.hostPlatform.system}.default
     ffmpeg-full
     ffmpegthumbnailer
@@ -73,8 +63,6 @@
     fuse
     fuse3
     fwupd
-    gemini-cli
-    gimp
     gnome-tweaks
     gnome.gvfs
     gotop
@@ -89,18 +77,12 @@
     gst_all_1.gstreamer
     gvfs
     gzip
-    htop
     i2c-tools
     iftop
-    inkscape
     iotop
-    jetbrains.clion
-    jq
-    just
     killall
     libgsf
     libnotify
-    libreoffice-fresh
     libsForQt5.qtstyleplugins
     linux-firmware
     lm_sensors
@@ -115,12 +97,8 @@
     mission-center
     ncdu
     networkmanager-openconnect
-    nil
-    nix-output-monitor
-    nix-your-shell
     ntfs3g
     nufraw-thumbnailer
-    obsidian
     papirus-icon-theme
     pbzip2
     pciutils
@@ -130,39 +108,18 @@
     prismlauncher-unwrapped
     protonup-qt
     pulseaudio
-    rquickshare
-    saber
-    scrcpy
     screen
     seafile-client
     smartmontools
     solaar
     sushi
-    telegram-desktop
-    testdisk
-    thunderbird
-    tidal-hifi
-    tldr
-    trash-cli
     tree
-    treefmt
     tumbler
     unrar
     unzip
     usbutils
     ventoy-full-gtk
-    vesktop
     vkbasalt
-    vlc
-    (vscode.fhsWithPackages (
-      ps:
-        with ps; [
-          python3
-          zlib
-          gcc
-          gnumake
-        ]
-    ))
     webp-pixbuf-loader
     wev
     wget
@@ -170,7 +127,6 @@
     wineWow64Packages.waylandFull
     wireshark
     xz
-    yt-dlp
     zip
     zram-generator
     zstd

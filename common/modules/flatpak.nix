@@ -27,14 +27,6 @@
         origin = "flathub";
       }
       {
-        appId = "org.gtk.Gtk3theme.Adwaita-dark";
-        origin = "flathub";
-      }
-      {
-        appId = "org.gtk.Gtk3theme.Flat-Remix-GTK-Red-Darkest";
-        origin = "flathub";
-      }
-      {
         appId = "com.github.iwalton3.jellyfin-media-player";
         origin = "flathub";
       }

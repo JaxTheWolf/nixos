@@ -1,29 +1,32 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.zsh = {
-    enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
     autosuggestion.strategy = ["history" "completion" "match_prev_cmd"];
     syntaxHighlighting.enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
 
-    oh-my-zsh = {
-      enable = true;
-      theme = "robbyrussell";
-      plugins = [
-        "git"
-        "docker"
-        "docker-compose"
-        "sudo"
-        "vscode"
-        "z"
-        "colorize"
-      ];
-    };
+    plugins = [
+      {
+        name = "fzf-tab";
+        src = pkgs.fetchFromGitHub {
+          owner = "Aloxaf";
+          repo = "fzf-tab";
+          rev = "master";
+          sha256 = "sha256-yvPQyuK4Dw+LkwxrkWTRcw4PIf/79fW61jWbEg8Pe9Y=";
+        };
+      }
+    ];
 
     shellAliases = {
       adbauto = "adbauto_";
       adbpair = "adbpair_";
+      cat = "bat";
     };
 
     sessionVariables = {
@@ -43,10 +46,10 @@
       zstyle ':completion:*' matcher-list "" 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
 
       # Path Management
-      export PATH="$HOME/.local/bin:/usr/local/LinkServer/:$PATH"
+      export PATH="${config.home.homeDirectory}/.local/bin:/usr/local/LinkServer/:$PATH"
 
-      # Dart Completion
-      [[ -f /home/jax/.dart-cli-completion/zsh-config.zsh ]] && . /home/jax/.dart-cli-completion/zsh-config.zsh || true
+      # Dart Completion (Safely quoted to prevent bash from misinterpreting the nix string)
+      [[ -f "${config.home.homeDirectory}/.dart-cli-completion/zsh-config.zsh" ]] && . "${config.home.homeDirectory}/.dart-cli-completion/zsh-config.zsh" || true
 
       if command -v nix-your-shell > /dev/null; then
         nix-your-shell zsh | source /dev/stdin
@@ -75,6 +78,16 @@
         echo "Found device at $IP:$PORT"
         adb pair "$IP:$PORT"
       }
+
+      # Dank `sudo` OMZ plugin replacement
+      prepend-sudo() {
+        if [[ $BUFFER != su(do|)\ * ]]; then
+          BUFFER="sudo $BUFFER"
+          CURSOR+=5
+        fi
+      }
+      zle -N prepend-sudo
+      bindkey "\e\e" prepend-sudo
     '';
   };
 }

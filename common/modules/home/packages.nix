@@ -1,0 +1,35 @@
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    alejandra
+    anki
+    binwalk
+    bubblemail
+    cisco-packet-tracer_9
+    czkawka-full
+    discord
+    distrobox
+    element-desktop
+    gemini-cli
+    gimp
+    inkscape
+    jetbrains.clion
+    just
+    libreoffice-fresh
+    nil
+    nix-output-monitor
+    nix-your-shell
+    obsidian
+    rquickshare
+    saber
+    scrcpy
+    telegram-desktop
+    testdisk
+    tidal-hifi
+    tldr
+    trash-cli
+    treefmt
+    vesktop
+    vlc
+    yt-dlp
+  ];
+}

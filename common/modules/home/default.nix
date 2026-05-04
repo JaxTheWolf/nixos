@@ -2,6 +2,8 @@
   imports = [
     ./dconf
     ./desktop-files.nix
+    ./packages.nix
+    ./programs.nix
     ./starship.nix
     ./services.nix
     ./zsh.nix
