@@ -21,15 +21,6 @@
     gamescope.enable = true;
     virt-manager.enable = true;
 
-    nh = {
-      clean = {
-        enable = true;
-        extraArgs = "--keep-since 7d --keep 10";
-      };
-      enable = true;
-      flake = "/etc/nixos";
-    };
-
     nix-ld = {
       enable = true;
       libraries = with pkgs; [];

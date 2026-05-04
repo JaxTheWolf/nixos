@@ -29,6 +29,15 @@
       lfs.enable = true;
     };
 
+    nh = {
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 7d --keep 10";
+      };
+      enable = true;
+      flake = "/etc/nixos";
+    };
+
     vscode = {
       enable = true;
       package = pkgs.vscode.fhsWithPackages (
