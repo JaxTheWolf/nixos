@@ -55,7 +55,7 @@
 
   console = {
     keyMap = "cz-lat2";
-    font = "LatArCyrHeb-16";
+    font = "Lat2-Terminus16";
   };
 
   xdg.portal.enable = true;

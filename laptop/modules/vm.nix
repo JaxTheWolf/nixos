@@ -12,6 +12,9 @@
       ];
     };
 
+    swapDevices = lib.mkForce [ ];
+    boot.resumeDevice = lib.mkForce "";
+
     users.users.jax.password = "nixos";
     services.displayManager.autoLogin = {
       enable = true;
