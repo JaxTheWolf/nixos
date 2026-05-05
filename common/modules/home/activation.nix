@@ -10,7 +10,7 @@
       CONFIG_DIR="${config.xdg.configHome}"
 
       # Repo URLs
-      SHELLS_URL="https://github.com/YourUsername/nix-shells.git"
+      SHELLS_URL="https://github.com/JaxTheWolf/nix-shells.git"
       NIXOS_URL="https://github.com/JaxTheWolf/nixos.git"
 
       # 1. Clone nix-shells
