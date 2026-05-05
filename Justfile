@@ -23,10 +23,13 @@ format:
     treefmt .
 
 switch:
-    nh os switch --refresh
+    nh os switch
 
 switch_update:
     nh os switch --refresh --update
+
+switch_update_commit:
+    nh os switch --refresh --update --commit-lock-file
 
 help:
     @just --list

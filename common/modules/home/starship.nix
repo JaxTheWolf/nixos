@@ -40,6 +40,10 @@
       nix_shell = {
         symbol = "";
         format = "[](fg:#7EBAE4)[$symbol $state](bg:#7EBAE4 fg:#061A40)[](fg:#7EBAE4) ";
+        impure_msg = "impure";
+        pure_msg = "pure";
+        unknown_msg = "unknown";
+        heuristic = true; 
       };
 
       python = {

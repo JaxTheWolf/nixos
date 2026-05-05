@@ -24,8 +24,6 @@
     ];
 
     shellAliases = {
-      adbauto = "adbauto_";
-      adbpair = "adbpair_";
       cat = "bat";
     };
 
@@ -57,7 +55,7 @@
         nix-your-shell zsh | source /dev/stdin
       fi
 
-      adbauto_() {
+      adbauto() {
         local PORT=$(avahi-browse -rt _adb-tls-connect._tcp -p | grep '^=' | cut -d';' -f8,9 | head -n 1 | sed 's/;/ /' | awk '{print $2}')
         local IP=$(avahi-browse -rt _adb-tls-connect._tcp -p | grep '^=' | cut -d';' -f8,9 | head -n 1 | sed 's/;/ /' | awk '{print $1}')
         if [ -z "$PORT" ]; then
@@ -68,7 +66,7 @@
         fi
       }
 
-      adbpair_() {
+      adbpair() {
         echo "Looking for Android pairing service..."
         local SERVICE=$(avahi-browse -rt _adb-tls-pairing._tcp -p | grep '^=' | head -n 1)
         if [ -z "$SERVICE" ]; then
@@ -81,6 +79,10 @@
         adb pair "$IP:$PORT"
       }
 
+      nsp() {
+        IN_NIX_SHELL="impure" nix shell $(echo "$@" | sed 's/\([^ ]*\)/nixpkgs#\1/g')
+      }
+
       # Dank `sudo` OMZ plugin replacement
       prepend-sudo() {
         if [[ $BUFFER != su(do|)\ * ]]; then
@@ -88,6 +90,7 @@
           CURSOR+=5
         fi
       }
+
       zle -N prepend-sudo
       bindkey "\e\e" prepend-sudo
     '';
