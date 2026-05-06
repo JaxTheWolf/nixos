@@ -43,7 +43,7 @@
         impure_msg = "impure";
         pure_msg = "pure";
         unknown_msg = "unknown";
-        heuristic = true; 
+        heuristic = true;
       };
 
       python = {

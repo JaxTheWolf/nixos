@@ -4,6 +4,24 @@
   ...
 }: {
   programs = {
+    bottom = {
+      enable = true;
+      settings = {
+        flags = {
+          rate = "500ms";
+          battery = true;
+          network_use_bytes = true;
+          enable_cache_memory = true;
+          is_list_ignored = true;
+          list = ["virbr0.*"];
+        };
+
+        styles = {
+          theme = "gruvbox";
+        };
+      };
+    };
+
     direnv = {
       enable = true;
       enableZshIntegration = true;

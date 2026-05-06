@@ -3,7 +3,6 @@
     alejandra
     anki
     binwalk
-    bottom
     bubblemail
     cisco-packet-tracer_9
     czkawka-full
