@@ -19,6 +19,39 @@
         styles = {
           theme = "gruvbox";
         };
+
+        row = [
+          # --- TOP ROW ---
+          {
+            ratio = 35;
+            child = [{type = "cpu";}];
+          }
+
+          # --- BOTTOM ROW ---
+          {
+            ratio = 65;
+            child = [
+              # --- LEFT COLUMN ---
+              {
+                ratio = 55;
+                child = [
+                  {type = "disk";}
+                  {type = "temp";}
+                  {type = "net";}
+                ];
+              }
+
+              # --- RIGHT COLUMN ---
+              {
+                ratio = 45;
+                child = [
+                  {type = "mem";}
+                  {type = "proc";}
+                ];
+              }
+            ];
+          }
+        ];
       };
     };
 
