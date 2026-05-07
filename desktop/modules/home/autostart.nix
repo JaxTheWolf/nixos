@@ -6,7 +6,7 @@
       [Desktop Entry]
       Type=Application
       Name=OpenRGB
-      Exec=${pkgs.openrgb}/bin/openrgb --startminimized
+      Exec=${pkgs.openrgb}/bin/openrgb --startminimized --profile "yee"
       Terminal=false
       X-GNOME-Autostart-enabled=true
     '';
