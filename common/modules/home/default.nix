@@ -2,6 +2,7 @@
   imports = [
     ./dconf
     ./activation.nix
+    ./autostart.nix
     ./desktop-files.nix
     ./packages.nix
     ./programs.nix
