@@ -1,6 +1,8 @@
 {
   pkgs,
+  lib,
   config,
+  osConfig,
   ...
 }: {
   programs = {
@@ -34,11 +36,15 @@
               # --- LEFT COLUMN ---
               {
                 ratio = 55;
-                child = [
-                  {type = "disk";}
-                  {type = "temp";}
-                  {type = "net";}
-                ];
+                child =
+                  [
+                    {type = "disk";}
+                    {type = "temp";}
+                    {type = "net";}
+                  ]
+                  ++ lib.optionals (osConfig.networking.hostName == "dalaptop") [
+                    {type = "batt";}
+                  ];
               }
 
               # --- RIGHT COLUMN ---
