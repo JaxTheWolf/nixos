@@ -18,9 +18,9 @@
         enable = true;
         memtest86.enable = true;
       };
-      binfmt.emulatedSystems = [ "aarch64-linux" ];
     };
 
+    binfmt.emulatedSystems = ["aarch64-linux"];
     consoleLogLevel = 3;
     plymouth.enable = true;
   };
