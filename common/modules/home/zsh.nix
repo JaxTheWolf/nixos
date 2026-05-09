@@ -93,6 +93,10 @@
 
       zle -N prepend-sudo
       bindkey "\e\e" prepend-sudo
+
+      bindkey '^[[1;5D' backward-word
+      bindkey '^[[1;5C' forward-word
+      bindkey '^H' backward-kill-word
     '';
   };
 }
