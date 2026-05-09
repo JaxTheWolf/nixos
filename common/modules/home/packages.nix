@@ -7,7 +7,6 @@
     cisco-packet-tracer_9
     czkawka-full
     discord
-    distrobox
     element-desktop
     gemini-cli
     gimp

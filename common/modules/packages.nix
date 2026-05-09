@@ -50,6 +50,7 @@
     bzip2
     curl
     ddcutil
+    distrobox
     docker-buildx
     docker-compose
     ffmpeg-full
