@@ -37,7 +37,7 @@ in {
   systemd.user.timers.sync-nix-repos = {
     Unit.Description = "Hourly sync for all Nix repositories";
     Timer = {
-      OnBootSec = "2m";
+      OnBootSec = "20s";
       OnUnitActiveSec = "1h";
       Persistent = true;
     };
