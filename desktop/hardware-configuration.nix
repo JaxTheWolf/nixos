@@ -15,15 +15,6 @@
   boot = {
     initrd = {
       kernelModules = [];
-      verbose = false;
-      availableKernelModules = [
-        "nvme"
-        "xhci_pci"
-        "ahci"
-        "uas"
-        "usbhid"
-        "sd_mod"
-      ];
     };
 
     kernelModules = [
