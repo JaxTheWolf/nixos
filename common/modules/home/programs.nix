@@ -108,6 +108,15 @@
       );
     };
 
+    zellij = {
+      enable = true;
+
+      settings = {
+        pane_frames = false;
+        default_shell = "zsh";
+      };
+    };
+
     zoxide = {
       enable = true;
       enableZshIntegration = true;
