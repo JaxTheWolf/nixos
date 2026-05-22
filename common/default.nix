@@ -179,12 +179,13 @@
   };
 
   nix.settings = {
-    auto-optimise-store = true;
     experimental-features = [
       "flakes"
       "nix-command"
     ];
 
+    auto-optimise-store = true;
+    extra-platforms = ["aarch64-linux"];
     warn-dirty = false;
   };
 
