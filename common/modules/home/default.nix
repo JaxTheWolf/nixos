@@ -13,5 +13,7 @@
 
   xdg.enable = true;
 
+  home.enableNixpkgsReleaseCheck = false; # For now. (nixpkgs is 26.11, but home-manager is still on 25.05)
+
   home.stateVersion = "25.05";
 }
