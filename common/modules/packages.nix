@@ -105,7 +105,7 @@
     pigz
     plymouth
     poppler-utils
-    prismlauncher-unwrapped
+    prismlauncher
     protonup-qt
     pulseaudio
     screen
