@@ -81,14 +81,11 @@
 
     kmscon = {
       enable = true;
-      fonts = [
-        {
-          name = "FiraCode Nerd Font Mono";
-          package = pkgs.nerd-fonts.fira-code;
-        }
-      ];
+      config = {
+        font-name = "Fira Code Regular Nerd Font Mono 12";
+        hwaccel = true;
+      };
       useXkbConfig = true;
-      hwRender = true;
     };
 
     fwupd.enable = true;
