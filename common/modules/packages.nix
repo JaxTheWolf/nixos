@@ -68,6 +68,7 @@
     gnome.gvfs
     gparted
     gphoto2
+    graalvmPackages.graalvm-oracle_25
     gst_all_1.gst-libav
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-base
