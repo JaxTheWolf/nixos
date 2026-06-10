@@ -22,31 +22,22 @@
     '';
 
     btrbk.instances = {
-      daily_ssd = {
+      home_backups = {
         onCalendar = "daily";
         settings = {
           timestamp_format = "long";
+
+          snapshot_preserve_min = "latest";
           snapshot_preserve = "7d";
 
           volume."/" = {
-            subvolume = "home";
-            snapshot_dir = "home/.snapshots/daily";
-          };
-        };
-      };
+            snapshot_dir = "home/.snapshots";
 
-      weekly_hdd = {
-        onCalendar = "weekly";
-        settings = {
-          timestamp_format = "long";
-          snapshot_preserve_min = "latest";
-          snapshot_preserve = "no";
-          target_preserve = "20w";
-
-          volume."/" = {
-            subvolume = "home";
-            snapshot_dir = "home/.snapshots/weekly";
-            target = "/media/home-backup";
+            subvolume."home" = {
+              target."/media/home-backup" = {
+                target_preserve = "0d 20w 0m";
+              };
+            };
           };
         };
       };
