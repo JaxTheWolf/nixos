@@ -33,65 +33,67 @@
     ];
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nix"
-      "ssd"
-      "space_cache=v2"
-      "noatime"
-      "compress=zstd:8"
-      "autodefrag"
-    ];
-  };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
+      fsType = "btrfs";
+      options = [
+        "subvol=@nix"
+        "ssd"
+        "space_cache=v2"
+        "noatime"
+        "compress=zstd:10"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
-    fsType = "btrfs";
-    options = [
-      "subvol=@home"
-      "ssd"
-      "space_cache=v2"
-      "noatime"
-      "compress=zstd:7"
-      "autodefrag"
-    ];
-  };
+    "/home" = {
+      device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
+      fsType = "btrfs";
+      options = [
+        "subvol=@home"
+        "ssd"
+        "space_cache=v2"
+        "noatime"
+        "compress=zstd:7"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nix_nix"
-      "ssd"
-      "space_cache=v2"
-      "noatime"
-      "compress=zstd:10"
-      "autodefrag"
-    ];
-  };
+    "/nix" = {
+      device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
+      fsType = "btrfs";
+      options = [
+        "subvol=@nix_nix"
+        "ssd"
+        "space_cache=v2"
+        "noatime"
+        "compress=zstd:10"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/var" = {
-    device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nix_var"
-      "ssd"
-      "space_cache=v2"
-      "noatime"
-      "compress=zstd:10"
-      "autodefrag"
-    ];
-  };
+    "/var" = {
+      device = "/dev/disk/by-uuid/7b31f189-b34a-4cf0-95c5-bbcd6830159e";
+      fsType = "btrfs";
+      options = [
+        "subvol=@nix_var"
+        "ssd"
+        "space_cache=v2"
+        "noatime"
+        "compress=zstd:10"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/477C-4D52";
-    fsType = "vfat";
-    options = [
-      "fmask=0022"
-      "dmask=0022"
-    ];
+    "/boot" = {
+      device = "/dev/disk/by-uuid/477C-4D52";
+      fsType = "vfat";
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
+    };
   };
 
   swapDevices = [

@@ -35,139 +35,128 @@
     ];
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nix"
-      "ssd"
-      "space_cache=v2"
-      "noatime"
-      "compress=zstd:8"
-      "autodefrag"
-    ];
-  };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
+      fsType = "btrfs";
+      options = [
+        "subvol=@nix"
+        "ssd"
+        "space_cache=v2"
+        "noatime"
+        "compress=zstd:8"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
-    fsType = "btrfs";
-    options = [
-      "subvol=@home"
-      "ssd"
-      "space_cache=v2"
-      "noatime"
-      "compress=zstd:7"
-      "autodefrag"
-    ];
-  };
+    "/home" = {
+      device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
+      fsType = "btrfs";
+      options = [
+        "subvol=@home"
+        "ssd"
+        "space_cache=v2"
+        "noatime"
+        "compress=zstd:7"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/home/jax/.local/share/Steam" = {
-    device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
-    fsType = "btrfs";
-    options = [
-      "subvol=steam"
-      "ssd"
-      "space_cache=v2"
-      "noatime"
-      "compress=zstd:8"
-      "autodefrag"
-    ];
-  };
+    "/home/jax/.local/share/Steam" = {
+      device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
+      fsType = "btrfs";
+      options = [
+        "subvol=steam"
+        "ssd"
+        "space_cache=v2"
+        "noatime"
+        "compress=zstd:8"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nix_nix"
-      "ssd"
-      "space_cache=v2"
-      "noatime"
-      "compress=zstd:10"
-      "autodefrag"
-    ];
-  };
+    "/nix" = {
+      device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
+      fsType = "btrfs";
+      options = [
+        "subvol=@nix_nix"
+        "ssd"
+        "space_cache=v2"
+        "noatime"
+        "compress=zstd:10"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/var" = {
-    device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nix_var"
-      "ssd"
-      "space_cache=v2"
-      "noatime"
-      "compress=zstd:10"
-      "autodefrag"
-    ];
-  };
+    "/var" = {
+      device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
+      fsType = "btrfs";
+      options = [
+        "subvol=@nix_var"
+        "ssd"
+        "space_cache=v2"
+        "noatime"
+        "compress=zstd:10"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/3DB5-50DE";
-    fsType = "vfat";
-    options = [
-      "fmask=0022"
-      "dmask=0022"
-    ];
-  };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/3DB5-50DE";
+      fsType = "vfat";
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
+    };
 
-  fileSystems."/media/data" = {
-    device = "/dev/disk/by-uuid/4c0c8b24-6fca-49c1-8e34-e00e240576e3";
-    fsType = "btrfs";
-    options = [
-      "subvol=Data"
-      "space_cache=v2"
-      "compress=zstd:8"
-      "noatime"
-      "autodefrag"
-    ];
-  };
+    "/media/data" = {
+      device = "/dev/disk/by-uuid/4c0c8b24-6fca-49c1-8e34-e00e240576e3";
+      fsType = "btrfs";
+      options = [
+        "subvol=Data"
+        "space_cache=v2"
+        "compress=zstd:8"
+        "noatime"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/media/games" = {
-    device = "/dev/disk/by-uuid/4c0c8b24-6fca-49c1-8e34-e00e240576e3";
-    fsType = "btrfs";
-    options = [
-      "subvol=Games"
-      "space_cache=v2"
-      "compress=zstd:5"
-      "noatime"
-      "autodefrag"
-    ];
-  };
+    "/media/games" = {
+      device = "/dev/disk/by-uuid/4c0c8b24-6fca-49c1-8e34-e00e240576e3";
+      fsType = "btrfs";
+      options = [
+        "subvol=Games"
+        "space_cache=v2"
+        "compress=zstd:8"
+        "noatime"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/media/home-backup" = {
-    device = "/dev/disk/by-uuid/4c0c8b24-6fca-49c1-8e34-e00e240576e3";
-    fsType = "btrfs";
-    options = [
-      "subvol=home-backup"
-      "space_cache=v2"
-      "compress=zstd:10"
-      "noatime"
-      "autodefrag"
-    ];
-  };
+    "/media/home-backup" = {
+      device = "/dev/disk/by-uuid/4c0c8b24-6fca-49c1-8e34-e00e240576e3";
+      fsType = "btrfs";
+      options = [
+        "subvol=home-backup"
+        "space_cache=v2"
+        "compress=zstd:10"
+        "noatime"
+        "autodefrag"
+      ];
+    };
 
-  fileSystems."/media/pipa" = {
-    device = "/dev/disk/by-uuid/0013f713-acf4-496b-b43f-25258283b884";
-    fsType = "f2fs";
-    options = [
-      "compress_algorithm=zstd:10"
-      "compress_chksum"
-      "atgc"
-      "gc_merge"
-      "lazytime"
-    ];
-  };
-
-  fileSystems."/media/pipa/pixelage" = {
-    device = "/dev/disk/by-uuid/688ed267-cec9-400a-9226-32b0538eaecd";
-    fsType = "btrfs";
-    options = [
-      "subvol=pixelage"
-      "ssd"
-      "space_cache=v2"
-      "noatime"
-      "compress=zstd:10"
-      "autodefrag"
-    ];
+    "/media/pipa" = {
+      device = "/dev/disk/by-uuid/0013f713-acf4-496b-b43f-25258283b884";
+      fsType = "f2fs";
+      options = [
+        "compress_algorithm=zstd:10"
+        "compress_chksum"
+        "atgc"
+        "gc_merge"
+        "lazytime"
+      ];
+    };
   };
 
   swapDevices = [];
