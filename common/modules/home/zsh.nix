@@ -11,6 +11,14 @@
     syntaxHighlighting.enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
 
+    history = {
+      extended = true;
+      ignoreAllDups = true;
+      expireDuplicatesFirst = true;
+      save = 10000;
+      size = 10000;
+    };
+
     plugins = [
       {
         name = "fzf-tab";
