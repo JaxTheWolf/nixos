@@ -21,6 +21,7 @@
         };
       };
     };
+    tmp.useTmpfs = true;
   };
 
   networking = {

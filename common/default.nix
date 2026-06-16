@@ -30,8 +30,10 @@
         mask = ''\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\x00\xfe\xff\xff\xff'';
       };
     };
+
     consoleLogLevel = 3;
     plymouth.enable = true;
+    tmp.cleanOnBoot = true;
   };
 
   networking = {
