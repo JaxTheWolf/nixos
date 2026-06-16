@@ -84,6 +84,7 @@
     };
 
     "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
+      blur = false;
       pipeline = "pipeline_default";
       static-blur = false;
     };
