@@ -86,6 +86,19 @@
       lfs.enable = true;
     };
 
+    ghostty = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      settings = {
+        font-family = "FiraCode Nerd Font Mono";
+        font-feature = "+calt +ccmp +ss10 +zero";
+        font-size = 12;
+        theme = "Night Lion V1";
+        background-opacity = 0.8;
+      };
+    };
+
     nh = {
       clean = {
         enable = true;
