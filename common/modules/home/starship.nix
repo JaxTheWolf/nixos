@@ -5,7 +5,7 @@
       format = lib.concatStrings [
         "$hostname"
         "\${custom.distrobox}"
-        "$nix_shell"
+        "$env_var"
         "$python"
         "$nodejs"
         "$rust"
@@ -37,14 +37,22 @@
         format = "[](fg:#FF5F00)[$symbol $output](bg:#FF5F00 fg:#FFFFFF)[](fg:#FF5F00) ";
       };
 
-      nix_shell = {
+      # nix_shell = {
+      #   symbol = "";
+      #   format = "[](fg:#7EBAE4)[$symbol $state](bg:#7EBAE4 fg:#061A40)[](fg:#7EBAE4) ";
+      #   impure_msg = "impure";
+      #   pure_msg = "pure";
+      #   unknown_msg = "unknown";
+      #   heuristic = true;
+      # };
+
+      nix_shell.disabled = true;
+
+      env_var.IN_NIX_SHELL = {
+        variable = "IN_NIX_SHELL";
         symbol = "";
-        format = "[](fg:#7EBAE4)[$symbol $state](bg:#7EBAE4 fg:#061A40)[](fg:#7EBAE4) ";
-        impure_msg = "impure";
-        pure_msg = "pure";
-        unknown_msg = "unknown";
-        heuristic = true;
-      };
+        format = "[](fg:#7EBAE4)[$symbol nix-shell](bg:#7EBAE4 fg:#061A40)[](fg:#7EBAE4) ";
+      } ;
 
       python = {
         symbol = "󰌠";
