@@ -52,7 +52,7 @@
         variable = "IN_NIX_SHELL";
         symbol = "";
         format = "[](fg:#7EBAE4)[$symbol nix-shell](bg:#7EBAE4 fg:#061A40)[](fg:#7EBAE4) ";
-      } ;
+      };
 
       python = {
         symbol = "󰌠";
