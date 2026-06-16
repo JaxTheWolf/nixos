@@ -81,7 +81,7 @@
         "steam.desktop"
         "firefox.desktop"
         "org.telegram.desktop.desktop"
-        "org.gnome.Console.desktop"
+        "com.mitchellh.ghostty.desktop"
         "io.missioncenter.MissionCenter.desktop"
         "tidal-hifi.desktop"
       ];
