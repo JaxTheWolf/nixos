@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     amdgpu_top
     arch-install-scripts

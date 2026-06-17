@@ -1,12 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  clion-flake,
-  solaar-master,
-  fet,
-  ...
-}: {
+{pkgs, ...}: {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -33,8 +25,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # clion-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
-    # fet.packages.${pkgs.stdenv.hostPlatform.system}.default
     abootimg
     android-tools
     appstream

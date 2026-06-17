@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  programs.    helix = {
+  programs.helix = {
     enable = true;
 
     settings = {

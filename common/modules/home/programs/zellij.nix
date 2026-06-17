@@ -1,5 +1,5 @@
 {...}: {
-  programs.    zellij = {
+  programs.zellij = {
     enable = true;
 
     settings = {

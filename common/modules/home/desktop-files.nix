@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   xdg.dataFile."applications/clion.desktop".text = ''
     [Desktop Entry]
     Type=Application

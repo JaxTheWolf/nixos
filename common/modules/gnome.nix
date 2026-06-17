@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   environment = {
     gnome.excludePackages = with pkgs; [
       decibels
