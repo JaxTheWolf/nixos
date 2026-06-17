@@ -68,15 +68,15 @@
     };
 
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
-      blur = true;
-      blur-on-overview = true;
-      dynamic-opacity = true;
-      enable-all = false;
-      opacity = 255;
-      pipeline = "pipeline_default";
-      sigma = 1;
-      static-blur = false;
-      whitelist = ["com.mitchellh.ghostty"];
+      blur = false;
+      # blur-on-overview = true;
+      # dynamic-opacity = true;
+      # enable-all = false;
+      # opacity = 255;
+      # pipeline = "pipeline_default";
+      # sigma = 1;
+      # static-blur = false;
+      # whitelist = ["com.mitchellh.ghostty"];
     };
 
     "org/gnome/shell/extensions/blur-my-shell/coverflow-alt-tab" = {
