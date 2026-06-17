@@ -54,7 +54,7 @@
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Control><Alt>t";
-      command = "ghostty";
+      command = "ptyxis";
       name = "Terminal";
     };
 
@@ -81,7 +81,7 @@
         "steam.desktop"
         "firefox.desktop"
         "org.telegram.desktop.desktop"
-        "com.mitchellh.ghostty.desktop"
+        "org.gnome.Ptyxis.desktop"
         "io.missioncenter.MissionCenter.desktop"
         "tidal-hifi.desktop"
       ];
