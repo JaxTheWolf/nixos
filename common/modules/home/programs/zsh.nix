@@ -33,6 +33,7 @@
 
     shellAliases = {
       cat = "bat";
+      hxg = "SESSION_NAME=\$(basename \$PWD); zellij delete-session \$SESSION_NAME 2>/dev/null; zellij --new-session-with-layout helix-term -s \$SESSION_NAME";
     };
 
     sessionVariables = {

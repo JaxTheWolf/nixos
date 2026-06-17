@@ -1,14 +1,12 @@
 {...}: {
   imports = [
     ./dconf
+    ./programs
     ./activation.nix
     ./autostart.nix
     ./desktop-files.nix
     ./packages.nix
-    ./programs.nix
-    ./starship.nix
     ./services.nix
-    ./zsh.nix
   ];
 
   xdg.enable = true;
