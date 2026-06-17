@@ -54,7 +54,7 @@
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Control><Alt>t";
-      command = "ptyxis";
+      command = "ptyxis --new-window";
       name = "Terminal";
     };
 
