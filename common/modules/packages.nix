@@ -93,7 +93,6 @@
       pciutils
       pigz
       poppler-utils
-      prismlauncher
       pulseaudio
       screen
       seafile-client
@@ -115,17 +114,18 @@
       zstd
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
-      brscan4
-      brscan5
       abootimg
       android-tools
+      brscan4
+      brscan5
       ffmpeg-full
       graalvmPackages.graalvm-oracle_25
       mangohud
       plymouth
-      wineWow64Packages.waylandFull
-      vkbasalt
+      prismlauncher
       ventoy-full-gtk
+      vkbasalt
+      wineWow64Packages.waylandFull
       wireshark
       zulu
       zulu17

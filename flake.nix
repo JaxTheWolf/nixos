@@ -2,8 +2,9 @@
   description = "Unified Multi-Host NixOS Flake Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    filefinder.url = "git+ssh://git@gt.awroo.fun/esavojt/filefinder.git";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -16,6 +17,7 @@
     nixpkgs,
     nix-flatpak,
     home-manager,
+    filefinder,
     ...
   } @ inputs: let
     specialArgs = {
@@ -29,14 +31,34 @@
       ./common
       nix-flatpak.nixosModules.nix-flatpak
       home-manager.nixosModules.home-manager
+
+      {
+        nixpkgs.overlays = [filefinder.overlays.default];
+      }
+
       {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.jax.imports = [./common/modules/home];
+          users.jax.imports = [./common/modules/home filefinder.homeManagerModules.default];
         };
       }
     ];
+
+    tabletSharedModules =
+      [
+        ./tablet
+        {
+          boot.kernelPackages = let
+            pkgs-native = import nixpkgs {
+              system = "aarch64-linux";
+              config.allowUnfree = true;
+            };
+          in
+            pkgs-native.linuxPackagesFor (pkgs-native.callPackage ./tablet/pkgs/kernel.nix {});
+        }
+      ]
+      ++ sharedModules;
   in {
     nixosConfigurations = {
       epiquev2 = nixpkgs.lib.nixosSystem {
@@ -57,14 +79,14 @@
         system = "aarch64-linux";
         specialArgs = {inherit (nixpkgs) lib;};
         modules =
-          sharedModules ++ [./tablet];
+          tabletSharedModules;
       };
 
       pipa-cross = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = {inherit (nixpkgs) lib;};
         modules =
-          sharedModules ++ [./tablet];
+          tabletSharedModules;
       };
     };
 

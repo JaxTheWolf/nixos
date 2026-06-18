@@ -18,6 +18,14 @@
       enableZshIntegration = true;
     };
 
+    filefinder = {
+      enable = true;
+      settings = {
+        index.index_threads = 0;
+        search.multithreaded_search = true;
+      };
+    };
+
     firefox = {
       enable = true;
       configPath = "${config.xdg.configHome}/mozilla/firefox";
