@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   boot = {
     initrd = {
       availableKernelModules = [
@@ -16,6 +20,6 @@
       "hid-logitech-hidpp"
     ];
 
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelPackages = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 pkgs.linuxKernel.packages.linux_xanmod_latest;
   };
 }

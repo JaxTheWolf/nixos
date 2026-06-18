@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./modules
     ./hardware-configuration.nix
@@ -6,7 +10,7 @@
 
   documentation.nixos.enable = false;
 
-  boot = {
+  boot = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
@@ -83,7 +87,7 @@
     '';
   };
 
-  virtualisation = {
+  virtualisation = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
     docker = {
       enable = true;
       autoPrune.enable = false;
@@ -159,7 +163,6 @@
     i2c.enable = true;
     graphics = {
       enable = true;
-      enable32Bit = true;
       package = pkgs.mesa;
     };
 

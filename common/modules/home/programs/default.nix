@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   imports = [
@@ -46,7 +47,7 @@
       flake = "${config.xdg.configHome}/nixos";
     };
 
-    vscode = {
+    vscode = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
       enable = true;
       package = pkgs.vscode.fhsWithPackages (
         ps:

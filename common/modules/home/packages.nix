@@ -1,34 +1,40 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    alejandra
-    anki
-    binwalk
-    bubblemail
-    cisco-packet-tracer_9
-    czkawka-full
-    discord
-    element-desktop
-    gemini-cli
-    gimp
-    inkscape
-    jetbrains.clion
-    just
-    libreoffice-fresh
-    nil
-    nix-output-monitor
-    nix-your-shell
-    obsidian
-    rquickshare
-    saber
-    scrcpy
-    telegram-desktop
-    testdisk
-    tidal-hifi
-    tldr
-    trash-cli
-    treefmt
-    vesktop
-    vlc
-    yt-dlp
-  ];
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  home.packages = with pkgs;
+    [
+      alejandra
+      anki
+      binwalk
+      bubblemail
+      czkawka-full
+      element-desktop
+      gemini-cli
+      gimp
+      inkscape
+      just
+      libreoffice-fresh
+      nil
+      nix-output-monitor
+      nix-your-shell
+      rquickshare
+      telegram-desktop
+      testdisk
+      tldr
+      trash-cli
+      treefmt
+      vesktop
+      vlc
+      yt-dlp
+    ]
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
+      cisco-packet-tracer_9
+      discord
+      protonup-qt
+      tidal-hifi
+      jetbrains.clion
+      scrcpy
+    ];
 }
