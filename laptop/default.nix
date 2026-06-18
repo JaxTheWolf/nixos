@@ -2,8 +2,9 @@
   imports = [
     ./hardware-configuration.nix
     ./modules
-    ../common
   ];
+
+  home-manager.users.jax.imports = [./modules/home];
 
   networking = {
     hostName = "dalaptop";

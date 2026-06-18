@@ -18,12 +18,14 @@
     home-manager,
     ...
   } @ inputs: let
-    specialArgs = {inherit (inputs);};
+    specialArgs = {
+      inherit (inputs);
+      inherit (nixpkgs) lib;
+    };
 
     pkgs-x86 = import nixpkgs {system = "x86_64-linux";};
 
-    sharedTabletModules = [
-      ./tablet
+    sharedModules = [
       ./common
       nix-flatpak.nixosModules.nix-flatpak
       home-manager.nixosModules.home-manager
@@ -31,10 +33,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.jax.imports = [
-            ./common/modules/home
-            ./tablet/modules/home
-          ];
+          users.jax.imports = [./common/modules/home];
         };
       }
     ];
@@ -43,91 +42,40 @@
       epiquev2 = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
-        modules = [
-          ./common
-          ./desktop
-          nix-flatpak.nixosModules.nix-flatpak
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.jax.imports = [
-                ./common/modules/home
-                ./desktop/modules/home
-              ];
-            };
-          }
-        ];
+        modules =
+          sharedModules ++ [./desktop];
       };
 
       dalaptop = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
-        modules = [
-          ./common
-          ./laptop
-          nix-flatpak.nixosModules.nix-flatpak
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.jax.imports = [
-                ./common/modules/home
-                ./laptop/modules/home
-              ];
-            };
-          }
-        ];
+        modules =
+          sharedModules ++ [./laptop];
       };
 
       pipa = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = {inherit (nixpkgs) lib;};
         modules =
-          sharedTabletModules
-          ++ [
-            {
-              nixpkgs.config.allowUnfree = true;
-              boot.kernelPackages = let
-                pkgs-native = import nixpkgs {
-                  system = "aarch64-linux";
-                  config.allowUnfree = true;
-                };
-              in
-                pkgs-native.linuxPackagesFor (pkgs-native.callPackage ./tablet/pkgs/kernel.nix {});
-            }
-          ];
+          sharedModules ++ [./tablet];
       };
 
       pipa-cross = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = {inherit (nixpkgs) lib;};
         modules =
-          sharedTabletModules
-          ++ [
-            {
-              nixpkgs.config.allowUnfree = true;
-              boot.kernelPackages = let
-                pkgs-cross = import nixpkgs {
-                  localSystem = "x86_64-linux";
-                  crossSystem = "aarch64-linux";
-                  config.allowUnfree = true;
-                };
-              in
-                pkgs-cross.linuxPackagesFor (pkgs-cross.callPackage ./tablet/pkgs/kernel.nix {});
-            }
-          ];
+          sharedModules ++ [./tablet];
       };
     };
 
     apps."x86_64-linux".default = {
       type = "app";
-      program = "${pkgs-x86.callPackage ./tablet/pkgs/build-images.nix {
-        pkgs = pkgs-x86;
-        toplevel = self.nixosConfigurations.pipa-cross.config.system.build.toplevel;
-      }}/bin/build-pipa-images";
+      program = "${
+        pkgs-x86.callPackage ./tablet/pkgs/build-images.nix {
+          pkgs = pkgs-x86;
+          toplevel = self.nixosConfigurations.pipa-cross.config.system.build.toplevel;
+        }
+      }/bin/build-pipa-images";
     };
   };
 }

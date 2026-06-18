@@ -11,7 +11,7 @@ in {
     ./modules
   ];
 
-  documentation.nixos.enable = false;
+  home-manager.users.jax.imports = [./modules/home];
 
   hardware = {
     firmware = [
