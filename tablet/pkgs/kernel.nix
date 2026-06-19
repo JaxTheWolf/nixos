@@ -30,17 +30,17 @@ in
       stripDebugList = ["vmlinux" "lib/modules"];
 
       structuredExtraConfig = with lib.kernel; {
-        DRM_AMDGPU = no;
-        DRM_NOUVEAU = no;
-        DRM_RADEON = no;
-        DRM_I915 = no;
-        INFINIBAND = no;
-        INFINIBAND_USER_ACCESS = no;
-        FPGA = no;
-        THUNDERBOLT = no;
-        COMEDI = no;
-        GNSS = no;
-        MOST = no;
+        DRM_AMDGPU = lib.mkForce no;
+        DRM_NOUVEAU = lib.mkForce no;
+        DRM_RADEON = lib.mkForce no;
+        DRM_I915 = lib.mkForce no;
+        INFINIBAND = lib.mkForce no;
+        INFINIBAND_USER_ACCESS = lib.mkForce no;
+        FPGA = lib.mkForce no;
+        THUNDERBOLT = lib.mkForce no;
+        COMEDI = lib.mkForce no;
+        GNSS = lib.mkForce no;
+        MOST = lib.mkForce no;
       };
 
       extraMeta.branch = "7.0";
