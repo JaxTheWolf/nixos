@@ -83,7 +83,6 @@
       lzip
       lzop
       mesa-demos
-      mission-center
       ncdu
       networkmanager-openconnect
       ntfs3g
@@ -121,6 +120,7 @@
       ffmpeg-full
       graalvmPackages.graalvm-oracle_25
       mangohud
+      mission-center
       plymouth
       prismlauncher
       ventoy-full-gtk

@@ -6,14 +6,11 @@
   home.packages = with pkgs;
     [
       alejandra
-      anki
       binwalk
       bubblemail
       czkawka-full
       element-desktop
       gemini-cli
-      gimp
-      inkscape
       just
       libreoffice-fresh
       nil
@@ -32,9 +29,11 @@
     ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
       cisco-packet-tracer_9
       discord
-      protonup-qt
-      tidal-hifi
       jetbrains.clion
+      protonup-qt
       scrcpy
+      tidal-hifi
+      gimp
+      inkscape
     ];
 }
