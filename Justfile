@@ -33,10 +33,10 @@ switch-update-commit:
     nh os switch --refresh --update --commit-lock-file
 
 build-tablet:
-    nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.pipa-cross.config.system.build.toplevel -o result-tablet
+    nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.pipa.config.system.build.toplevel -o result-tablet
 
 build-tablet-kernel:
-    nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.pipa-cross.config.boot.kernelPackages.kernel -o result-tablet-kernel
+    nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.pipa.config.boot.kernelPackages.kernel -o result-tablet-kernel
 
 build-tablet-images:
     nix run

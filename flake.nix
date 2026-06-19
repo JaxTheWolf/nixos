@@ -34,6 +34,7 @@
 
       {
         nixpkgs.overlays = [filefinder.overlays.default];
+        nixpkgs.config.allowUnfree = true;
       }
 
       {
@@ -45,57 +46,51 @@
       }
     ];
 
-    tabletSharedModules = isCross:
+    tabletSharedModules =
       [
         ./tablet
-        {
+
+        ({...}: {
           boot.kernelPackages = let
-            kernelPkgs =
-              if isCross
-              then
-                import nixpkgs {
-                  localSystem = "x86_64-linux";
-                  crossSystem = "aarch64-linux";
-                  config.allowUnfree = true;
-                }
-              else
-                import nixpkgs {
-                  system = "aarch64-linux";
-                  config.allowUnfree = true;
-                };
+            crossPkgs = import nixpkgs {
+              localSystem = "x86_64-linux";
+              crossSystem = "aarch64-linux";
+              config.allowUnfree = true;
+            };
           in
-            kernelPkgs.linuxPackagesFor (kernelPkgs.callPackage ./tablet/pkgs/kernel.nix {});
-        }
+            crossPkgs.linuxPackagesFor (crossPkgs.callPackage ./tablet/pkgs/kernel.nix {});
+        })
       ]
       ++ sharedModules;
   in {
     nixosConfigurations = {
       epiquev2 = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        system = "x86_64-linux";
         modules =
-          sharedModules ++ [./desktop];
+          sharedModules
+          ++ [
+            ./desktop
+            {nixpkgs.hostPlatform = "x86_64-linux";}
+          ];
       };
 
       dalaptop = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        system = "x86_64-linux";
         modules =
-          sharedModules ++ [./laptop];
+          sharedModules
+          ++ [
+            ./laptop
+            {nixpkgs.hostPlatform = "x86_64-linux";}
+          ];
       };
 
       pipa = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        system = "aarch64-linux";
         modules =
-          tabletSharedModules false;
-      };
-
-      pipa-cross = nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        system = "aarch64-linux";
-        modules =
-          tabletSharedModules true;
+          tabletSharedModules
+          ++ [
+            {nixpkgs.hostPlatform = "aarch64-linux";}
+          ];
       };
     };
 
@@ -104,7 +99,7 @@
       program = "${
         pkgs-x86.callPackage ./tablet/pkgs/build-images.nix {
           pkgs = pkgs-x86;
-          toplevel = self.nixosConfigurations.pipa-cross.config.system.build.toplevel;
+          toplevel = self.nixosConfigurations.pipa.config.system.build.toplevel;
         }
       }/bin/build-pipa-images";
     };
