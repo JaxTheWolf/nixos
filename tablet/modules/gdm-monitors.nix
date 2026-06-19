@@ -11,7 +11,7 @@
         <logicalmonitor>
           <x>0</x>
           <y>0</y>
-          <scale>2.25</scale>
+          <scale>2</scale>
           <primary>yes</primary>
           <transform>
             <rotation>right</rotation>
