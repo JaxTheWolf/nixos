@@ -29,5 +29,19 @@ in
       ignoreConfigErrors = true;
       stripDebugList = ["vmlinux" "lib/modules"];
 
+      structuredExtraConfig = with lib.kernel; {
+        DRM_AMDGPU = no;
+        DRM_NOUVEAU = no;
+        DRM_RADEON = no;
+        DRM_I915 = no;
+        INFINIBAND = no;
+        INFINIBAND_USER_ACCESS = no;
+        FPGA = no;
+        THUNDERBOLT = no;
+        COMEDI = no;
+        GNSS = no;
+        MOST = no;
+      };
+
       extraMeta.branch = "7.0";
     })
