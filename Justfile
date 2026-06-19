@@ -26,10 +26,10 @@ format:
 switch:
     nh os switch
 
-switch_update:
+switch-update:
     nh os switch --refresh --update
 
-switch_update_commit:
+switch-update-commit:
     nh os switch --refresh --update --commit-lock-file
 
 build-tablet:
