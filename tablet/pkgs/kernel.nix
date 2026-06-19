@@ -27,21 +27,7 @@ in
       src = patchedSrc;
       defconfig = "pipa.config";
       ignoreConfigErrors = true;
+      enableCommonConfig = false;
       stripDebugList = ["vmlinux" "lib/modules"];
-
-      structuredExtraConfig = with lib.kernel; {
-        DRM_AMDGPU = lib.mkForce no;
-        DRM_NOUVEAU = lib.mkForce no;
-        DRM_RADEON = lib.mkForce no;
-        DRM_I915 = lib.mkForce no;
-        INFINIBAND = lib.mkForce no;
-        INFINIBAND_USER_ACCESS = lib.mkForce no;
-        FPGA = lib.mkForce no;
-        THUNDERBOLT = lib.mkForce no;
-        COMEDI = lib.mkForce no;
-        GNSS = lib.mkForce no;
-        MOST = lib.mkForce no;
-      };
-
       extraMeta.branch = "7.0";
     })
