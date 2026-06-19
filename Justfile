@@ -12,9 +12,7 @@ build-laptop:
     nix build .#nixosConfigurations.dalaptop.config.system.build.toplevel --log-format internal-json -o result-laptop |& nom --json
 
 upload:
-    attic push my-config result-laptop -j2
-    attic push my-config /run/current-system -j2
-    attic push my-config result-tablet -j2
+    attic push my-config result-laptop result-tablet /run/current-system $(nix eval .#nixosConfigurations.pipa.config.boot.kernelPackages.kernel.drvPath --raw) -j2
 
 clean:
     rm -rf result*
