@@ -2,7 +2,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  isx86 = pkgs.stdenv.hostPlatform.isx86_64;
+in {
   imports = [
     ./modules
     ./hardware-configuration.nix
@@ -10,7 +12,7 @@
 
   documentation.nixos.enable = false;
 
-  boot = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
+  boot = lib.mkIf isx86 {
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
@@ -87,7 +89,7 @@
     '';
   };
 
-  virtualisation = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
+  virtualisation = {
     docker = {
       enable = true;
       autoPrune.enable = false;
@@ -95,7 +97,7 @@
       enableOnBoot = true;
     };
 
-    libvirtd = {
+    libvirtd = lib.mkIf isx86 {
       enable = true;
       extraConfig = ''
         unix_sock_group = "qemu-libvirtd"
