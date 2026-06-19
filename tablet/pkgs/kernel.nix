@@ -127,14 +127,6 @@ in
         KVM_GENERIC_HARDWARE_ENABLING = no;
         KVM_GUEST_MEMFD = no;
 
-        BLK_DEV_NVME = no;
-        NVME_TARGET = no;
-        NVME_HWMON = no;
-        NVME_FABRICS = no;
-        NVME_FC = no;
-        NVME_TCP = no;
-        NVME_AUTH = no;
-
         INFINIBAND = no;
         INFINIBAND_USER_ACCESS = no;
         FPGA = no;
