@@ -2,11 +2,11 @@
   "nodes": {
     "crane": {
       "locked": {
-        "lastModified": 1780532242,
-        "narHash": "sha256-D+BsdpxmtUwtqGoY0IXPhHgTlmqgcZKCEo1oMyn7ep0=",
+        "lastModified": 1781825982,
+        "narHash": "sha256-SlXKwIRIhrOSAcTjCB3ftPLzJWZStQIPS7J1FlZPnKk=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "59a82a1222dd3b2080b5cc52a1a2e8d5f1b77f37",
+        "rev": "469fd08d0bcf6926321fa973c6777fbc87785dd7",
         "type": "github"
       },
       "original": {
@@ -22,11 +22,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1781807519,
-        "narHash": "sha256-DcktriROIlOAp3Tz8yRKZRXHqIAl9XiGUja/L+tpW3M=",
+        "lastModified": 1781880541,
+        "narHash": "sha256-4ZOy/hbJ9pvY58TqmgFo5oqB+RPQ7vQMKSfbH8UQcC4=",
         "ref": "refs/heads/main",
-        "rev": "0e9eb908978283939060e6a8d285c40d97f1634f",
-        "revCount": 33,
+        "rev": "07fb36f9b3341a711d6283af64507a11d72fba07",
+        "revCount": 38,
         "type": "git",
         "url": "ssh://git@gt.awroo.fun/esavojt/filefinder.git"
       },
