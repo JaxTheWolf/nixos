@@ -88,6 +88,16 @@ in
         WLAN_VENDOR_ZYDAS = no;
         WLAN_VENDOR_QUANTENNA = no;
 
+        NET_VENDOR_AMAZON = no;
+        NET_VENDOR_CAVIUM = no;
+        NET_VENDOR_CHELSIO = no;
+        NET_VENDOR_INTEL = no;
+        NET_VENDOR_MELLANOX = no;
+        NET_VENDOR_MICROSOFT = no;
+        NET_VENDOR_PENSANDO = no;
+        NET_VENDOR_SOLARFLARE = no;
+        NET_VENDOR_AMD = no;
+
         XEN = no;
         XEN_DOM0 = no;
         XEN_BALLOON = no;
