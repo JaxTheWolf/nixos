@@ -18,6 +18,7 @@
     chmod -R +w $out
 
     cp ${./pipa.config} $out/arch/arm64/configs/pipa.config
+    patchShebangs $out
   '';
 in
   buildLinux (args
@@ -42,6 +43,7 @@ in
         COMEDI = no;
         GNSS = no;
         MOST = no;
+        RUNTIME_TESTING_MENU = no;
       };
 
       extraMeta.branch = "7.0";
