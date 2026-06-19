@@ -41,16 +41,10 @@ build-tablet-kernel:
 build-tablet-images:
     nix run
 
-deploy-cross-switch:
-    nh os switch . -H pipa-cross --target-host nixos@192.168.0.115
-
-deploy-cross-boot:
-    nh os boot . -H pipa-cross --target-host nixos@192.168.0.115
-
-deploy-native-switch:
+deploy-tablet-switch:
     nh os switch . -H pipa --target-host nixos@192.168.0.115
 
-deploy-native-boot:
+deploy-tablet-boot:
     nh os boot . -H pipa --target-host nixos@192.168.0.115
 
 flash-all:

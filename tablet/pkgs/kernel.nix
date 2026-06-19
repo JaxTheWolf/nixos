@@ -25,7 +25,7 @@ in
       version = "7.0.8";
       modDirVersion = "7.0.8";
       src = patchedSrc;
-      defconfig = "defconfig pipa.config";
+      defconfig = "pipa.config";
       ignoreConfigErrors = true;
       stripDebugList = ["vmlinux" "lib/modules"];
 

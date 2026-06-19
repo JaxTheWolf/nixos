@@ -45,17 +45,26 @@
       }
     ];
 
-    tabletSharedModules =
+    tabletSharedModules = isCross:
       [
         ./tablet
         {
           boot.kernelPackages = let
-            pkgs-native = import nixpkgs {
-              system = "aarch64-linux";
-              config.allowUnfree = true;
-            };
+            kernelPkgs =
+              if isCross
+              then
+                import nixpkgs {
+                  localSystem = "x86_64-linux";
+                  crossSystem = "aarch64-linux";
+                  config.allowUnfree = true;
+                }
+              else
+                import nixpkgs {
+                  system = "aarch64-linux";
+                  config.allowUnfree = true;
+                };
           in
-            pkgs-native.linuxPackagesFor (pkgs-native.callPackage ./tablet/pkgs/kernel.nix {});
+            kernelPkgs.linuxPackagesFor (kernelPkgs.callPackage ./tablet/pkgs/kernel.nix {});
         }
       ]
       ++ sharedModules;
@@ -76,17 +85,17 @@
       };
 
       pipa = nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
         system = "aarch64-linux";
-        specialArgs = {inherit (nixpkgs) lib;};
         modules =
-          tabletSharedModules;
+          tabletSharedModules false;
       };
 
       pipa-cross = nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
         system = "aarch64-linux";
-        specialArgs = {inherit (nixpkgs) lib;};
         modules =
-          tabletSharedModules;
+          tabletSharedModules true;
       };
     };
 
