@@ -106,7 +106,7 @@ in {
       onBoot = "ignore";
     };
 
-    spiceUSBRedirection.enable = true;
+    spiceUSBRedirection.enable = isx86;
   };
 
   users.users.jax = {
