@@ -11,8 +11,6 @@ in {
     ./modules
   ];
 
-  home-manager.users.jax.imports = [./modules/home];
-
   hardware = {
     firmware = [
       pipa-firmware

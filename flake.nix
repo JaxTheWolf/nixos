@@ -21,8 +21,7 @@
     ...
   } @ inputs: let
     specialArgs = {
-      inherit (inputs);
-      inherit (nixpkgs) lib;
+      inherit inputs;
     };
 
     pkgs-x86 = import nixpkgs {system = "x86_64-linux";};
@@ -30,7 +29,6 @@
     sharedModules = [
       ./common
       nix-flatpak.nixosModules.nix-flatpak
-      home-manager.nixosModules.home-manager
 
       {
         nixpkgs.overlays = [filefinder.overlays.default];
@@ -38,10 +36,16 @@
       }
 
       {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.jax.imports = [./common/modules/home filefinder.homeManagerModules.default];
+        virtualisation.vmVariant = {
+          imports = [home-manager.nixosModules.home-manager];
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = specialArgs;
+            users.jax = {
+              imports = sharedHomeModules;
+            };
+          };
         };
       }
     ];
@@ -50,7 +54,11 @@
       [
         ./tablet
 
-        ({...}: {
+        ({
+          pkgs,
+          lib,
+          ...
+        }: {
           boot.kernelPackages = let
             crossPkgs = import nixpkgs {
               localSystem = "x86_64-linux";
@@ -62,6 +70,28 @@
         })
       ]
       ++ sharedModules;
+
+    sharedHomeModules = [
+      ./common/modules/home
+      filefinder.homeManagerModules.default
+      {
+        home.username = "jax";
+        home.homeDirectory = "/home/jax";
+      }
+    ];
+
+    mkHome = hostName:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = self.nixosConfigurations.${hostName}.pkgs;
+
+        extraSpecialArgs =
+          specialArgs
+          // {
+            osConfig = self.nixosConfigurations.${hostName}.config;
+          };
+
+        modules = sharedHomeModules;
+      };
   in {
     nixosConfigurations = {
       epiquev2 = nixpkgs.lib.nixosSystem {
@@ -92,6 +122,12 @@
             {nixpkgs.hostPlatform = "aarch64-linux";}
           ];
       };
+    };
+
+    homeConfigurations = {
+      "jax@epiquev2" = mkHome "epiquev2";
+      "jax@dalaptop" = mkHome "dalaptop";
+      "jax@pipa" = mkHome "pipa";
     };
 
     apps."x86_64-linux".default = {

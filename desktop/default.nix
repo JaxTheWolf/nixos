@@ -4,17 +4,15 @@
     ./modules
   ];
 
-  home-manager.users.jax.imports = [./modules/home];
-
   boot = {
     loader = {
       systemd-boot = {
-        windows = {
-          "w" = {
-            title = "Windows";
-            efiDeviceHandle = "HD3b";
-          };
-        };
+        # windows = {
+        #   "w" = {
+        #     title = "Windows";
+        #     efiDeviceHandle = "HD3b";
+        #   };
+        # };
       };
     };
     tmp.useTmpfs = true;

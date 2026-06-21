@@ -1,63 +1,80 @@
-default: switch build-laptop upload clean
+# --- Variables ---
+cache := "my-config"
+tablet_ip := "nixos@192.168.0.115"
+user := "jax"
 
-vm-desktop:
-    nix build .#nixosConfigurations.epiquev2.config.system.build.vm
-    ./result/bin/run-epiquev2-vm
+# --- Default ---
+default: sync-laptop
 
-vm-laptop:
-    nix build .#nixosConfigurations.dalaptop.config.system.build.vm
-    ./result/bin/run-dalaptop-vm
+sync-laptop: switch build-os-laptop build-home-all upload clean
+    @echo "Laptop sync complete!"
 
-build-laptop:
-    nix build .#nixosConfigurations.dalaptop.config.system.build.toplevel --log-format internal-json -o result-laptop |& nom --json
+sync-all: build-os-all build-home-all upload clean
+    @echo "All devices synced and cached!"
+
+# --- Core NixOS & Home Manager ---
+
+switch *args:
+    nh os switch {{args}}
+
+home *args:
+    nh home switch {{args}}
+
+# --- Building System & Home Closures ---
+
+build-os host:
+    nix build .#nixosConfigurations.{{host}}.config.system.build.toplevel --log-format internal-json -o result-{{host}} |& nom --json
+
+build-os-laptop:
+    just build-os dalaptop
+
+build-os-all:
+    just build-os epiquev2
+    just build-os dalaptop
+    just build-os pipa
+
+build-home host:
+    nix build .#homeConfigurations."{{user}}@{{host}}".activationPackage -o result-home-{{host}}
+
+build-home-all:
+    just build-home epiquev2
+    just build-home dalaptop
+    just build-home pipa
+
+vm host:
+    nix build .#nixosConfigurations.{{host}}.config.system.build.vm
+    ./result/bin/run-{{host}}-vm
+
+# --- Caching ---
 
 upload:
-    attic push my-config result-laptop result-tablet /run/current-system -j2
-    nix-store --query --requisites $(nix eval --raw .#nixosConfigurations.pipa.config.system.build.toplevel.drvPath) | xargs attic push my-config
+    attic push {{cache}} result* /run/current-system -j2
+    nix-store --query --requisites $(nix eval --raw .#nixosConfigurations.pipa.config.system.build.toplevel.drvPath) | xargs attic push {{cache}}
 
-clean:
-    rm -rf result*
-    rm -rf *.qcow2
+# --- Tablet Specific Commands ---
 
-format:
-    treefmt .
-
-switch:
-    nh os switch
-
-switch-update:
-    nh os switch --refresh --update
-
-switch-update-commit:
-    nh os switch --refresh --update --commit-lock-file
-
-build-tablet:
-    nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.pipa.config.system.build.toplevel -o result-tablet
+deploy-tablet action="switch":
+    nh os {{action}} . -H pipa --target-host {{tablet_ip}}
 
 build-tablet-kernel:
-    nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.pipa.config.boot.kernelPackages.kernel -o result-tablet-kernel
+    nix build .#nixosConfigurations.pipa.config.boot.kernelPackages.kernel -o result-tablet-kernel |& nom --json
 
 build-tablet-images:
     nix run
 
-deploy-tablet-switch:
-    nh os switch . -H pipa --target-host nixos@192.168.0.115
-
-deploy-tablet-boot:
-    nh os boot . -H pipa --target-host nixos@192.168.0.115
-
-flash-all:
-    fastboot flash linux_boot images/boot.img
-    fastboot flash linux_root images/rootfs.sparse.img
+flash part="all":
+    #!/usr/bin/env bash
+    if [ "{{part}}" = "all" ] || [ "{{part}}" = "boot" ]; then fastboot flash linux_boot images/boot.img; fi
+    if [ "{{part}}" = "all" ] || [ "{{part}}" = "root" ]; then fastboot flash linux_root images/rootfs.sparse.img; fi
     fastboot reboot
 
-flash-boot:
-    fastboot flash linux_boot images/boot.img
-    fastboot reboot
+# --- Utilities ---
 
-flash-root:
-    fastboot flash linux_root images/rootfs.sparse.img
-    fastboot reboot
+clean:
+    rm -rf result* *.qcow2
+
+format:
+    treefmt .
 
 help:
     @just --list

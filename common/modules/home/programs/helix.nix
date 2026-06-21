@@ -10,6 +10,7 @@
         bufferline = "multiple";
         cursorline = true;
         line-number = "relative";
+        lsp.display-inlay-hints = true;
 
         cursor-shape = {
           insert = "bar";
@@ -29,6 +30,10 @@
         "H" = "goto_previous_buffer";
         "home" = "goto_first_nonwhitespace";
         "C-s" = ":w";
+
+        space = {
+          "i" = ":toggle lsp.display-inlay-hints";
+        };
       };
 
       keys.insert = {

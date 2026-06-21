@@ -22,11 +22,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1782068657,
-        "narHash": "sha256-8/3PHmEJtTBgDavYvHT3djKWhlnmYLfIksBRobiv2Fo=",
+        "lastModified": 1782074901,
+        "narHash": "sha256-0O3ZZcJBMm/gI9NmLSt04QeQBfMj1sgXi1rNcl0y0Vs=",
         "ref": "refs/heads/main",
-        "rev": "82dc76f8cf3dfba721da8b917cb6e581ec3a645c",
-        "revCount": 46,
+        "rev": "c7b30db8572db64d202dfdb3d73111bde2758685",
+        "revCount": 51,
         "type": "git",
         "url": "ssh://git@gt.awroo.fun/esavojt/filefinder.git"
       },

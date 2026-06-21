@@ -4,8 +4,6 @@
     ./modules
   ];
 
-  home-manager.users.jax.imports = [./modules/home];
-
   networking = {
     hostName = "dalaptop";
   };
