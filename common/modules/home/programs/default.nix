@@ -21,8 +21,11 @@
     filefinder = {
       enable = true;
       settings = {
-        index.index_threads = 0;
         search.multithreaded_search = true;
+        index = {
+          index_threads = 0;
+          ignore_trash = true;
+        };
       };
     };
 
