@@ -78,7 +78,6 @@
     fd.enable = true;
     htop.enable = true;
     jq.enable = true;
-    lazygit.enable = true;
     ptyxis.enable = true;
     ripgrep.enable = true;
     thunderbird.enable = true;
