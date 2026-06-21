@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs.helix = {
     enable = true;
+    defaultEditor = true;
 
     settings = {
       theme = "transparent_mocha";

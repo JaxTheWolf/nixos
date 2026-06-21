@@ -11,6 +11,7 @@
       czkawka-full
       element-desktop
       gemini-cli
+      gitu
       just
       libreoffice-fresh
       nil
