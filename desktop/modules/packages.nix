@@ -2,7 +2,6 @@
   environment.systemPackages = with pkgs; [
     amdgpu_top
     arch-install-scripts
-    ccache
     fahclient
     lact
     nvtopPackages.amd
