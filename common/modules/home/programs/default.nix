@@ -78,6 +78,7 @@
 
     antigravity-cli.enable = true;
     bat.enable = true;
+    btop.enable = true;
     eza.enable = true;
     fd.enable = true;
     htop.enable = true;

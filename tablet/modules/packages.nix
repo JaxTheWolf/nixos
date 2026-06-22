@@ -3,8 +3,8 @@
 
   environment = {
     systemPackages = with pkgs; [
-      btop
       gnome-power-manager
+      nvtopPackages.msm
     ];
   };
 }
