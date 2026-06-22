@@ -22,8 +22,6 @@ in {
 
   networking = {
     hostName = "pipa";
-    networkmanager.enable = true;
-    firewall.enable = false;
   };
 
   environment.variables = {
