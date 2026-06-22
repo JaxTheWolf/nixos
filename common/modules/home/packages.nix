@@ -10,13 +10,11 @@
       bubblemail
       czkawka-full
       element-desktop
-      gemini-cli
       gitu
       just
       libreoffice-fresh
       nil
       nix-output-monitor
-      nix-your-shell
       rquickshare
       telegram-desktop
       testdisk
