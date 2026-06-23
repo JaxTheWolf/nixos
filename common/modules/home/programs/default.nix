@@ -76,7 +76,7 @@
       enableZshIntegration = true;
     };
 
-    antigravity-cli.enable = true;
+    # antigravity-cli.enable = true;
     bat.enable = true;
     btop.enable = true;
     eza.enable = true;
