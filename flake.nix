@@ -80,7 +80,7 @@
       }
     ];
 
-    mkHome = hostName:
+    mkHome = hostName: extraModules:
       home-manager.lib.homeManagerConfiguration {
         pkgs = self.nixosConfigurations.${hostName}.pkgs;
 
@@ -90,7 +90,7 @@
             osConfig = self.nixosConfigurations.${hostName}.config;
           };
 
-        modules = sharedHomeModules;
+        modules = sharedHomeModules ++ extraModules;
       };
   in {
     nixosConfigurations = {
@@ -125,9 +125,9 @@
     };
 
     homeConfigurations = {
-      "jax@epiquev2" = mkHome "epiquev2";
-      "jax@dalaptop" = mkHome "dalaptop";
-      "jax@pipa" = mkHome "pipa";
+      "jax@epiquev2" = mkHome "epiquev2" [./desktop/modules/home];
+      "jax@dalaptop" = mkHome "dalaptop" [./laptop/modules/home];
+      "jax@pipa" = mkHome "pipa" [./tablet/modules/home];
     };
 
     apps."x86_64-linux".default = {
