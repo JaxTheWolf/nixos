@@ -39,7 +39,7 @@
                   {type = "temp";}
                   {type = "net";}
                 ]
-                ++ lib.optionals (osConfig.networking.hostName == "dalaptop" && osConfig.networking.hostName == "pipa") [
+                ++ lib.optionals (osConfig.networking.hostName == "dalaptop" || osConfig.networking.hostName == "pipa") [
                   {type = "batt";}
                 ];
             }
