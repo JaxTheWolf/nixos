@@ -1,7 +1,6 @@
 {
   lib,
   buildLinux,
-  fetchFromGitea,
   fetchFromGitHub,
   runCommand,
   ...

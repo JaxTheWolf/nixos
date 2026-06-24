@@ -54,11 +54,7 @@
       [
         ./tablet
 
-        ({
-          pkgs,
-          lib,
-          ...
-        }: {
+        (_: {
           boot.kernelPackages = let
             crossPkgs = import nixpkgs {
               localSystem = "x86_64-linux";

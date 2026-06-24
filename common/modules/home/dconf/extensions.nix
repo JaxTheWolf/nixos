@@ -1,4 +1,4 @@
-{...}: {
+_: {
   dconf.settings = {
     "org/gnome/shell/extensions/user-theme" = {
       name = "Flat-Remix-Darkest-fullPanel";

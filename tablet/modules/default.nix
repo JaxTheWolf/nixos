@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{...}: {
   imports = [
     ./bootmac.nix
     ./debug.nix

@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   pipa-ucm = pkgs.runCommand "pipa-ucm-conf" {} ''
     mkdir -p "$out/share/alsa/ucm2/conf.d/sm8250"
     mkdir -p "$out/share/alsa/ucm2/Qualcomm/sm8250"

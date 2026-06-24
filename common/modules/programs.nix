@@ -22,7 +22,7 @@
 
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [];
+      libraries = []; # with pkgs; [];
     };
 
     steam = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {

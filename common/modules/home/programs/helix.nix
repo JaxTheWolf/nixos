@@ -24,26 +24,28 @@
         };
       };
 
-      keys.normal = {
-        "R" = ":reload";
-        "L" = "goto_next_buffer";
-        "H" = "goto_previous_buffer";
-        "home" = "goto_first_nonwhitespace";
-        "C-s" = ":w";
+      keys = {
+        normal = {
+          "R" = ":reload";
+          "L" = "goto_next_buffer";
+          "H" = "goto_previous_buffer";
+          "home" = "goto_first_nonwhitespace";
+          "C-s" = ":w";
 
-        space = {
-          "i" = ":toggle lsp.display-inlay-hints";
+          space = {
+            "i" = ":toggle lsp.display-inlay-hints";
+          };
         };
-      };
 
-      keys.insert = {
-        "home" = "goto_first_nonwhitespace";
-        "C-s" = [":w" "normal_mode"];
-      };
+        insert = {
+          "home" = "goto_first_nonwhitespace";
+          "C-s" = [":w" "normal_mode"];
+        };
 
-      keys.select = {
-        "home" = "goto_first_nonwhitespace";
-        "C-s" = ":w";
+        select = {
+          "home" = "goto_first_nonwhitespace";
+          "C-s" = ":w";
+        };
       };
     };
 

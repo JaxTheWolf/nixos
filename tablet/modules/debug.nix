@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options.hardware.pipa.debugMode = lib.mkEnableOption "USB Ethernet and Serial Debugging via ttyGS0";

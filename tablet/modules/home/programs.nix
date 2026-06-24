@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  osConfig,
-  ...
-}: {
+_: {
   programs = {
   };
 }

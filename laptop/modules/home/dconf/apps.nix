@@ -1,4 +1,4 @@
-{...}: {
+_: {
   dconf.settings = {
     "org/gnome/Console" = {
       custom-font = "FiraCode Nerd Font Mono 11";

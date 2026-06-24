@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+_: let
   monitorsXml = ''
     <monitors version="2">
       <configuration>

@@ -1,5 +1,4 @@
 {
-  pkgs,
   stdenvNoCC,
   fetchFromGitea,
 }:
