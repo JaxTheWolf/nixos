@@ -2,7 +2,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  isx86 = pkgs.stdenv.hostPlatform.isx86_64;
+in {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -50,7 +52,6 @@
       flat-remix-gnome
       flat-remix-gtk
       flatpak-xdg-utils
-      freerdp
       fuse
       fuse3
       gnome-tweaks
@@ -110,20 +111,15 @@
       zip
       zstd
     ]
-    ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
+    ++ lib.optionals isx86 [
       abootimg
       android-tools
       brscan4
       brscan5
       ffmpeg-full
       graalvmPackages.graalvm-oracle_25
-      mangohud
-      mission-center
       plymouth
-      prismlauncher
       ventoy-full-gtk
-      vkbasalt
-      wineWow64Packages.waylandFull
       zulu
       zulu17
       zulu8
