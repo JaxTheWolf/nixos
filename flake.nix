@@ -26,97 +26,23 @@
 
     pkgs-x86 = import nixpkgs {system = "x86_64-linux";};
 
-    sharedModules = [
-      ./common
-      nix-flatpak.nixosModules.nix-flatpak
-
-      {
-        nixpkgs.overlays = [filefinder.overlays.default];
-        nixpkgs.config.allowUnfree = true;
-      }
-
-      {
-        virtualisation.vmVariant = {
-          imports = [home-manager.nixosModules.home-manager];
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = specialArgs;
-            users.jax = {
-              imports = sharedHomeModules;
-            };
-          };
-        };
-      }
-    ];
-
-    tabletSharedModules =
-      [
-        ./tablet
-
-        (_: {
-          boot.kernelPackages = let
-            crossPkgs = import nixpkgs {
-              localSystem = "x86_64-linux";
-              crossSystem = "aarch64-linux";
-              config.allowUnfree = true;
-            };
-          in
-            crossPkgs.linuxPackagesFor (crossPkgs.callPackage ./tablet/pkgs/kernel.nix {});
-        })
-      ]
-      ++ sharedModules;
-
-    sharedHomeModules = [
-      ./common/modules/home
-      filefinder.homeManagerModules.default
-      {
-        home.username = "jax";
-        home.homeDirectory = "/home/jax";
-      }
-    ];
-
-    mkHome = hostName: extraModules:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = self.nixosConfigurations.${hostName}.pkgs;
-
-        extraSpecialArgs =
-          specialArgs
-          // {
-            osConfig = self.nixosConfigurations.${hostName}.config;
-          };
-
-        modules = sharedHomeModules ++ extraModules;
-      };
+    libs = import ./libs {inherit inputs self;};
+    mkHome = libs.mkHome;
   in {
     nixosConfigurations = {
       epiquev2 = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        modules =
-          sharedModules
-          ++ [
-            ./desktop
-            {nixpkgs.hostPlatform = "x86_64-linux";}
-          ];
+        modules = [./desktop];
       };
 
       dalaptop = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        modules =
-          sharedModules
-          ++ [
-            ./laptop
-            {nixpkgs.hostPlatform = "x86_64-linux";}
-          ];
+        modules = [./laptop];
       };
 
       pipa = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        modules =
-          tabletSharedModules
-          ++ [
-            {nixpkgs.hostPlatform = "aarch64-linux";}
-          ];
+        modules = [./tablet];
       };
     };
 

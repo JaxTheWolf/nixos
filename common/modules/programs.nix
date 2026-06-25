@@ -33,5 +33,7 @@
       protontricks.enable = true;
       remotePlay.openFirewall = true;
     };
+
+    wireshark.enable = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 true;
   };
 }

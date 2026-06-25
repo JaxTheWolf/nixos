@@ -53,7 +53,6 @@
       freerdp
       fuse
       fuse3
-      fwupd
       gnome-tweaks
       gnome.gvfs
       gparted
@@ -109,7 +108,6 @@
       which
       xz
       zip
-      zram-generator
       zstd
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
@@ -126,7 +124,6 @@
       ventoy-full-gtk
       vkbasalt
       wineWow64Packages.waylandFull
-      wireshark
       zulu
       zulu17
       zulu8
