@@ -3,7 +3,9 @@
   config,
   lib,
   ...
-}: {
+}: let
+  isx86 = pkgs.stdenv.hostPlatform.isx86_64;
+in {
   imports = [
     ./bottom.nix
     ./helix.nix
@@ -58,7 +60,7 @@
       flake = "${config.xdg.configHome}/nixos";
     };
 
-    vscode = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 {
+    vscode = lib.mkIf isx86 {
       enable = true;
       package = pkgs.vscode.fhsWithPackages (
         ps:

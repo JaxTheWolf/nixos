@@ -1,8 +1,11 @@
 {pkgs, ...}: {
   imports = [
+    ../common
     ./hardware-configuration.nix
     ./modules
   ];
+
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   boot = {
     loader = {
@@ -38,14 +41,6 @@
     amdgpu = {
       initrd.enable = true;
       overdrive.enable = true;
-    };
-
-    bluetooth = {
-      settings = {
-        General = {
-          Name = "epiquev2";
-        };
-      };
     };
 
     graphics = {

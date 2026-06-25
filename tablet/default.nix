@@ -1,14 +1,26 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   pipa-firmware = pkgs.callPackage ./pkgs/firmware.nix {};
 in {
   imports = [
+    ../common
     ./hardware-configuration.nix
     ./modules
   ];
+
+  nixpkgs.hostPlatform = "aarch64-linux";
+
+  boot.kernelPackages = let
+    crossPkgs = import inputs.nixpkgs {
+      localSystem = "x86_64-linux";
+      crossSystem = "aarch64-linux";
+    };
+  in
+    crossPkgs.linuxPackagesFor (crossPkgs.callPackage ./pkgs/kernel.nix {});
 
   hardware = {
     firmware = [

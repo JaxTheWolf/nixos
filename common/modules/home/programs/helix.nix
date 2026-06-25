@@ -26,7 +26,7 @@
 
       keys = {
         normal = {
-          "R" = ":reload";
+          "R" = ":reload-all";
           "L" = "goto_next_buffer";
           "H" = "goto_previous_buffer";
           "home" = "goto_first_nonwhitespace";

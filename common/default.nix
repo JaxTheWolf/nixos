@@ -1,6 +1,8 @@
 {
   pkgs,
   lib,
+  inputs,
+  config,
   ...
 }: let
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
@@ -8,7 +10,27 @@ in {
   imports = [
     ./modules
     ./hardware-configuration.nix
+    inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
+
+  nixpkgs = {
+    overlays = [inputs.filefinder.overlays.default];
+    config.allowUnfree = true;
+  };
+
+  virtualisation.vmVariant = {
+    imports = [inputs.home-manager.nixosModules.home-manager];
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      extraSpecialArgs = {inherit inputs;};
+      users.jax = {
+        imports = [
+          ./modules/home
+        ];
+      };
+    };
+  };
 
   documentation.nixos.enable = false;
 
@@ -112,17 +134,19 @@ in {
   users.users.jax = {
     isNormalUser = true;
     description = "Roman Lubij";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-      "qemu-libvirtd"
-      "camera"
-      "video"
-      "render"
-      "input"
-      "dialout"
-    ];
+    extraGroups =
+      [
+        "networkmanager"
+        "wheel"
+        "docker"
+        "qemu-libvirtd"
+        "camera"
+        "video"
+        "render"
+        "input"
+        "dialout"
+      ]
+      ++ lib.optional config.programs.wireshark.enable "wireshark";
 
     shell = pkgs.zsh;
     #packages = with pkgs; [ ];
@@ -158,6 +182,7 @@ in {
       settings = {
         General = {
           Experimental = true;
+          Name = config.networking.hostName;
         };
       };
     };

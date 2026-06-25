@@ -1,4 +1,4 @@
-{...}: {
+{inputs, ...}: {
   imports = [
     ./dconf
     ./programs
@@ -7,9 +7,14 @@
     ./desktop-files.nix
     ./packages.nix
     ./services.nix
+    inputs.filefinder.homeManagerModules.default
   ];
 
-  xdg.enable = true;
+  home = {
+    username = "jax";
+    homeDirectory = "/home/jax";
+    stateVersion = "25.05";
+  };
 
-  home.stateVersion = "25.05";
+  xdg.enable = true;
 }

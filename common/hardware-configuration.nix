@@ -2,7 +2,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  isx86 = pkgs.stdenv.hostPlatform.isx86_64;
+in {
   boot = {
     initrd = {
       availableKernelModules = [
@@ -20,6 +22,6 @@
       "hid-logitech-hidpp"
     ];
 
-    kernelPackages = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelPackages = lib.mkIf isx86 pkgs.linuxKernel.packages.linux_xanmod_latest;
   };
 }
