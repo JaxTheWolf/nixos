@@ -13,8 +13,10 @@ in {
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
 
-  nixpkgs.overlays = [inputs.filefinder.overlays.default];
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    overlays = [inputs.filefinder.overlays.default];
+    config.allowUnfree = true;
+  };
 
   virtualisation.vmVariant = {
     imports = [inputs.home-manager.nixosModules.home-manager];

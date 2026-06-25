@@ -20,27 +20,29 @@
     done
   '';
 in {
-  systemd.user.services.sync-nix-repos = {
-    Unit = {
-      Description = "Background sync for Nix Config and Dev Shells";
-      After = ["network-online.target"];
-      Wants = ["network-online.target"];
+  systemd.user = {
+    services.sync-nix-repos = {
+      Unit = {
+        Description = "Background sync for Nix Config and Dev Shells";
+        After = ["network-online.target"];
+        Wants = ["network-online.target"];
+      };
+
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${syncScript}";
+        PassEnvironment = ["DBUS_SESSION_BUS_ADDRESS" "DISPLAY"];
+      };
     };
 
-    Service = {
-      Type = "oneshot";
-      ExecStart = "${syncScript}";
-      PassEnvironment = ["DBUS_SESSION_BUS_ADDRESS" "DISPLAY"];
+    timers.sync-nix-repos = {
+      Unit.Description = "Hourly sync for all Nix repositories";
+      Timer = {
+        OnBootSec = "20s";
+        OnUnitActiveSec = "1h";
+        Persistent = true;
+      };
+      Install.WantedBy = ["timers.target"];
     };
-  };
-
-  systemd.user.timers.sync-nix-repos = {
-    Unit.Description = "Hourly sync for all Nix repositories";
-    Timer = {
-      OnBootSec = "20s";
-      OnUnitActiveSec = "1h";
-      Persistent = true;
-    };
-    Install.WantedBy = ["timers.target"];
   };
 }

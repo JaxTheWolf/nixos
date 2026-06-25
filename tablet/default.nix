@@ -18,7 +18,6 @@ in {
     crossPkgs = import inputs.nixpkgs {
       localSystem = "x86_64-linux";
       crossSystem = "aarch64-linux";
-      config.allowUnfree = true;
     };
   in
     crossPkgs.linuxPackagesFor (crossPkgs.callPackage ./pkgs/kernel.nix {});

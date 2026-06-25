@@ -37,17 +37,19 @@
     };
   };
 
-  systemd.sleep.settings.Sleep = {
-    HibernateDelaySec = "5min";
-  };
+  systemd = {
+    sleep.settings.Sleep = {
+      HibernateDelaySec = "5min";
+    };
 
-  systemd.services.disable-problematic-wakeup = {
-    description = "Disable only specific noisy wakeup sources";
-    wantedBy = ["multi-user.target"];
+    services.disable-problematic-wakeup = {
+      description = "Disable only specific noisy wakeup sources";
+      wantedBy = ["multi-user.target"];
 
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.bash}/bin/bash -c 'for device in XHC RP09 RP10 RP13; do if grep -q \"$device.*enabled\" /proc/acpi/wakeup; then echo $device > /proc/acpi/wakeup; fi; done'";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.bash}/bin/bash -c 'for device in XHC RP09 RP10 RP13; do if grep -q \"$device.*enabled\" /proc/acpi/wakeup; then echo $device > /proc/acpi/wakeup; fi; done'";
+      };
     };
   };
 }
