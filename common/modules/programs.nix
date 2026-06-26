@@ -30,7 +30,6 @@ in {
     steam = lib.mkIf isx86 {
       dedicatedServer.openFirewall = true;
       enable = true;
-      extest.enable = true;
       gamescopeSession.enable = true;
       protontricks.enable = true;
       remotePlay.openFirewall = true;
