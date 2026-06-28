@@ -7,7 +7,10 @@
   };
   lib = inputs.nixpkgs.lib;
 in {
-  mkHome = hostName: extraModules: let
+  mkHome = {
+    hostName,
+    extraModules ? [],
+  }: let
     hasNixosConfig = self.nixosConfigurations ? ${hostName};
     pkgs =
       if hasNixosConfig
@@ -35,7 +38,10 @@ in {
         };
 
       modules =
-        [../common/modules/home]
+        [
+          ../common/modules/home
+          ../${hostName}/modules/home
+        ]
         ++ lib.optionals (!lib.strings.hasInfix "server" hostName) [../common/modules/home/gui]
         ++ extraModules;
     };

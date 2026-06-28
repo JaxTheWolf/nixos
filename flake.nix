@@ -32,25 +32,25 @@
     nixosConfigurations = {
       epiquev2 = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        modules = [./desktop];
+        modules = [./epiquev2];
       };
 
       dalaptop = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        modules = [./laptop];
+        modules = [./dalaptop];
       };
 
       pipa = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        modules = [./tablet];
+        modules = [./pipa];
       };
     };
 
     homeConfigurations = {
-      "jax@epiquev2" = mkHome "epiquev2" [./desktop/modules/home];
-      "jax@dalaptop" = mkHome "dalaptop" [./laptop/modules/home];
-      "jax@pipa" = mkHome "pipa" [./tablet/modules/home];
-      "jax@lenovo-server" = mkHome "lenovo-server" [];
+      "jax@epiquev2" = mkHome {hostName = "epiquev2";};
+      "jax@dalaptop" = mkHome {hostName = "dalaptop";};
+      "jax@pipa" = mkHome {hostName = "pipa";};
+      "jax@lenovo-server" = mkHome {hostName = "lenovo-server";};
     };
 
     apps."x86_64-linux".default = {
