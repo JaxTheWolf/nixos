@@ -13,6 +13,7 @@
   home = {
     username = "jax";
     homeDirectory = "/home/jax";
+    backupFileExtension = "hm-backup";
     stateVersion = "25.05";
   };
 
