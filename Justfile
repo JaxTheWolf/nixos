@@ -23,7 +23,7 @@ home *args:
 # --- Building System & Home Closures ---
 
 build-os host:
-    nix build .#nixosConfigurations.{{host}}.config.system.build.toplevel --log-format internal-json -o result-{{host}} |& nom --json
+     nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.{{host}}.config.system.build.toplevel --log-format internal-json -o result-{{host}} |& nom --json
 
 build-os-laptop:
     just build-os dalaptop
@@ -35,7 +35,7 @@ build-os-all:
     # just build-os lenovo-server
 
 build-home host:
-    nix build .#homeConfigurations."{{user}}@{{host}}".activationPackage -o result-home-{{host}}
+     nix run nixpkgs#nix-output-monitor -- build .#homeConfigurations."{{user}}@{{host}}".activationPackage -o result-home-{{host}}
 
 build-home-all:
     just build-home epiquev2
@@ -44,7 +44,7 @@ build-home-all:
     just build-home lenovo-server
 
 vm host:
-    nix build .#nixosConfigurations.{{host}}.config.system.build.vm
+    nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.{{host}}.config.system.build.vm
     ./result/bin/run-{{host}}-vm
 
 # --- Caching ---
@@ -59,7 +59,7 @@ deploy-tablet action="switch":
     nh os {{action}} . -H pipa --target-host {{tablet_ip}}
 
 build-tablet-kernel:
-    nix build .#nixosConfigurations.pipa.config.boot.kernelPackages.kernel -o result-tablet-kernel |& nom --json
+    nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.pipa.config.boot.kernelPackages.kernel -o result-tablet-kernel |& nom --json
 
 build-tablet-images:
     nix run
