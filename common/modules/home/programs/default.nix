@@ -31,16 +31,6 @@ in {
       };
     };
 
-    firefox = {
-      enable = true;
-      configPath = "${config.xdg.configHome}/mozilla/firefox";
-      languagePacks = [
-        "cs"
-        "en-GB"
-        "en-US"
-      ];
-    };
-
     fzf = {
       enable = true;
       enableZshIntegration = true;
@@ -60,19 +50,6 @@ in {
       flake = "${config.xdg.configHome}/nixos";
     };
 
-    vscode = lib.mkIf isx86 {
-      enable = true;
-      package = pkgs.vscode.fhsWithPackages (
-        ps:
-          with ps; [
-            python3
-            zlib
-            gcc
-            gnumake
-          ]
-      );
-    };
-
     zoxide = {
       enable = true;
       enableZshIntegration = true;
@@ -85,9 +62,7 @@ in {
     fd.enable = true;
     htop.enable = true;
     jq.enable = true;
-    ptyxis.enable = true;
     ripgrep.enable = true;
-    thunderbird.enable = true;
     zsh.enable = true;
   };
 }
