@@ -1,11 +1,4 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}: let
-  isx86 = pkgs.stdenv.hostPlatform.isx86_64;
-in {
+{config, ...}: {
   imports = [
     ./bottom.nix
     ./helix.nix
@@ -26,7 +19,7 @@ in {
         search.multithreaded_search = true;
         index = {
           index_threads = 0;
-          ignore_trash = true;
+          ignore_paths = [".trash" ".git" ".seafile-data" ".direnv" ".venv" ".nix-profile" ".nix-defexpr" "cache"];
         };
       };
     };
