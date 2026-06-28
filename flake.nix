@@ -44,6 +44,28 @@
         inherit specialArgs;
         modules = [./pipa];
       };
+
+      pipa-cross = nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        modules = [
+          ./pipa
+
+          ({
+            config,
+            pkgs,
+            lib,
+            ...
+          }: {
+            boot.kernelPackages = let
+              crossPkgs = import inputs.nixpkgs {
+                localSystem = "x86_64-linux";
+                crossSystem = "aarch64-linux";
+              };
+            in
+              lib.mkForce (crossPkgs.linuxPackagesFor (crossPkgs.callPackage ./pipa/pkgs/kernel.nix {}));
+          })
+        ];
+      };
     };
 
     homeConfigurations = {
@@ -58,7 +80,7 @@
       program = "${
         pkgs-x86.callPackage ./tablet/pkgs/build-images.nix {
           pkgs = pkgs-x86;
-          toplevel = self.nixosConfigurations.pipa.config.system.build.toplevel;
+          toplevel = self.nixosConfigurations.pipa-cross.config.system.build.toplevel;
         }
       }/bin/build-pipa-images";
     };

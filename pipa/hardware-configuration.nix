@@ -1,6 +1,7 @@
 {
   lib,
   modulesPath,
+  pkgs,
   ...
 }: {
   imports = [
@@ -46,6 +47,7 @@
       "rootwait"
     ];
 
+    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ./pkgs/kernel.nix {});
     kernelModules = [];
     extraModulePackages = [];
   };
