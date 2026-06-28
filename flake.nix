@@ -50,6 +50,7 @@
       "jax@epiquev2" = mkHome "epiquev2" [./desktop/modules/home];
       "jax@dalaptop" = mkHome "dalaptop" [./laptop/modules/home];
       "jax@pipa" = mkHome "pipa" [./tablet/modules/home];
+      "jax@lenovo-server" = mkHome "lenovo-server" [];
     };
 
     apps."x86_64-linux".default = {

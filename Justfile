@@ -32,6 +32,7 @@ build-os-all:
     just build-os epiquev2
     just build-os dalaptop
     just build-os pipa
+    # just build-os lenovo-server
 
 build-home host:
     nix build .#homeConfigurations."{{user}}@{{host}}".activationPackage -o result-home-{{host}}
@@ -40,6 +41,7 @@ build-home-all:
     just build-home epiquev2
     just build-home dalaptop
     just build-home pipa
+    just build-home lenovo-server
 
 vm host:
     nix build .#nixosConfigurations.{{host}}.config.system.build.vm

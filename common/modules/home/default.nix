@@ -1,10 +1,7 @@
 {inputs, ...}: {
   imports = [
-    ./dconf
     ./programs
     ./activation.nix
-    ./autostart.nix
-    ./desktop-files.nix
     ./packages.nix
     ./services.nix
     inputs.filefinder.homeManagerModules.default
