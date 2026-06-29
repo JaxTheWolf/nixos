@@ -23,7 +23,7 @@ home *args:
 # --- Building System & Home Closures ---
 
 build-os host:
-     nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.{{host}}.config.system.build.toplevel --log-format internal-json -o result-{{host}} |& nom --json
+     nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.{{host}}.config.system.build.toplevel --log-format internal-json -o result-{{host}}
 
 build-os-laptop:
     just build-os dalaptop
@@ -59,7 +59,7 @@ deploy-tablet action="switch":
     nh os {{action}} . -H pipa --target-host {{tablet_ip}}
 
 build-tablet-kernel:
-    nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.pipa.config.boot.kernelPackages.kernel -o result-tablet-kernel |& nom --json
+    nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.pipa.config.boot.kernelPackages.kernel -o result-tablet-kernel
 
 build-tablet-images:
     nix run
