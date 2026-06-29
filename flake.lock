@@ -22,11 +22,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1782744595,
-        "narHash": "sha256-j9Q+Srr90+897Ba61mgoPcg9n/UkHDtZ4HV+BDNLqnA=",
+        "lastModified": 1782767083,
+        "narHash": "sha256-3I2xzOLVXHm7k2NUFdLmGoWVBRgY0yFaK6tBhC4QaYU=",
         "ref": "refs/heads/main",
-        "rev": "5b1c8ea39de13820e8fa099ae2d6748cf2897caa",
-        "revCount": 85,
+        "rev": "f0661e2a9824c4034e8dbaf8d3fa869fe67726f3",
+        "revCount": 89,
         "type": "git",
         "url": "ssh://git@gt.awroo.fun/esavojt/filefinder.git"
       },
@@ -42,11 +42,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782702263,
-        "narHash": "sha256-8/MG4Su7PhnynrmsVO61IeAfrK7GuUEu+E+gwbhy1QQ=",
+        "lastModified": 1782749631,
+        "narHash": "sha256-slFTUgDy0KTPA4LBAmC/9SngDq8GCPdX+ZR0yQHHN1E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "789a35fbdeb3c46b260096daa0b321c11be527ea",
+        "rev": "5d72a29fc36ac21adae6ae35568fe5ee6700850f",
         "type": "github"
       },
       "original": {
