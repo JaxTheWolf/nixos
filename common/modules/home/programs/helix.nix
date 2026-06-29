@@ -22,6 +22,10 @@
           character = "│";
           enable = true;
         };
+
+        file-picker = {
+          hidden = false;
+        };
       };
 
       keys = {
