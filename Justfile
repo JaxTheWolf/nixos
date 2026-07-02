@@ -37,11 +37,15 @@ build-os-all:
 build-home host:
      nix run nixpkgs#nix-output-monitor -- build .#homeConfigurations."{{user}}@{{host}}".activationPackage -o result-home-{{host}}
 
+build-home-oracle:
+    nix run nixpkgs#nix-output-monitor -- build .#homeConfigurations."ubuntu@oracle-server".activationPackage -o result-home-oracle-server
+
 build-home-all:
     just build-home epiquev2
     just build-home dalaptop
     just build-home pipa
     just build-home lenovo-server
+    just build-home-oracle
 
 vm host:
     nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.{{host}}.config.system.build.vm
