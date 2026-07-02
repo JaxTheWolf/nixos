@@ -9,6 +9,7 @@
 in {
   mkHome = {
     hostName,
+    system ? "x86_64-linux",
     extraModules ? [],
   }: let
     hasNixosConfig = self.nixosConfigurations ? ${hostName};
@@ -17,7 +18,7 @@ in {
       then self.nixosConfigurations.${hostName}.pkgs
       else
         import inputs.nixpkgs {
-          system = "x86_64-linux";
+          inherit system;
           config.allowUnfree = true;
           overlays = [inputs.filefinder.overlays.default];
         };
@@ -26,6 +27,7 @@ in {
       then self.nixosConfigurations.${hostName}.config
       else {
         networking.hostName = hostName;
+        nixpkgs.hostPlatform = system;
       };
   in
     inputs.home-manager.lib.homeManagerConfiguration {
