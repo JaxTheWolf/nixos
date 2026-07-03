@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.qbootctl];
+  environment.systemPackages = [pkgs.qbootctl-pipa];
 
   systemd.services.mark-boot-successful = {
     description = "Mark Qualcomm A/B boot slot as successful";
@@ -12,7 +12,7 @@
       Type = "oneshot";
       RemainAfterExit = true;
 
-      ExecStart = "${pkgs.qbootctl}/bin/qbootctl -m";
+      ExecStart = "${pkgs.qbootctl-pipa}/bin/qbootctl -m";
 
       CapabilityBoundingSet = "CAP_SYS_ADMIN";
       ProtectSystem = "strict";

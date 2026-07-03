@@ -3,7 +3,6 @@
     systemPackages = with pkgs; [
       gnome-power-manager
       nvtopPackages.msm
-      pipa-headers
     ];
   };
 }
