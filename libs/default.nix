@@ -53,8 +53,8 @@ in {
 
       modules =
         [
-          ../common/modules/home
-          ../${hostName}/modules/home
+          ../hosts/common/modules/home
+          ../hosts/${hostName}/modules/home
 
           {
             home = {
@@ -66,7 +66,7 @@ in {
             };
           }
         ]
-        ++ lib.optionals (!lib.strings.hasInfix "server" hostName) [../common/modules/home/gui]
+        ++ lib.optionals (!lib.strings.hasInfix "server" hostName) [../hosts/common/modules/home/gui]
         ++ extraModules;
     };
 }

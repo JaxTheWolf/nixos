@@ -30,17 +30,17 @@
     nixosConfigurations = {
       epiquev2 = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        modules = [./epiquev2];
+        modules = [./hosts/epiquev2];
       };
 
       dalaptop = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        modules = [./dalaptop];
+        modules = [./hosts/dalaptop];
       };
 
       pipa = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        modules = [./pipa];
+        modules = [./hosts/pipa];
       };
     };
 
