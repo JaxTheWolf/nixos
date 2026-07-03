@@ -2,6 +2,7 @@
   stdenv,
   fetchFromGitHub,
   perl,
+  rsync,
 }:
 stdenv.mkDerivation {
   pname = "linux-headers-pipa";
@@ -14,7 +15,7 @@ stdenv.mkDerivation {
     hash = "sha256-OAgEjxbv8nY5VLW+mlnh0GeZDC6yHH7MF2sEgcMu9NE=";
   };
 
-  nativeBuildInputs = [perl];
+  nativeBuildInputs = [perl rsync];
 
   dontConfigure = true;
 
