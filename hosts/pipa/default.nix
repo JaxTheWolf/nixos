@@ -1,25 +1,15 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
-  pipa-firmware = pkgs.callPackage ./pkgs/firmware.nix {};
-in {
+_: {
   imports = [
     ../common
     ./hardware-configuration.nix
     ./modules
   ];
 
-  nixpkgs.hostPlatform = "aarch64-linux";
-
-  hardware = {
-    firmware = [
-      pipa-firmware
+  nixpkgs = {
+    hostPlatform = "aarch64-linux";
+    overlays = [
+      (import ./pkgs)
     ];
-
-    enableRedistributableFirmware = lib.mkDefault true;
-    deviceTree.name = "qcom/sm8250-xiaomi-pipa.dtb";
   };
 
   networking = {
