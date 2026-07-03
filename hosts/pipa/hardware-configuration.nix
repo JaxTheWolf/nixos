@@ -47,9 +47,18 @@
       "rootwait"
     ];
 
-    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ./pkgs/kernel.nix {});
+    kernelPackages = pkgs.linuxPackagesFor pkgs.pipa-kernel;
     kernelModules = [];
     extraModulePackages = [];
+  };
+
+  hardware = {
+    firmware = [
+      pkgs.pipa-firmware
+    ];
+
+    enableRedistributableFirmware = lib.mkDefault true;
+    deviceTree.name = "qcom/sm8250-xiaomi-pipa.dtb";
   };
 
   fileSystems = {
