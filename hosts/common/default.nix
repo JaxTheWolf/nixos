@@ -14,12 +14,7 @@ in {
   ];
 
   nixpkgs = {
-    overlays = [
-      inputs.filefinder.overlays.default
-      (final: _prev: {
-        pnpm_10_29_2 = final.pnpm_10;
-      })
-    ];
+    overlays = [inputs.filefinder.overlays.default];
     config.allowUnfree = true;
   };
 
