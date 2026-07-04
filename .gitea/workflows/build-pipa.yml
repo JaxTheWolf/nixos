@@ -22,16 +22,27 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Authenticate with Attic and use it
+        env:
+          ATTIC_TOKEN: ${{ secrets.ATTIC_TOKEN }}
         run: |
-          attic login attic-awroo-fun https://attic.awroo.fun ${{ secrets.ATTIC_TOKEN }}
+          attic login attic-awroo-fun https://attic.awroo.fun $ATTIC_TOKEN
 
       - name: Set up SSH key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_gitea
+          cat <<EOF > ~/.ssh/id_gitea
+          $SSH_PRIVATE_KEY
+          EOF
+
+          cat <<EOF > ~/.ssh/known_hosts
+          $KNOWN_HOSTS
+          EOF
+          
           chmod 600 ~/.ssh/id_gitea
           echo -e "Host gt.awroo.fun\n IdentityFile ~/.ssh/id_gitea\n IdentitiesOnly yes\n Port 2220\n HostName 89.176.245.38" > ~/.ssh/config
-          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           ssh -T git@gt.awroo.fun
 
       - name: Build System Closure
