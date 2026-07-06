@@ -5,9 +5,6 @@
       settings.PermitRootLogin = "no";
     };
 
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-
     avahi = {
       enable = true;
       nssmdns4 = true;
