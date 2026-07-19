@@ -8,8 +8,8 @@
   rawSrc = fetchFromGitHub {
     owner = "PipaDB";
     repo = "linux";
-    rev = "dba2f27e87cfa398cc5e5eb76e4beac30c2ecc71";
-    hash = "sha256-OAgEjxbv8nY5VLW+mlnh0GeZDC6yHH7MF2sEgcMu9NE=";
+    rev = "e64607dc60963a05133304a8b682818ee4412106";
+    hash = "sha256-3x5sCDfwzZ5A0NWJRw8mjX9FnxcA06UEcZkmf/QKJ9A=";
   };
 
   patchedSrc = runCommand "linux-src-pipa" {} ''
@@ -22,8 +22,8 @@
 in
   buildLinux (args
     // {
-      version = "7.0.8";
-      modDirVersion = "7.0.8";
+      version = "7.1.0";
+      modDirVersion = "7.1.0";
       src = patchedSrc;
       defconfig = "pipa.config";
       ignoreConfigErrors = true;

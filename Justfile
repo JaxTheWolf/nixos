@@ -1,6 +1,6 @@
 # --- Variables ---
 cache := "my-config"
-tablet_ip := "nixos@192.168.0.115"
+tablet_ip := "jax@192.168.0.54"
 user := "jax"
 
 # --- Default ---
