@@ -15,13 +15,10 @@
 
     xserver = {
       enable = true;
+      exportConfiguration = true;
       excludePackages = with pkgs; [
         xterm
       ];
-      xkb = {
-        layout = "cz";
-        variant = "";
-      };
     };
 
     pulseaudio.enable = false;
