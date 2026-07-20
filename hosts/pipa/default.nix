@@ -16,6 +16,10 @@ _: {
     hostName = "pipa";
   };
 
+  myConfig = {
+    role = "tablet";
+  };
+
   environment.variables = {
     SYSTEMD_RELAX_ESP_CHECKS = "1";
   };

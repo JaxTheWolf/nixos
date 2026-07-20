@@ -28,22 +28,8 @@
     spiceUSBRedirection.enable = true;
   };
 
-  hardware = {
-    cpu.amd.updateMicrocode = true;
-
-    amdgpu = {
-      initrd.enable = true;
-      overdrive.enable = true;
-    };
-
-    graphics = {
-      extraPackages = with pkgs; [
-        rocmPackages.clr.icd
-        rocmPackages.rocminfo
-        rocmPackages.rocm-smi
-      ];
-    };
-
-    amdgpu.opencl.enable = true;
+  myConfig = {
+    role = "workstation";
+    hardware.gpu = "amd";
   };
 }

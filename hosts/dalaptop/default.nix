@@ -11,14 +11,8 @@
     hostName = "dalaptop";
   };
 
-  hardware = {
-    cpu.intel.updateMicrocode = true;
-
-    graphics = {
-      extraPackages = with pkgs; [
-        vaapi-intel-hybrid
-        vpl-gpu-rt
-      ];
-    };
+  myConfig = {
+    role = "laptop";
+    hardware.gpu = "intel";
   };
 }

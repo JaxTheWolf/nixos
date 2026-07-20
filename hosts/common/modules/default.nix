@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ../options.nix
     ./attic.nix
     ./flatpak.nix
     ./gnome.nix
