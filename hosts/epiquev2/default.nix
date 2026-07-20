@@ -9,14 +9,7 @@
 
   boot = {
     loader = {
-      systemd-boot = {
-        # windows = {
-        #   "w" = {
-        #     title = "Windows";
-        #     efiDeviceHandle = "HD3b";
-        #   };
-        # };
-      };
+      systemd-boot = {};
     };
     tmp.useTmpfs = true;
   };

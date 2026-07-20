@@ -124,9 +124,7 @@ in {
         "dialout"
       ]
       ++ lib.optional config.programs.wireshark.enable "wireshark";
-
     shell = pkgs.zsh;
-    #packages = with pkgs; [ ];
   };
 
   environment = {
