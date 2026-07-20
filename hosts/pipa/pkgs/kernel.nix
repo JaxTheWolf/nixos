@@ -1,17 +1,11 @@
 {
   lib,
   buildLinux,
-  fetchFromGitHub,
   runCommand,
+  rawSrc,
+  version,
   ...
 } @ args: let
-  rawSrc = fetchFromGitHub {
-    owner = "PipaDB";
-    repo = "linux";
-    rev = "e64607dc60963a05133304a8b682818ee4412106";
-    hash = "sha256-3x5sCDfwzZ5A0NWJRw8mjX9FnxcA06UEcZkmf/QKJ9A=";
-  };
-
   patchedSrc = runCommand "linux-src-pipa" {} ''
     cp -a ${rawSrc} $out
     chmod -R +w $out
@@ -22,8 +16,8 @@
 in
   buildLinux (args
     // {
-      version = "7.1.0";
-      modDirVersion = "7.1.0";
+      version = version;
+      modDirVersion = version;
       src = patchedSrc;
       defconfig = "pipa.config";
       ignoreConfigErrors = true;
@@ -141,5 +135,5 @@ in
         RUNTIME_TESTING_MENU = no;
       };
 
-      extraMeta.branch = "7.0";
+      extraMeta.branch = lib.versions.majorMinor version;
     })
