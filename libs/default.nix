@@ -3,7 +3,7 @@
   self,
 }: let
   specialArgs = {
-    inherit inputs;
+    inherit inputs self;
   };
   lib = inputs.nixpkgs.lib;
 in {
@@ -13,9 +13,11 @@ in {
   }:
     lib.nixosSystem {
       inherit specialArgs;
-      modules = [
-        ../hosts/${name}
-      ] ++ extraModules;
+      modules =
+        [
+          ../hosts/${name}
+        ]
+        ++ extraModules;
     };
 
   mkHome = {

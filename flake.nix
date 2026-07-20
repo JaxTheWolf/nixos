@@ -23,6 +23,8 @@
     mkHome = libs.mkHome;
     mkNixos = libs.mkNixos;
   in {
+    overlays = import ./overlays {inherit inputs;};
+
     nixosConfigurations = {
       epiquev2 = mkNixos {name = "epiquev2";};
       dalaptop = mkNixos {name = "dalaptop";};

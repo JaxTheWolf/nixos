@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  self,
   ...
 }: let
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
@@ -117,18 +118,7 @@ in {
     };
 
     overlays = [
-      (final: prev: {
-        nautilus = prev.nautilus.overrideAttrs (nprev: {
-          buildInputs =
-            nprev.buildInputs
-            ++ (with pkgs.gst_all_1; [
-              gst-plugins-bad
-              gst-plugins-base
-              gst-plugins-good
-              gst-plugins-ugly
-            ]);
-        });
-      })
+      self.overlays.nautilus
     ];
   };
 
