@@ -1,7 +1,6 @@
 {...}: {
   imports = [
     ./bootmac.nix
-    ./debug.nix
     ./gdm-monitors.nix
     ./packages.nix
     ./programs.nix

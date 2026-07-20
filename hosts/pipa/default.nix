@@ -23,6 +23,4 @@ _: {
   security.sudo.extraConfig = ''
     Defaults env_keep += "SYSTEMD_RELAX_ESP_CHECKS"
   '';
-
-  hardware.pipa.debugMode = false;
 }
