@@ -1,5 +1,5 @@
 _: {
   programs.zsh.shellAliases = {
-    update = "sudo dnf update";
+    update = "sudo apt update && sudo apt upgrade";
   };
 }
