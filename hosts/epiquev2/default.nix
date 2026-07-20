@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   imports = [
     ../common
     ./hardware-configuration.nix
