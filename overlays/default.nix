@@ -1,3 +1,3 @@
-{inputs, ...}: {
+_: {
   nautilus = import ./nautilus.nix;
 }

@@ -16,7 +16,7 @@
 in
   buildLinux (args
     // {
-      version = version;
+      inherit version;
       modDirVersion = version;
       src = patchedSrc;
       defconfig = "pipa.config";

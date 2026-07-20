@@ -12,16 +12,9 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nix-flatpak,
-    home-manager,
-    filefinder,
-  } @ inputs: let
+  outputs = {self} @ inputs: let
     libs = import ./libs {inherit inputs self;};
-    mkHome = libs.mkHome;
-    mkNixos = libs.mkNixos;
+    inherit (libs) mkHome mkNixos;
   in {
     overlays = import ./overlays {inherit inputs;};
 
