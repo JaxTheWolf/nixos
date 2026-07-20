@@ -5,24 +5,24 @@
   ...
 }: let
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
-  hasClion = isx86 && builtins.elem pkgs.jetbrains.clion config.home.packages;
+  # hasClion = isx86 && builtins.elem pkgs.jetbrains.clion config.home.packages;
   hasPacketTracer = isx86 && builtins.elem pkgs.cisco-packet-tracer_9 config.home.packages;
 in {
   xdg.dataFile = lib.attrsets.mergeAttrsList [
-    (lib.optionalAttrs hasClion {
-      "applications/clion.desktop".text = ''
-        [Desktop Entry]
-        Type=Application
-        Name=CLion (Nix Shell)
-        GenericName=C/C++ IDE from JetBrains
-        Exec=sh -c "nix develop ${config.xdg.configHome}/nix-shells/cpp -c clion %f"
-        Icon=clion
-        Terminal=false
-        Categories=Development;IDE;
-        StartupWMClass=jetbrains-clion
-        MimeType=text/x-c++src;text/x-c++hdr;text/x-csrc;text/x-chdr;
-      '';
-    })
+    # (lib.optionalAttrs hasClion {
+    #   "applications/clion.desktop".text = ''
+    #     [Desktop Entry]
+    #     Type=Application
+    #     Name=CLion (Nix Shell)
+    #     GenericName=C/C++ IDE from JetBrains
+    #     Exec=sh -c "nix develop ${config.xdg.configHome}/nix-shells/cpp -c clion %f"
+    #     Icon=clion
+    #     Terminal=false
+    #     Categories=Development;IDE;
+    #     StartupWMClass=jetbrains-clion
+    #     MimeType=text/x-c++src;text/x-c++hdr;text/x-csrc;text/x-chdr;
+    #   '';
+    # })
 
     (lib.optionalAttrs hasPacketTracer {
       "applications/cisco-packet-tracer-9.desktop".text = ''

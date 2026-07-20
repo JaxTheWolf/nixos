@@ -22,7 +22,7 @@ in {
       discord
       gimp
       inkscape
-      jetbrains.clion
+      # jetbrains.clion
       mangohud
       mission-center
       prismlauncher

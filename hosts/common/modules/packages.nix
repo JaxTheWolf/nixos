@@ -80,7 +80,6 @@ in {
       lz4
       lzip
       lzop
-      mesa-demos
       ncdu
       networkmanager-openconnect
       ntfs3g
@@ -91,7 +90,6 @@ in {
       pigz
       poppler-utils
       pulseaudio
-      screen
       seafile-client
       smartmontools
       solaar
@@ -119,7 +117,6 @@ in {
       plymouth
       ventoy-full-gtk
       zulu
-      zulu17
       zulu8
     ];
 
