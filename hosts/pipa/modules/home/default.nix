@@ -1,6 +1,5 @@
-{...}: {
+_: {
   imports = [
-    ./packages.nix
-    ./programs.nix
+    ./zsh.nix
   ];
 }
