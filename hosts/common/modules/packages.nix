@@ -4,6 +4,109 @@
   ...
 }: let
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
+
+  coreUtils = with pkgs; [
+    curl
+    file
+    killall
+    lsof
+    ncdu
+    pciutils
+    tree
+    usbutils
+    wget
+    which
+  ];
+
+  archiveTools = with pkgs; [
+    bzip2
+    file-roller
+    gzip
+    lrzip
+    lz4
+    lzip
+    lzop
+    pbzip2
+    pigz
+    unrar
+    unzip
+    xz
+    zip
+    zstd
+  ];
+
+  mediaAndThumbnails = with pkgs; [
+    ffmpegthumbnailer
+    gst_all_1.gst-libav
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-ugly
+    gst_all_1.gstreamer
+    libgsf
+    nufraw-thumbnailer
+    poppler-utils
+    pulseaudio
+    sushi
+    tumbler
+    webp-pixbuf-loader
+  ];
+
+  systemAdminAndHardware = with pkgs; [
+    appstream
+    aspell
+    aspellDicts.cs
+    aspellDicts.en
+    aspellDicts.es
+    attic-client
+    btrfs-progs
+    ddcutil
+    distrobox
+    docker-buildx
+    docker-compose
+    flatpak-xdg-utils
+    fuse
+    fuse3
+    gparted
+    gphoto2
+    i2c-tools
+    iftop
+    iotop
+    linux-firmware
+    lm_sensors
+    logitech-udev-rules
+    networkmanager-openconnect
+    ntfs3g
+    smartmontools
+  ];
+
+  desktopAndTheming = with pkgs; [
+    bibata-cursors
+    flat-remix-gnome
+    flat-remix-gtk
+    gnome-tweaks
+    gnome.gvfs
+    gvfs
+    libnotify
+    libsForQt5.qtstyleplugins
+    papirus-icon-theme
+    seafile-client
+    solaar
+    wev
+  ];
+
+  x86Packages = with pkgs; [
+    abootimg
+    android-tools
+    brscan4
+    brscan5
+    ffmpeg-full
+    graalvmPackages.graalvm-oracle_25
+    plymouth
+    ventoy-full-gtk
+    zulu
+    zulu8
+  ];
 in {
   nixpkgs = {
     config = {
@@ -29,96 +132,13 @@ in {
     ];
   };
 
-  environment.systemPackages = with pkgs;
-    [
-      appstream
-      aspell
-      aspellDicts.cs
-      aspellDicts.en
-      aspellDicts.es
-      attic-client
-      bibata-cursors
-      btrfs-progs
-      bzip2
-      curl
-      ddcutil
-      distrobox
-      docker-buildx
-      docker-compose
-      ffmpegthumbnailer
-      file
-      file-roller
-      flat-remix-gnome
-      flat-remix-gtk
-      flatpak-xdg-utils
-      fuse
-      fuse3
-      gnome-tweaks
-      gnome.gvfs
-      gparted
-      gphoto2
-      gst_all_1.gst-libav
-      gst_all_1.gst-plugins-bad
-      gst_all_1.gst-plugins-base
-      gst_all_1.gst-plugins-good
-      gst_all_1.gst-plugins-ugly
-      gst_all_1.gstreamer
-      gvfs
-      gzip
-      i2c-tools
-      iftop
-      iotop
-      killall
-      libgsf
-      libnotify
-      libsForQt5.qtstyleplugins
-      linux-firmware
-      lm_sensors
-      logitech-udev-rules
-      lrzip
-      lsof
-      lz4
-      lzip
-      lzop
-      ncdu
-      networkmanager-openconnect
-      ntfs3g
-      nufraw-thumbnailer
-      papirus-icon-theme
-      pbzip2
-      pciutils
-      pigz
-      poppler-utils
-      pulseaudio
-      seafile-client
-      smartmontools
-      solaar
-      sushi
-      tree
-      tumbler
-      unrar
-      unzip
-      usbutils
-      webp-pixbuf-loader
-      wev
-      wget
-      which
-      xz
-      zip
-      zstd
-    ]
-    ++ lib.optionals isx86 [
-      abootimg
-      android-tools
-      brscan4
-      brscan5
-      ffmpeg-full
-      graalvmPackages.graalvm-oracle_25
-      plymouth
-      ventoy-full-gtk
-      zulu
-      zulu8
-    ];
+  environment.systemPackages =
+    coreUtils
+    ++ archiveTools
+    ++ mediaAndThumbnails
+    ++ systemAdminAndHardware
+    ++ desktopAndTheming
+    ++ lib.optionals isx86 x86Packages;
 
   fonts = {
     packages = with pkgs; [
