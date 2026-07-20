@@ -8,7 +8,7 @@ on:
     paths:
       - 'flake.nix'
       - 'flake.lock'
-      - 'pipa/*'
+      - 'hosts/pipa/*'
 
   workflow_dispatch:
 
