@@ -18,30 +18,15 @@
     nix-flatpak,
     home-manager,
     filefinder,
-    ...
   } @ inputs: let
-    specialArgs = {
-      inherit inputs;
-    };
-
     libs = import ./libs {inherit inputs self;};
     mkHome = libs.mkHome;
+    mkNixos = libs.mkNixos;
   in {
     nixosConfigurations = {
-      epiquev2 = nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        modules = [./hosts/epiquev2];
-      };
-
-      dalaptop = nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        modules = [./hosts/dalaptop];
-      };
-
-      pipa = nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        modules = [./hosts/pipa];
-      };
+      epiquev2 = mkNixos {name = "epiquev2";};
+      dalaptop = mkNixos {name = "dalaptop";};
+      pipa = mkNixos {name = "pipa";};
     };
 
     homeConfigurations = {

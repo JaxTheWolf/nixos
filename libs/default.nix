@@ -7,6 +7,17 @@
   };
   lib = inputs.nixpkgs.lib;
 in {
+  mkNixos = {
+    name,
+    extraModules ? [],
+  }:
+    lib.nixosSystem {
+      inherit specialArgs;
+      modules = [
+        ../hosts/${name}
+      ] ++ extraModules;
+    };
+
   mkHome = {
     name,
     system ? "x86_64-linux",
@@ -19,10 +30,7 @@ in {
 
     hasNixosConfig = self.nixosConfigurations ? ${hostName};
 
-    username =
-      if hasNixosConfig && (builtins.hasAttr fallbackUser self.nixosConfigurations.${hostName}.config.users.users)
-      then fallbackUser
-      else fallbackUser;
+    username = fallbackUser;
 
     pkgs =
       if hasNixosConfig
