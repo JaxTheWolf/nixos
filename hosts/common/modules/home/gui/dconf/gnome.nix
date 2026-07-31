@@ -3,14 +3,10 @@
     "org/gnome/desktop/interface" = {
       accent-color = "red";
       clock-format = "24h";
-      clock-show-seconds = true;
       color-scheme = "prefer-dark";
-      cursor-size = 24;
-      cursor-theme = "Bibata-Modern-Classic";
+      clock-show-seconds = true;
       font-antialiasing = "grayscale";
       font-hinting = "slight";
-      gtk-theme = "Flat-Remix-GTK-Red-Darkest";
-      icon-theme = "Papirus-Dark";
       show-battery-percentage = true;
       toolkit-accessibility = true;
       overlay-scrolling = true;
