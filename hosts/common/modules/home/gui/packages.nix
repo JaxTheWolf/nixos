@@ -29,6 +29,7 @@ in {
       protonup-qt
       scrcpy
       tidal-hifi
+      high-tide
       vkbasalt
       wineWow64Packages.waylandFull
     ];
