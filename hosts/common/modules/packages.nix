@@ -81,16 +81,12 @@
     smartmontools
   ];
 
-  desktopAndTheming = with pkgs; [
-    bibata-cursors
-    flat-remix-gnome
-    flat-remix-gtk
+  desktop = with pkgs; [
     gnome-tweaks
     gnome.gvfs
     gvfs
     libnotify
     libsForQt5.qtstyleplugins
-    papirus-icon-theme
     seafile-client
     solaar
     wev
@@ -127,7 +123,7 @@ in {
     ++ archiveTools
     ++ mediaAndThumbnails
     ++ systemAdminAndHardware
-    ++ desktopAndTheming
+    ++ desktop
     ++ lib.optionals isx86 x86Packages;
 
   fonts = {

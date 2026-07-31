@@ -21,12 +21,6 @@
       numlock-state = true;
     };
 
-    "org/gnome/desktop/background" = {
-      picture-options = "zoom";
-      picture-uri = "file:///home/jax/.config/background";
-      picture-uri-dark = "file:///home/jax/.config/background";
-    };
-
     "org/gnome/desktop/wm/keybindings" = {
       move-to-workspace-left = ["<Shift><Control><Super>Left"];
       move-to-workspace-right = ["<Shift><Control><Super>Right"];

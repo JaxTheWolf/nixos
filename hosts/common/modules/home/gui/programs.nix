@@ -28,6 +28,9 @@ in {
             gnumake
           ]
       );
+      profiles.default.userSettings = {
+        "editor.fontLigatures" = true;
+      };
     };
 
     ptyxis.enable = true;

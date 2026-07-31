@@ -4,8 +4,6 @@
     defaultEditor = true;
 
     settings = {
-      theme = "monokai_soda";
-
       editor = {
         bufferline = "multiple";
         cursorline = true;

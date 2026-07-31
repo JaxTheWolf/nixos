@@ -1,9 +1,5 @@
 _: {
   dconf.settings = {
-    "org/gnome/shell/extensions/user-theme" = {
-      name = "Flat-Remix-Darkest-fullPanel";
-    };
-
     "org/gnome/shell/extensions/thanatophobia" = {
       year = 2004;
       month = 11;

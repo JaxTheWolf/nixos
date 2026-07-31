@@ -21,7 +21,7 @@ in {
       cisco-packet-tracer_9
       discord
       gimp
-      inkscape
+      # inkscape
       # jetbrains.clion
       mangohud
       mission-center

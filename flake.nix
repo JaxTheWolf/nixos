@@ -4,12 +4,16 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
-    filefinder.url = "git+ssh://git@gt.awroo.fun/esavojt/filefinder.git";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    filefinder.url = "git+ssh://git@gt.awroo.fun/esavojt/filefinder.git";
+    filefinder.inputs.nixpkgs.follows = "nixpkgs";
+
+    # stylix.url = "github:nix-community/stylix";
+    stylix.url = "github:nix-community/stylix/pull/2406/head";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {self, ...} @ inputs: let
