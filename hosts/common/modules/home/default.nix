@@ -4,11 +4,13 @@
   ...
 }: {
   imports = [
+    inputs.stylix.homeModules.stylix
+    inputs.filefinder.homeManagerModules.default
     ./programs
     ./activation.nix
     ./packages.nix
     ./services.nix
-    inputs.filefinder.homeManagerModules.default
+    ./theming.nix
   ];
 
   home = {

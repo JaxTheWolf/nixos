@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}: let
+  isDesktop = osConfig.myConfig.desktop.enable or false;
+in {
   stylix = {
     enable = true;
     polarity = "dark";
@@ -9,13 +16,13 @@
       hash = "sha256-yf6ifIWKwHdG/5VelXpwPhLPD2XxFVaFZVGD/V+u118=";
     };
 
-    cursor = {
+    cursor = lib.mkIf isDesktop {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
       size = 24;
     };
 
-    icons = {
+    icons = lib.mkIf isDesktop {
       enable = true;
       package = pkgs.papirus-icon-theme;
       dark = "Papirus-Dark";
@@ -52,12 +59,16 @@
     };
 
     targets = {
-      qt.enable = true;
+      qt.enable = isDesktop;
       firefox.enable = false;
       ptyxis.profileUUIDs = ["57ff3f7eaa21025dead424d66a6cc57a"];
-      vesktop.enable = true;
+      vesktop.enable = isDesktop;
+      bat.enable = true;
+      btop.enable = true;
+      helix.enable = true;
+      zellij.enable = true;
     };
   };
 
-  home.pointerCursor.enable = true;
+  home.pointerCursor.enable = lib.mkIf isDesktop true;
 }
