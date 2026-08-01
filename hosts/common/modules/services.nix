@@ -79,7 +79,6 @@
     kmscon = {
       enable = true;
       config = {
-        font-name = "Fira Code Regular Nerd Font Mono 12";
         hwaccel = true;
       };
       useXkbConfig = true;

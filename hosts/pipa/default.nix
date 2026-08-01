@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   imports = [
     ../common
     ./hardware-configuration.nix
@@ -13,6 +13,17 @@ _: {
 
   myConfig = {
     role = "tablet";
+  };
+
+  boot = {
+    plymouth = {
+      enable = true;
+      logo = ./logo.png;
+    };
+    kernelParams = [
+      "video=DSI-1:panel_orientation=right_side_up"
+      "fbcon=rotate:1"
+    ];
   };
 
   environment.variables = {

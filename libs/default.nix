@@ -72,6 +72,7 @@ in {
         specialArgs
         // {
           inherit osConfig;
+          isStandaloneHM = true;
         };
 
       modules =

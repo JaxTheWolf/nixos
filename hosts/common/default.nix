@@ -9,10 +9,20 @@
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
 in {
   imports = [
+    inputs.stylix.nixosModules.stylix
+    inputs.nix-flatpak.nixosModules.nix-flatpak
     ./modules
     ./hardware-configuration.nix
-    inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
+
+  stylix =
+    (import ./theming-shared.nix {inherit pkgs;})
+    // {
+      targets = {
+        nixos-icons.enable = false;
+        plymouth.enable = false;
+      };
+    };
 
   nixpkgs = {
     overlays = [inputs.filefinder.overlays.default];
@@ -67,11 +77,16 @@ in {
   documentation.nixos.enable = false;
 
   boot = lib.mkIf isx86 {
+    initrd.kernelModules =
+      lib.optionals (config.myConfig.hardware.gpu == "amd") ["amdgpu"]
+      ++ lib.optionals (config.myConfig.hardware.gpu == "intel") ["i915"];
+
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = true;
         memtest86.enable = true;
+        consoleMode = "max";
       };
     };
 
@@ -87,7 +102,10 @@ in {
     };
 
     consoleLogLevel = 3;
-    plymouth.enable = true;
+    plymouth = {
+      enable = true;
+      theme = "bgrt";
+    };
     tmp.cleanOnBoot = true;
   };
 
@@ -183,6 +201,8 @@ in {
   };
 
   hardware = {
+    enableRedistributableFirmware = true;
+
     bluetooth = {
       enable = true;
       package = pkgs.bluez.overrideAttrs (old: {

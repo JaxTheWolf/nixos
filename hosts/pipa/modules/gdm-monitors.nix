@@ -9,7 +9,7 @@ _: let
           <scale>2</scale>
           <primary>yes</primary>
           <transform>
-            <rotation>right</rotation>
+            <rotation>normal</rotation>
             <flipped>no</flipped>
           </transform>
           <monitor>

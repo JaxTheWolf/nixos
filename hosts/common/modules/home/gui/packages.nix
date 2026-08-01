@@ -11,7 +11,6 @@ in {
       czkawka-full
       element-desktop
       freerdp
-      gnome-tweaks
       libreoffice-fresh
       rquickshare
       seafile-client
