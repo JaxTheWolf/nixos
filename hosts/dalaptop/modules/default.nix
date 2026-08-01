@@ -6,6 +6,5 @@
     ./packages.nix
     ./programs.nix
     ./services.nix
-    ./vm.nix
   ];
 }

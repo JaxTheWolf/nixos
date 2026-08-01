@@ -22,6 +22,8 @@ in {
     gamescope.enable = lib.mkIf isx86 true;
     virt-manager.enable = lib.mkIf isx86 true;
 
+    dconf.enable = true;
+
     nix-ld = {
       enable = true;
       libraries = []; # with pkgs; [];

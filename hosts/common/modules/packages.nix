@@ -86,7 +86,6 @@
     gnome.gvfs
     gvfs
     libnotify
-    libsForQt5.qtstyleplugins
     seafile-client
     solaar
     wev

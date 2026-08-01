@@ -14,7 +14,7 @@ in {
       libreoffice-fresh
       rquickshare
       telegram-desktop
-      vesktop
+      high-tide
       vlc
     ]
     ++ lib.optionals isx86 [
@@ -28,8 +28,6 @@ in {
       prismlauncher
       protonup-qt
       scrcpy
-      tidal-hifi
-      high-tide
       vkbasalt
       wineWow64Packages.waylandFull
     ];

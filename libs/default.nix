@@ -9,6 +9,7 @@
 in {
   mkNixos = {
     name,
+    username ? "jax",
     extraModules ? [],
   }:
     lib.nixosSystem {
@@ -16,6 +17,52 @@ in {
       modules =
         [
           ../hosts/${name}
+
+          {
+            virtualisation.vmVariant = {
+              imports = [
+                inputs.home-manager.nixosModules.home-manager
+              ];
+
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = specialArgs;
+
+                users.${username} = {
+                  imports =
+                    [
+                      ../hosts/common/modules/home
+                      ../hosts/${name}/modules/home
+                    ]
+                    ++ lib.optionals (!lib.strings.hasInfix "server" name) [
+                      ../hosts/common/modules/home/gui
+                    ];
+                };
+              };
+
+              swapDevices = lib.mkForce [];
+              boot.resumeDevice = lib.mkForce "";
+
+              users.users.jax.password = "nixos";
+              services.displayManager.autoLogin = {
+                enable = true;
+                user = "jax";
+              };
+
+              virtualisation = {
+                memorySize = 8192;
+                cores = 4;
+                graphics = true;
+                diskSize = 20 * 1024;
+                qemu.options = [
+                  "-device virtio-vga-gl"
+                  "-display gtk,gl=on"
+                  "-cpu host"
+                ];
+              };
+            };
+          }
         ]
         ++ extraModules;
     };

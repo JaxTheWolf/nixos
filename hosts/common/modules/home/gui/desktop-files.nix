@@ -31,7 +31,7 @@ in {
         Name=Cisco Packet Tracer 9.0.0
         Type=Application
         Categories=Education;
-        Exec=env QT_STYLE_OVERRIDE=adwaita packettracer9 %f
+        Exec=packettracer9 %f
         Icon=cisco-packet-tracer-9
         Terminal=false
         StartupNotify=true

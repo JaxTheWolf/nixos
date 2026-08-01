@@ -35,10 +35,6 @@
       hxg = "SESSION_NAME=\$(basename \$PWD); zellij delete-session \$SESSION_NAME 2>/dev/null; zellij --new-session-with-layout helix-term -s \$SESSION_NAME";
     };
 
-    sessionVariables = {
-      LIBVIRT_DEFAULT_URI = "qemu:///system";
-    };
-
     initContent = ''
       zstyle ':completion:*' completer _complete _match _approximate
       zstyle ':completion:*:approximate:*' max-errors 1 numeric

@@ -70,7 +70,14 @@ in {
     firewall.enable = false;
   };
 
-  xdg.portal.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
+    ];
+    config.common.default = ["gnome" "gtk"];
+  };
 
   security = {
     rtkit.enable = true;
@@ -131,6 +138,8 @@ in {
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
       LIBVIRT_DEFAULT_URI = "qemu:///system";
+      GTK_USE_PORTAL = "1";
+      QT_USE_PORTAL = "1";
     };
 
     systemPackages = with pkgs; [
@@ -172,12 +181,6 @@ in {
       enable = true;
       enableGraphical = true;
     };
-  };
-
-  qt = {
-    platformTheme = "qt5ct";
-    style = "adwaita-dark";
-    enable = true;
   };
 
   nix.settings = {

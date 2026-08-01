@@ -35,5 +35,6 @@ in {
 
     ptyxis.enable = true;
     thunderbird.enable = true;
+    vesktop.enable = true;
   };
 }

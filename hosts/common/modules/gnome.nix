@@ -5,13 +5,14 @@
       epiphany
       geary
       gnome-connections
+      gnome-console
       gnome-contacts
       gnome-logs
       gnome-maps
       gnome-music
       gnome-software
       gnome-system-monitor
-      gnome-console
+      gnome-tour
       showtime
       snapshot
       totem

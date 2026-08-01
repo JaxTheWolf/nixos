@@ -51,8 +51,12 @@
       };
     };
 
-    targets.ptyxis.profileUUIDs = ["57ff3f7eaa21025dead424d66a6cc57a"];
-    targets.firefox.enable = false;
+    targets = {
+      qt.enable = true;
+      firefox.enable = false;
+      ptyxis.profileUUIDs = ["57ff3f7eaa21025dead424d66a6cc57a"];
+      vesktop.enable = true;
+    };
   };
 
   home.pointerCursor.enable = true;
