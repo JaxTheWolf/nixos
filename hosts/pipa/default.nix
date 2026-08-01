@@ -5,12 +5,9 @@ _: {
     ./modules
   ];
 
-  nixpkgs = {
-    hostPlatform = "aarch64-linux";
-    overlays = [
-      (import ./pkgs)
-    ];
-  };
+  nixpkgs.overlays = [
+    (import ./pkgs)
+  ];
 
   networking.hostName = "pipa";
 

@@ -11,6 +11,7 @@ in {
   mkNixos = {
     name,
     username ? "jax",
+    system ? "x86_64-linux",
     extraModules ? [],
   }:
     lib.nixosSystem {
@@ -18,6 +19,7 @@ in {
       modules =
         [
           ../hosts/${name}
+          {nixpkgs.hostPlatform = lib.mkDefault system;}
         ]
         ++ extraModules;
     };

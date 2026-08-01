@@ -5,7 +5,6 @@
     ./modules/nm-dispatch-scripts.nix
   ];
 
-  nixpkgs.hostPlatform = "x86_64-linux";
   networking.hostName = "dalaptop";
 
   myConfig = {

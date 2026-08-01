@@ -5,8 +5,6 @@
     ./modules/gdm-monitors.nix
   ];
 
-  nixpkgs.hostPlatform = "x86_64-linux";
-
   myConfig = {
     role = "workstation";
     hardware = {

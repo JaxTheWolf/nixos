@@ -25,7 +25,10 @@
     nixosConfigurations = {
       epiquev2 = mkNixos {name = "epiquev2";};
       dalaptop = mkNixos {name = "dalaptop";};
-      pipa = mkNixos {name = "pipa";};
+      pipa = mkNixos {
+        name = "pipa";
+        system = "aarch64-linux";
+      };
     };
 
     homeConfigurations = {
