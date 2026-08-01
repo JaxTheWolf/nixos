@@ -1,5 +1,9 @@
-_: {
-  services.flatpak = {
+{
+  config,
+  lib,
+  ...
+}: {
+  services.flatpak = lib.mkIf config.myConfig.desktop.flatpak.enable {
     enable = true;
     update.auto.enable = true;
     remotes = [

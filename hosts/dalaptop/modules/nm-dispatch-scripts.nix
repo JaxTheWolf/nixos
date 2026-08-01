@@ -7,11 +7,11 @@
 
         NMCLI="${pkgs.networkmanager}/bin/nmcli"
         IP="${pkgs.iproute2}/bin/ip"
-        LOGFILE="/tmp/wg-dispatcher.log"
+        LOGGER="${pkgs.util-linux}/bin/logger -t wg-dispatcher"
 
         # --- DRY Functions ---
         log_msg() {
-          echo "[$(date)] $1" >> "$LOGFILE"
+          $LOGGER "$1"
         }
 
         down_tunnels() {

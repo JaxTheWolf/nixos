@@ -10,6 +10,7 @@
   programs = {
     direnv = {
       enable = true;
+      nix-direnv.enable = true;
       enableZshIntegration = true;
     };
 
@@ -48,7 +49,6 @@
       enableZshIntegration = true;
     };
 
-    # antigravity-cli.enable = true;
     bat.enable = true;
     btop.enable = true;
     eza.enable = true;
@@ -56,6 +56,8 @@
     htop.enable = true;
     jq.enable = true;
     ripgrep.enable = true;
+    tealdeer.enable = true;
+    yt-dlp.enable = true;
     zsh.enable = true;
   };
 }

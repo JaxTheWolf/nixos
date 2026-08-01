@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  self ? inputs.self,
   config,
   ...
 }: let
@@ -23,12 +24,43 @@ in {
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      extraSpecialArgs = {inherit inputs;};
-      users.jax = {
-        imports = [
-          ./modules/home
-        ];
+      extraSpecialArgs = {
+        inherit inputs self;
+        osConfig = config;
       };
+      users.jax = {
+        imports =
+          [
+            ./modules/home
+          ]
+          ++ lib.optionals config.myConfig.desktop.enable [
+            ./modules/home/gui
+          ]
+          ++ lib.optionals (builtins.pathExists (./. + "/../${config.networking.hostName}/home.nix")) [
+            (./. + "/../${config.networking.hostName}/home.nix")
+          ];
+      };
+    };
+
+    swapDevices = lib.mkForce [];
+    boot.resumeDevice = lib.mkForce "";
+
+    users.users.jax.password = "nixos";
+    services.displayManager.autoLogin = {
+      enable = true;
+      user = "jax";
+    };
+
+    virtualisation = {
+      memorySize = 8192;
+      cores = 4;
+      graphics = true;
+      diskSize = 20 * 1024;
+      qemu.options = [
+        "-device virtio-vga-gl"
+        "-display gtk,gl=on"
+        "-cpu host"
+      ];
     };
   };
 

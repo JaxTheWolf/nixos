@@ -1,41 +1,48 @@
-{pkgs, ...}: {
-  environment = {
-    gnome.excludePackages = with pkgs; [
-      decibels
-      epiphany
-      geary
-      gnome-connections
-      gnome-console
-      gnome-contacts
-      gnome-logs
-      gnome-maps
-      gnome-music
-      gnome-software
-      gnome-system-monitor
-      gnome-tour
-      showtime
-      snapshot
-      totem
-      yelp
-    ];
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
+  config = lib.mkIf config.myConfig.desktop.gnome.enable {
+    environment = {
+      gnome.excludePackages = with pkgs; [
+        decibels
+        epiphany
+        geary
+        gnome-connections
+        gnome-console
+        gnome-contacts
+        gnome-logs
+        gnome-maps
+        gnome-music
+        gnome-software
+        gnome-system-monitor
+        gnome-tour
+        showtime
+        snapshot
+        totem
+        yelp
+      ];
 
-    systemPackages = with pkgs.gnomeExtensions; [
-      alphabetical-app-grid
-      appindicator
-      bluetooth-quick-connect
-      blur-my-shell
-      bubblemail
-      caffeine
-      color-picker
-      dash-to-dock
-      middle-click-to-close-in-overview
-      quick-settings-audio-panel
-      solaar-extension
-      undecorate
-      user-themes
-      window-is-ready-remover
-    ];
+      systemPackages = with pkgs.gnomeExtensions; [
+        alphabetical-app-grid
+        appindicator
+        bluetooth-quick-connect
+        blur-my-shell
+        bubblemail
+        caffeine
+        color-picker
+        dash-to-dock
+        middle-click-to-close-in-overview
+        quick-settings-audio-panel
+        solaar-extension
+        undecorate
+        user-themes
+        window-is-ready-remover
+      ];
+    };
+
+    services.gnome.gnome-keyring.enable = true;
   };
-
-  services.gnome.gnome-keyring.enable = true;
 }

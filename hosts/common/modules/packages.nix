@@ -59,7 +59,6 @@
     aspellDicts.cs
     aspellDicts.en
     aspellDicts.es
-    attic-client
     btrfs-progs
     ddcutil
     distrobox
@@ -82,12 +81,9 @@
   ];
 
   desktop = with pkgs; [
-    gnome-tweaks
     gnome.gvfs
     gvfs
     libnotify
-    seafile-client
-    solaar
     wev
   ];
 

@@ -12,33 +12,143 @@ with lib; {
       description = "Host role profile";
     };
 
+    user = {
+      name = mkOption {
+        type = types.str;
+        default = "jax";
+        description = "Primary user account name";
+      };
+      description = mkOption {
+        type = types.str;
+        default = "Roman Lubij";
+        description = "Primary user full name";
+      };
+    };
+
     desktop = {
-      gnome.enable = mkOption {
+      enable = mkOption {
         type = types.bool;
-        default = true;
-        description = "Enable GNOME desktop environment";
+        default = config.myConfig.role != "server";
+        description = "Enable desktop environment and GUI apps";
       };
 
-      flatpak.enable = mkOption {
-        type = types.bool;
-        default = true;
-        description = "Enable Flatpak package manager";
+      gnome = {
+        enable = mkOption {
+          type = types.bool;
+          default = config.myConfig.desktop.enable;
+          description = "Enable GNOME desktop environment";
+        };
+      };
+
+      flatpak = {
+        enable = mkOption {
+          type = types.bool;
+          default = config.myConfig.desktop.enable;
+          description = "Enable Flatpak package manager";
+        };
       };
     };
 
     hardware = {
       gpu = mkOption {
-        type = types.enum ["none" "amd" "intel"];
+        type = types.enum ["none" "amd" "intel" "nvidia"];
         default = "none";
         description = "Hardware GPU acceleration profile";
+      };
+
+      cpu = mkOption {
+        type = types.enum ["none" "amd" "intel"];
+        default = "none";
+        description = "CPU vendor profile";
+      };
+
+      power = {
+        enable = mkOption {
+          type = types.bool;
+          default = config.myConfig.role == "laptop";
+          description = "Enable laptop power management (TLP, thermald)";
+        };
+      };
+
+      bluetooth = {
+        enable = mkOption {
+          type = types.bool;
+          default = true;
+          description = "Enable Bluetooth stack";
+        };
+      };
+
+      logitech = {
+        enable = mkOption {
+          type = types.bool;
+          default = config.myConfig.desktop.enable;
+          description = "Enable Logitech wireless hardware support (Solaar)";
+        };
+      };
+    };
+
+    virtualisation = {
+      docker = {
+        enable = mkOption {
+          type = types.bool;
+          default = config.myConfig.desktop.enable;
+          description = "Enable Docker daemon";
+        };
+      };
+
+      libvirtd = {
+        enable = mkOption {
+          type = types.bool;
+          default = pkgs.stdenv.hostPlatform.isx86_64 && config.myConfig.desktop.enable;
+          description = "Enable libvirtd virtualization stack";
+        };
+        swtpm = mkOption {
+          type = types.bool;
+          default = false;
+          description = "Enable Software TPM emulation for QEMU/KVM";
+        };
+      };
+    };
+
+    services = {
+      attic = {
+        enable = mkOption {
+          type = types.bool;
+          default = true;
+          description = "Enable Attic binary cache substituter";
+        };
+      };
+
+      openrgb = {
+        enable = mkOption {
+          type = types.bool;
+          default = false;
+          description = "Enable OpenRGB daemon for RGB controls";
+        };
+      };
+
+      btrbk = {
+        enable = mkOption {
+          type = types.bool;
+          default = false;
+          description = "Enable BTRBK automated snapshot backup service";
+        };
       };
     };
   };
 
   config = mkMerge [
+    # --- CPU Microcode Options ---
+    (mkIf (config.myConfig.hardware.cpu == "amd") {
+      hardware.cpu.amd.updateMicrocode = true;
+    })
+    (mkIf (config.myConfig.hardware.cpu == "intel") {
+      hardware.cpu.intel.updateMicrocode = true;
+    })
+
+    # --- GPU Profiles ---
     (mkIf (config.myConfig.hardware.gpu == "amd") {
       hardware = {
-        cpu.amd.updateMicrocode = true;
         amdgpu = {
           initrd.enable = true;
           overdrive.enable = true;
@@ -66,7 +176,6 @@ with lib; {
 
     (mkIf (config.myConfig.hardware.gpu == "intel") {
       hardware = {
-        cpu.intel.updateMicrocode = true;
         graphics = {
           enable = true;
           extraPackages = with pkgs; [
@@ -82,10 +191,52 @@ with lib; {
       ];
     })
 
-    (mkIf (config.myConfig.role == "server") {
-      myConfig.desktop.gnome.enable = mkDefault false;
-      myConfig.desktop.flatpak.enable = mkDefault false;
+    # --- Laptop Power Profile ---
+    (mkIf config.myConfig.hardware.power.enable {
+      services = {
+        thermald.enable = mkDefault true;
+        power-profiles-daemon.enable = mkForce false;
+        tlp = {
+          enable = mkDefault true;
+          pd.enable = mkDefault true;
+          settings = mkDefault {
+            TLP_AUTO_SWITCH = 1;
 
+            CPU_DRIVER_OPMODE_ON_AC = "active";
+            CPU_DRIVER_OPMODE_ON_BAT = "active";
+            CPU_DRIVER_OPMODE_ON_SAV = "active";
+            CPU_SCALING_GOVERNOR_ON_AC = "performance";
+            CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+            CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+            CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+            CPU_MIN_PERF_ON_BAT = 15;
+            CPU_MAX_PERF_ON_BAT = 80;
+
+            WIFI_PWR_ON_AC = "off";
+            WIFI_PWR_ON_BAT = "on";
+
+            MEM_SLEEP_ON_BAT = "deep";
+          };
+        };
+
+        logind = {
+          settings = mkDefault {
+            Login = {
+              HandleLidSwitch = "suspend-then-hibernate";
+              HandleLidSwitchExternalPower = "suspend";
+              HandleLidSwitchDocked = "ignore";
+            };
+          };
+        };
+      };
+
+      systemd.sleep.settings.Sleep = {
+        HibernateDelaySec = mkDefault "5min";
+      };
+    })
+
+    # --- Server Profile ---
+    (mkIf (config.myConfig.role == "server") {
       documentation.enable = mkDefault false;
       services.openssh = {
         enable = mkDefault true;

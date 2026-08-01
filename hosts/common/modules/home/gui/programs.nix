@@ -33,6 +33,7 @@ in {
       };
     };
 
+    mangohud.enable = lib.mkIf isx86 true;
     ptyxis.enable = true;
     thunderbird.enable = true;
     vesktop.enable = true;

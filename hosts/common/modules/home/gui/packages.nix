@@ -11,8 +11,11 @@ in {
       czkawka-full
       element-desktop
       freerdp
+      gnome-tweaks
       libreoffice-fresh
       rquickshare
+      seafile-client
+      solaar
       telegram-desktop
       high-tide
       vlc
@@ -21,9 +24,6 @@ in {
       cisco-packet-tracer_9
       discord
       gimp
-      # inkscape
-      # jetbrains.clion
-      mangohud
       mission-center
       prismlauncher
       protonup-qt

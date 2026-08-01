@@ -1,5 +1,10 @@
 _: {
   dconf.settings = {
+    "org/gnome/TextEditor" = {
+      custom-font = "Fira Code weight=450 11";
+      use-system-font = false;
+    };
+
     "org/gnome/desktop/peripherals/touchpad" = {
       click-method = "areas";
       disable-while-typing = true;

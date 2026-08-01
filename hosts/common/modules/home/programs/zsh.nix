@@ -47,11 +47,6 @@
       zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
       zstyle ':completion:*' matcher-list "" 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
 
-      # Path Management
-      export PATH="${config.home.homeDirectory}/.local/bin:/usr/local/LinkServer/:$PATH"
-
-      export FLAKE="${config.xdg.configHome}/nixos"
-
       # Dart Completion (Safely quoted to prevent bash from misinterpreting the nix string)
       [[ -f "${config.home.homeDirectory}/.dart-cli-completion/zsh-config.zsh" ]] && . "${config.home.homeDirectory}/.dart-cli-completion/zsh-config.zsh" || true
 
