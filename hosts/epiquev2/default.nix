@@ -30,6 +30,8 @@
     tmp.useTmpfs = true;
   };
 
+  networking.hostName = "epiquev2";
+
   environment.systemPackages = with pkgs; [
     arch-install-scripts
     fahclient

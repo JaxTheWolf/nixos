@@ -12,9 +12,7 @@ _: {
     ];
   };
 
-  networking = {
-    hostName = "pipa";
-  };
+  networking.hostName = "pipa";
 
   myConfig = {
     role = "tablet";
