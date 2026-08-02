@@ -1,7 +1,6 @@
 {lib, ...}: {
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      accent-color = "red";
       clock-format = "24h";
       color-scheme = "prefer-dark";
       clock-show-seconds = true;
