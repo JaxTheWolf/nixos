@@ -19,6 +19,15 @@
     gnome-power-manager
   ];
 
+  services.libinput = {
+    enable = true;
+    touchpad = {
+      tapping = true;
+      naturalScrolling = true;
+      accelProfile = "adaptive";
+    };
+  };
+
   systemd.services.disable-problematic-wakeup = {
     description = "Disable only specific noisy wakeup sources";
     wantedBy = ["multi-user.target"];
