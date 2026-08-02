@@ -77,16 +77,32 @@ in {
   documentation.nixos.enable = false;
 
   boot = lib.mkIf isx86 {
-    initrd.kernelModules =
-      lib.optionals (config.myConfig.hardware.gpu == "amd") ["amdgpu"]
-      ++ lib.optionals (config.myConfig.hardware.gpu == "intel") ["i915"];
+    initrd = {
+      systemd.enable = true;
+      kernelModules =
+        lib.optionals (config.myConfig.hardware.gpu == "amd") ["amdgpu"]
+        ++ lib.optionals (config.myConfig.hardware.gpu == "intel") ["i915"];
+    };
+
+    kernelParams =
+      [
+        "quiet"
+        "splash"
+        "boot.shell_on_fail"
+        "vt.global_cursor_default=0"
+      ]
+      ++ lib.optionals (config.myConfig.hardware.gpu == "amd") [
+        "amdgpu.seamless=1"
+      ];
 
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = true;
+        consoleMode = "auto";
+        configurationLimit = 10;
+        bootCounting.enable = true;
         memtest86.enable = true;
-        consoleMode = "max";
       };
     };
 

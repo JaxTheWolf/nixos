@@ -2,7 +2,6 @@
   imports = [
     ../common
     ./hardware-configuration.nix
-    ./modules/gdm-monitors.nix
   ];
 
   myConfig = {
