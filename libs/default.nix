@@ -77,6 +77,7 @@ in {
 
       modules =
         [
+          inputs.stylix.homeModules.stylix
           ../hosts/common/modules/home
         ]
         ++ lib.optionals (osConfig.myConfig.desktop.enable or (!lib.strings.hasInfix "server" hostName)) [
