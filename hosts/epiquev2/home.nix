@@ -1,5 +1,9 @@
 {pkgs, ...}: {
   programs = {
+    btop = {
+      settings.cpu_sensor = "zenmonitor/Tdie";
+    };
+
     mangohud = {
       settings = {
         toggle_fps_limit = "F1";

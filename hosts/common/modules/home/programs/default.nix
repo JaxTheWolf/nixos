@@ -8,6 +8,13 @@
   ];
 
   programs = {
+    btop = {
+      enable = true;
+      settings = {
+        update_ms = 1000;
+      };
+    };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -50,7 +57,6 @@
     };
 
     bat.enable = true;
-    btop.enable = true;
     eza.enable = true;
     fd.enable = true;
     htop.enable = true;
