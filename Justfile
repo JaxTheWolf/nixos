@@ -31,7 +31,7 @@ build-os-laptop:
 build-os-all:
     just build-os epiquev2
     just build-os dalaptop
-    just build-os pipa
+    # just build-os pipa
     # just build-os lenovo-server
 
 build-home host:
@@ -43,7 +43,7 @@ build-home-oracle:
 build-home-all:
     just build-home epiquev2
     just build-home dalaptop
-    just build-home pipa
+    # just build-home pipa
     just build-home lenovo-server
     just build-home-oracle
 
