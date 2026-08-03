@@ -56,9 +56,11 @@ in {
         nixpkgs.hostPlatform = system;
         myConfig = {
           role = "server";
-          desktop.enable = false;
-          desktop.gnome.enable = false;
-          desktop.flatpak.enable = false;
+          desktop = {
+            enable = false;
+            gnome.enable = false;
+            flatpak.enable = false;
+          };
         };
       };
 
