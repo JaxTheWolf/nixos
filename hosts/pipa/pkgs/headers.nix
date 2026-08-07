@@ -2,13 +2,12 @@
   stdenv,
   perl,
   rsync,
-  kernelSrc,
+  src,
   version,
 }:
 stdenv.mkDerivation {
-  inherit version;
+  inherit version src;
   pname = "linux-headers-pipa";
-  src = kernelSrc;
 
   nativeBuildInputs = [perl rsync];
 

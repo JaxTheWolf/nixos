@@ -20,10 +20,6 @@ _: {
       enable = true;
       logo = ./logo.png;
     };
-    kernelParams = [
-      "video=DSI-1:panel_orientation=right_side_up"
-      "fbcon=rotate:1"
-    ];
   };
 
   environment.variables = {
