@@ -19,7 +19,6 @@ in {
     (import ./theming-shared.nix {inherit pkgs;})
     // {
       targets = {
-        nixos-icons.enable = false;
         plymouth.enable = false;
       };
     };
@@ -76,7 +75,7 @@ in {
 
   documentation.nixos.enable = false;
 
-  boot = lib.mkIf isx86 {
+  boot = {
     initrd = {
       systemd.enable = true;
       kernelModules =
@@ -96,17 +95,17 @@ in {
       ];
 
     loader = {
-      efi.canTouchEfiVariables = true;
+      efi.canTouchEfiVariables = isx86;
       systemd-boot = {
         enable = true;
         consoleMode = "auto";
         configurationLimit = 10;
         bootCounting.enable = true;
-        memtest86.enable = true;
+        memtest86.enable = isx86;
       };
     };
 
-    binfmt = {
+    binfmt = lib.mkIf isx86 {
       registrations.aarch64-linux = {
         interpreter = "${pkgs.pkgsStatic.qemu-user}/bin/qemu-aarch64";
         fixBinary = true;
@@ -117,11 +116,12 @@ in {
       };
     };
 
-    consoleLogLevel = 3;
     plymouth = {
       enable = true;
-      theme = "bgrt";
+      theme = "solar";
     };
+
+    consoleLogLevel = 3;
     tmp.cleanOnBoot = true;
   };
 

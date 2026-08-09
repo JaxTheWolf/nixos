@@ -9,11 +9,6 @@
   ];
 
   boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = false;
-    };
-
     initrd = {
       availableKernelModules = [
         "panel_novatek_nt36532"
@@ -43,7 +38,6 @@
     kernelParams = [
       "console=tty0"
       "fbcon=rotate:1"
-      "video=DSI-1:panel_orientation=right_side_up"
       "rootwait"
     ];
 

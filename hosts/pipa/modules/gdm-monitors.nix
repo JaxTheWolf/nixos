@@ -9,7 +9,7 @@ _: let
           <scale>2</scale>
           <primary>yes</primary>
           <transform>
-            <rotation>normal</rotation>
+            <rotation>right</rotation>
             <flipped>no</flipped>
           </transform>
           <monitor>
@@ -28,6 +28,7 @@ _: let
         </logicalmonitor>
       </configuration>
     </monitors>
+
   '';
 in {
   environment.etc."xdg/monitors.xml".text = monitorsXml;

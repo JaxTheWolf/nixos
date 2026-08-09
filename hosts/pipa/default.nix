@@ -15,13 +15,6 @@ _: {
     role = "tablet";
   };
 
-  boot = {
-    plymouth = {
-      enable = true;
-      logo = ./logo.png;
-    };
-  };
-
   environment.variables = {
     SYSTEMD_RELAX_ESP_CHECKS = "1";
   };
