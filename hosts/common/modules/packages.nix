@@ -45,7 +45,6 @@
     gst_all_1.gst-plugins-ugly
     gst_all_1.gstreamer
     libgsf
-    nufraw-thumbnailer
     poppler-utils
     pulseaudio
     sushi
