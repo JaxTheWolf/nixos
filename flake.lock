@@ -260,17 +260,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1786304424,
-        "narHash": "sha256-DMNiKr4NuuR1/lWdQJ3n8IS0X5vaA3Kr/7i0/IxjpcU=",
-        "ref": "refs/heads/main",
-        "rev": "daf103228c2d90c0049b1ef20261ac1378d8d79a",
-        "revCount": 8,
-        "type": "git",
-        "url": "file:///home/jax/pipa-nixos"
+        "lastModified": 1786309685,
+        "narHash": "sha256-jt/AYiTuJMs+7IEDdJA2EU2QIcEIJDj/K7MwXUdRViU=",
+        "owner": "JaxTheWolf",
+        "repo": "pipa-nixos",
+        "rev": "6178975a2797d2dc90b736e423024d9af05d977f",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/jax/pipa-nixos"
+        "owner": "JaxTheWolf",
+        "repo": "pipa-nixos",
+        "type": "github"
       }
     },
     "root": {
