@@ -253,12 +253,33 @@
         "type": "github"
       }
     },
+    "pipa-nixos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786304424,
+        "narHash": "sha256-DMNiKr4NuuR1/lWdQJ3n8IS0X5vaA3Kr/7i0/IxjpcU=",
+        "ref": "refs/heads/main",
+        "rev": "daf103228c2d90c0049b1ef20261ac1378d8d79a",
+        "revCount": 8,
+        "type": "git",
+        "url": "file:///home/jax/pipa-nixos"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/jax/pipa-nixos"
+      }
+    },
     "root": {
       "inputs": {
         "filefinder": "filefinder",
         "home-manager": "home-manager",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
+        "pipa-nixos": "pipa-nixos",
         "stylix": "stylix"
       }
     },

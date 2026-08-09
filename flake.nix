@@ -14,12 +14,25 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    pipa-nixos.url = "git+file:///home/jax/pipa-nixos";
+    pipa-nixos.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {self, ...} @ inputs: let
     libs = import ./libs {inherit inputs self;};
     inherit (libs) mkHome mkNixos;
   in {
+    apps = inputs.nixpkgs.lib.genAttrs inputs.nixpkgs.lib.systems.flakeExposed (system: let
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
+    in {
+      build-images = inputs.pipa-nixos.lib.mkBuildImagesApp {
+        inherit pkgs;
+        toplevel = self.nixosConfigurations.pipa.config.system.build.toplevel;
+      };
+      default = self.apps.${system}.build-images;
+    });
+
     devShells = inputs.nixpkgs.lib.genAttrs inputs.nixpkgs.lib.systems.flakeExposed (system: let
       pkgs = inputs.nixpkgs.legacyPackages.${system};
     in {

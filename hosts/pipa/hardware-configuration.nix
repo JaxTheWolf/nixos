@@ -1,59 +1,10 @@
 {
-  lib,
   modulesPath,
-  pkgs,
   ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-
-  boot = {
-    initrd = {
-      availableKernelModules = [
-        "panel_novatek_nt36532"
-        "msm"
-        "nanosic_803"
-        "usbhid"
-        "pinctrl_sm8250"
-        "ufs_qcom"
-        "ufshcd_core"
-        "ufshcd_pltfrm"
-        "icc_osm_l3"
-        "phy_qcom_qmp_ufs"
-        "phy_qcom_qmp_pcie"
-      ];
-
-      kernelModules = [];
-
-      extraFirmwarePaths = [
-        "novatek/nt36532_tianma.bin"
-        "novatek/nt36532_csot.bin"
-        "qcom/a650_sqe.fw"
-        "qcom/a650_gmu.bin"
-        "qcom/a650_zap.mbn"
-      ];
-    };
-
-    kernelParams = [
-      "console=tty0"
-      "fbcon=rotate:1"
-      "rootwait"
-    ];
-
-    kernelPackages = pkgs.linuxPackagesFor pkgs.pipa-kernel;
-    kernelModules = [];
-    extraModulePackages = [];
-  };
-
-  hardware = {
-    firmware = [
-      pkgs.pipa-firmware
-    ];
-
-    enableRedistributableFirmware = lib.mkDefault true;
-    deviceTree.name = "qcom/sm8250-xiaomi-pipa.dtb";
-  };
 
   fileSystems = {
     "/boot" = {
@@ -81,6 +32,5 @@
       options = ["subvol=home" "compress=zstd" "noatime"];
     };
   };
-
-  powerManagement.cpuFreqGovernor = lib.mkDefault "schedutil";
 }
+
