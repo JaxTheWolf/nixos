@@ -3,3 +3,4 @@ result*
 output.txt
 *.img*
 mnt
+.direnv

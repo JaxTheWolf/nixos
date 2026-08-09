@@ -20,6 +20,16 @@
     libs = import ./libs {inherit inputs self;};
     inherit (libs) mkHome mkNixos;
   in {
+    devShells = inputs.nixpkgs.lib.genAttrs inputs.nixpkgs.lib.systems.flakeExposed (system: let
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
+    in {
+      default = pkgs.mkShell {
+        packages = with pkgs; [
+          deadnix
+          statix
+        ];
+      };
+    });
     overlays = import ./overlays {inherit inputs;};
 
     nixosConfigurations = {
