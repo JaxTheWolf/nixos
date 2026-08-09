@@ -100,7 +100,6 @@ in {
         enable = true;
         consoleMode = "auto";
         configurationLimit = 10;
-        bootCounting.enable = true;
         memtest86.enable = isx86;
       };
     };
