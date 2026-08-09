@@ -76,6 +76,7 @@
     logitech-udev-rules
     networkmanager-openconnect
     ntfs3g
+    plymouth
     smartmontools
   ];
 
@@ -93,7 +94,6 @@
     brscan5
     ffmpeg-full
     graalvmPackages.graalvm-oracle_25
-    plymouth
     ventoy-full-gtk
     zulu
     zulu8

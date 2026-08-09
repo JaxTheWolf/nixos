@@ -51,13 +51,13 @@ with lib; {
 
     hardware = {
       gpu = mkOption {
-        type = types.enum ["none" "amd" "intel" "nvidia"];
+        type = types.enum ["none" "amd" "intel" "nvidia" "msm"];
         default = "none";
         description = "Hardware GPU acceleration profile";
       };
 
       cpu = mkOption {
-        type = types.enum ["none" "amd" "intel"];
+        type = types.enum ["none" "amd" "intel" "msm"];
         default = "none";
         description = "CPU vendor profile";
       };
@@ -142,6 +142,7 @@ with lib; {
     (mkIf (config.myConfig.hardware.cpu == "amd") {
       hardware.cpu.amd.updateMicrocode = true;
     })
+
     (mkIf (config.myConfig.hardware.cpu == "intel") {
       hardware.cpu.intel.updateMicrocode = true;
     })
@@ -188,6 +189,18 @@ with lib; {
       environment.systemPackages = with pkgs; [
         intel-gpu-tools
         nvtopPackages.intel
+      ];
+    })
+
+    (mkIf (config.myConfig.hardware.gpu == "msm") {
+      environment.systemPackages = with pkgs; [
+        nvtopPackages.msm
+      ];
+    })
+
+    (mkIf (config.myConfig.role == "laptop" || config.myConfig.role == "tablet") {
+      environment.systemPackages = with pkgs; [
+        gnome-power-manager
       ];
     })
 

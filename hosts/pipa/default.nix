@@ -13,6 +13,10 @@ _: {
 
   myConfig = {
     role = "tablet";
+    hardware = {
+      cpu = "msm";
+      gpu = "msm";
+    };
   };
 
   environment.variables = {

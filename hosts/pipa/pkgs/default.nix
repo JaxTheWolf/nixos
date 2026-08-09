@@ -1,4 +1,4 @@
-final: prev: let
+final: _prev: let
   pipaKernelVersion = "7.1.7";
 
   pipaKernelSrc = final.fetchFromGitHub {

@@ -15,10 +15,6 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    gnome-power-manager
-  ];
-
   services.libinput = {
     enable = true;
     touchpad = {

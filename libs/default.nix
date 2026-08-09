@@ -10,7 +10,6 @@
 in {
   mkNixos = {
     name,
-    username ? "jax",
     system ? "x86_64-linux",
     extraModules ? [],
   }:
