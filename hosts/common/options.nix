@@ -260,14 +260,6 @@ with lib; {
 
     # --- Server Profile ---
     (mkIf (config.myConfig.role == "server") {
-      documentation.enable = mkDefault false;
-      services.openssh = {
-        enable = mkDefault true;
-        settings = {
-          PermitRootLogin = mkDefault "no";
-          PasswordAuthentication = mkDefault false;
-        };
-      };
-    })
+      })
   ];
 }
