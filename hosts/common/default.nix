@@ -244,10 +244,7 @@ in {
       package = pkgs.mesa;
     };
 
-    logitech.wireless = {
-      enable = true;
-      enableGraphical = true;
-    };
+    logitech.wireless.enable = true;
   };
 
   nix.settings = {
