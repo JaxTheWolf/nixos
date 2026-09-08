@@ -48,11 +48,11 @@
       openFirewall = true;
     };
 
-    journald.extraConfig = ''
-      SystemMaxUse=2G
-      RuntimeMaxUse=1G
-      SystemMaxFiles=100
-    '';
+    journald.settings.Journal = {
+      SystemMaxUse = "2G";
+      RuntimeMaxUse = "1G";
+      SystemMaxFiles = "100";
+    };
 
     zram-generator = {
       enable = true;

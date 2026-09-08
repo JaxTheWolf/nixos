@@ -11,7 +11,7 @@ in {
       czkawka-full
       element-desktop
       freerdp
-      libreoffice-fresh
+      libreoffice-stable
       rquickshare
       seafile-client
       solaar
