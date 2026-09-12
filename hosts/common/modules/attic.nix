@@ -14,5 +14,8 @@ _: {
       "root"
       "@wheel"
     ];
+
+    connect-timeout = 3;
+    fallback = true;
   };
 }
