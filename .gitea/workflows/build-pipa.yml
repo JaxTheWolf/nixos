@@ -25,7 +25,7 @@ jobs:
         env:
           ATTIC_TOKEN: ${{ secrets.ATTIC_TOKEN }}
         run: |
-          attic login attic-awroo-fun https://attic.awroo.fun $ATTIC_TOKEN
+          attic login attic-awruff-fun https://attic.awruff.fun $ATTIC_TOKEN
 
       - name: Set up SSH key
         env:
@@ -42,8 +42,8 @@ jobs:
           EOF
           
           chmod 600 ~/.ssh/id_gitea
-          echo -e "Host gt.awroo.fun\n IdentityFile ~/.ssh/id_gitea\n IdentitiesOnly yes\n Port 2220\n HostName 89.176.245.38" > ~/.ssh/config
-          ssh -T git@gt.awroo.fun
+          echo -e "Host gt.awruff.fun\n IdentityFile ~/.ssh/id_gitea\n IdentitiesOnly yes\n Port 2220\n HostName 89.176.245.38" > ~/.ssh/config
+          ssh -T git@gt.awruff.fun
 
       - name: Build System Closure
         run: |

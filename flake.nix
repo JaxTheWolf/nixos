@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
-    filefinder.url = "git+ssh://git@gt.awroo.fun/esavojt/filefinder.git";
+    filefinder.url = "git+ssh://git@gt.awruff.fun/esavojt/filefinder.git";
     filefinder.inputs.nixpkgs.follows = "nixpkgs";
 
     # stylix.url = "github:nix-community/stylix";
