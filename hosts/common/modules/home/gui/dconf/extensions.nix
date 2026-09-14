@@ -42,7 +42,6 @@ _: {
       max-alpha = 0.4;
       middle-click-action = "launch";
       min-alpha = 0.05;
-      preferred-monitor = -2;
       preview-size-scale = 0.5;
       running-indicator-style = "DOTS";
       scroll-action = "cycle-windows";

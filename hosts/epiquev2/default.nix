@@ -29,13 +29,22 @@
 
   networking.hostName = "epiquev2";
 
-  environment.systemPackages = with pkgs; [
-    arch-install-scripts
-    fahclient
-    swtpm
-    zenmonitor
-    gnomeExtensions.control-monitor-brightness-and-volume-with-ddcutil
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      arch-install-scripts
+      fahclient
+      swtpm
+      zenmonitor
+      gnomeExtensions.control-monitor-brightness-and-volume-with-ddcutil
+    ];
+
+    etc."xdg/monitors.xml" = {
+      source = ./monitors.xml;
+      mode = "0644";
+      user = "root";
+      group = "root";
+    };
+  };
 
   virtualisation = {
     spiceUSBRedirection.enable = true;

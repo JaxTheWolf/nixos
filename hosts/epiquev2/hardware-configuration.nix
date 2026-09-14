@@ -2,7 +2,6 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {
-  config,
   lib,
   pkgs,
   modulesPath,
@@ -22,7 +21,7 @@
       "nct6683"
     ];
 
-    extraModulePackages = with config.boot.kernelPackages; [
+    extraModulePackages = [
       pkgs.linuxKernel.packages.linux_xanmod_latest.zenpower
     ];
 
@@ -32,6 +31,7 @@
       "amdgpu.seamless=1"
       "rd.udev.log_priority=3"
       "vt.global_cursor_default=0"
+      "video=HDMI-A-1:1504x1000@60"
     ];
   };
 

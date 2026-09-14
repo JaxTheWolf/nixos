@@ -93,4 +93,10 @@
       X-GNOME-Autostart-enabled=true
     '';
   };
+
+  dconf.settings = {
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      preferred-monitor-by-connector = "DP-2";
+    };
+  };
 }
