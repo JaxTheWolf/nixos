@@ -15,6 +15,14 @@ in {
         "en-GB"
         "en-US"
       ];
+      profiles.default = {
+        isDefault = true;
+        path = "default";
+
+        settings = {
+          "network.proxy.allow_hijacking_localhost" = true;
+        };
+      };
     };
 
     vscode = lib.mkIf isx86 {

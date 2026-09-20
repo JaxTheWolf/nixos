@@ -8,5 +8,6 @@
     ./packages.nix
     ./programs.nix
     ./services.nix
+    ./vpns.nix
   ];
 }
