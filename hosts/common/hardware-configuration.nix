@@ -21,7 +21,5 @@ in {
       "hid-logitech-dj"
       "hid-logitech-hidpp"
     ];
-
-    kernelPackages = lib.mkIf isx86 pkgs.linuxKernel.packages.linux_xanmod_latest;
   };
 }

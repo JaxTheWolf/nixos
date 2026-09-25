@@ -7,7 +7,7 @@
 with lib; {
   options.myConfig = {
     role = mkOption {
-      type = types.enum ["workstation" "laptop" "tablet" "server"];
+      type = types.enum ["desktop" "laptop" "tablet" "server"];
       default = "workstation";
       description = "Host role profile";
     };
@@ -109,32 +109,6 @@ with lib; {
         };
       };
     };
-
-    services = {
-      attic = {
-        enable = mkOption {
-          type = types.bool;
-          default = true;
-          description = "Enable Attic binary cache substituter";
-        };
-      };
-
-      openrgb = {
-        enable = mkOption {
-          type = types.bool;
-          default = false;
-          description = "Enable OpenRGB daemon for RGB controls";
-        };
-      };
-
-      btrbk = {
-        enable = mkOption {
-          type = types.bool;
-          default = false;
-          description = "Enable BTRBK automated snapshot backup service";
-        };
-      };
-    };
   };
 
   config = mkMerge [
@@ -145,6 +119,22 @@ with lib; {
 
     (mkIf (config.myConfig.hardware.cpu == "intel") {
       hardware.cpu.intel.updateMicrocode = true;
+    })
+
+    # --- Kernel ---
+    (mkIf (config.myConfig.role == "desktop" || config.myConfig.role == "laptop") {
+      boot = {
+        kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+        extraModulePackages = with pkgs.linuxKernel.packages.linux_xanmod_latest; [
+          evdi
+        ];
+      };
+    })
+
+    (mkIf (config.myConfig.role == "desktop" && config.myConfig.hardware.cpu == "amd") {
+      boot.extraModulePackages = with pkgs.linuxKernel.packages.linux_xanmod_latest; [
+        zenpower
+      ];
     })
 
     # --- GPU Profiles ---

@@ -5,7 +5,7 @@
   ];
 
   myConfig = {
-    role = "workstation";
+    role = "desktop";
     hardware = {
       gpu = "amd";
       cpu = "amd";
@@ -15,10 +15,6 @@
         enable = true;
         swtpm = true;
       };
-    };
-    services = {
-      openrgb.enable = true;
-      btrbk.enable = true;
     };
   };
 
