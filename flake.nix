@@ -16,7 +16,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     pipa-nixos.url = "github:JaxTheWolf/pipa-nixos";
-    # pipa-nixos.url = "/home/jax/pipa-nixos";
+    # pipa-nixos.url = "/media/pipa/pipa-nixos";
     pipa-nixos.inputs.nixpkgs.follows = "nixpkgs";
   };
 

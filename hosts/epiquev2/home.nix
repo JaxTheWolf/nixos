@@ -17,6 +17,10 @@
     };
   };
 
+  home.packages = with pkgs; [
+    winbox
+  ];
+
   xdg.configFile = {
     "MangoHud/MangoHud.conf".text = ''
       toggle_fps_limit=F1
