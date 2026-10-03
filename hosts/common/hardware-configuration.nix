@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
-  isx86 = pkgs.stdenv.hostPlatform.isx86_64;
-in {
+_: {
   boot = {
     initrd = {
       availableKernelModules = [

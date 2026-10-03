@@ -20,7 +20,6 @@ in {
       vlc
     ]
     ++ lib.optionals isx86 [
-      cisco-packet-tracer_9
       discord
       gimp
       mission-center

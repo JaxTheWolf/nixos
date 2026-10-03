@@ -106,7 +106,6 @@ in {
     config = {
       permittedInsecurePackages = [
         "ventoy-gtk3-1.1.17"
-        "cisco-packet-tracer_9"
       ];
     };
 
