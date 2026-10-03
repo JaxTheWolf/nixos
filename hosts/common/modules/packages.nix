@@ -8,10 +8,13 @@
 
   coreUtils = with pkgs; [
     curl
+    dig
     file
+    iperf3
     killall
     lsof
     ncdu
+    nmap
     pciutils
     tree
     usbutils
