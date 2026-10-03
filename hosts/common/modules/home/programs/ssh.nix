@@ -13,14 +13,23 @@ _: {
         HostName = "192.168.0.10";
       };
 
-      "laptop" = {
+      "dalaptop" = {
         User = "jax";
         HostName = "192.168.0.141";
       };
 
-      "oracle" = {
-        User = "ubuntu";
-        HostName = "141.147.56.107";
+      "pipa" = {
+        User = "jax";
+        HostName = "192.168.0.58";
+      };
+
+      "epiquev2" = {
+        User = "jax";
+        HostName = "192.168.0.109";
+      };
+
+      "gt.awruff.fun" = {
+        Port = 2220;
       };
 
       "BW" = {
@@ -28,18 +37,9 @@ _: {
         HostName = "194.163.134.27";
       };
 
-      "gt.awruff.fun" = {
-        Port = 2220;
-      };
-
       "TM" = {
         User = "jax";
         HostName = "10.2.0.2";
-      };
-
-      "pipa" = {
-        User = "jax";
-        HostName = "192.168.0.58";
       };
 
       "vojta-vm" = {
