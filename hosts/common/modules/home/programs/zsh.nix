@@ -82,7 +82,10 @@
       prepend-sudo() {
         if [[ $BUFFER != su(do|)\ * ]]; then
           BUFFER="sudo $BUFFER"
-          CURSOR+=5
+          (( CURSOR+=5 ))
+        else
+          BUFFER=''${BUFFER#su }
+          BUFFER=''${BUFFER#sudo }
         fi
       }
 
