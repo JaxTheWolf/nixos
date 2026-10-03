@@ -2,6 +2,7 @@
   imports = [
     ./bottom.nix
     ./helix.nix
+    ./ssh.nix
     ./starship.nix
     ./zellij.nix
     ./zsh.nix
