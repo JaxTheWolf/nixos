@@ -61,6 +61,7 @@
       "jax@dalaptop" = mkHome {name = "jax@dalaptop";};
       "jax@pipa" = mkHome {name = "jax@pipa";};
       "jax@lenovo-server" = mkHome {name = "jax@lenovo-server";};
+      "jax@vojtanet-vm" = mkHome {name = "jax@vojtanet-vm";};
       "ubuntu@oracle-server" = mkHome {
         name = "ubuntu@oracle-server";
         system = "aarch64-linux";
