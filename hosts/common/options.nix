@@ -8,7 +8,7 @@ with lib; {
   options.myConfig = {
     role = mkOption {
       type = types.enum ["desktop" "laptop" "tablet" "server"];
-      default = "workstation";
+      default = "desktop";
       description = "Host role profile";
     };
 
@@ -70,6 +70,14 @@ with lib; {
         };
       };
 
+      battery = {
+        enable = mkOption {
+          type = types.bool;
+          default = elem config.myConfig.role ["laptop" "tablet"];
+          description = "Enable battery monitoring and power management tools";
+        };
+      };
+
       bluetooth = {
         enable = mkOption {
           type = types.bool;
@@ -83,6 +91,21 @@ with lib; {
           type = types.bool;
           default = config.myConfig.desktop.enable;
           description = "Enable Logitech wireless hardware support (Solaar)";
+        };
+      };
+    };
+
+    networking = {
+      wgAutoToggle = {
+        enable = mkOption {
+          type = types.bool;
+          default = false;
+          description = "Enable automatic WireGuard tunnel toggle based on active network";
+        };
+        homeSsids = mkOption {
+          type = types.listOf types.str;
+          default = ["MERCUSYS_3C8A" "MERCUSYS_3C8A_5G"];
+          description = "Home Wi-Fi SSIDs where WireGuard tunnels should be brought down";
         };
       };
     };
@@ -155,6 +178,8 @@ with lib; {
         };
       };
 
+      services.lact.enable = mkDefault true;
+
       environment.systemPackages = with pkgs; [
         amdgpu_top
         lact
@@ -188,9 +213,29 @@ with lib; {
       ];
     })
 
-    (mkIf (config.myConfig.role == "laptop" || config.myConfig.role == "tablet") {
+    # --- Battery / Power Tools ---
+    (mkIf config.myConfig.hardware.battery.enable {
       environment.systemPackages = with pkgs; [
         gnome-power-manager
+      ];
+    })
+
+    # --- Logitech Wireless Hardware ---
+    (mkIf config.myConfig.hardware.logitech.enable {
+      hardware.logitech.wireless.enable = true;
+      environment.systemPackages = with pkgs; [
+        logitech-udev-rules
+      ];
+      boot.kernelModules = [
+        "hid-logitech-dj"
+        "hid-logitech-hidpp"
+      ];
+    })
+
+    # --- Virtualisation helpers ---
+    (mkIf (config.myConfig.virtualisation.libvirtd.enable && config.myConfig.virtualisation.libvirtd.swtpm) {
+      environment.systemPackages = with pkgs; [
+        swtpm
       ];
     })
 
@@ -247,9 +292,5 @@ with lib; {
         HibernateDelaySec = mkDefault "5min";
       };
     })
-
-    # --- Server Profile ---
-    (mkIf (config.myConfig.role == "server") {
-      })
   ];
 }

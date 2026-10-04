@@ -5,6 +5,20 @@
   ...
 }: {
   config = lib.mkIf config.myConfig.desktop.gnome.enable {
+    services = {
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+      gnome.gnome-keyring.enable = true;
+
+      xserver = {
+        enable = true;
+        exportConfiguration = true;
+        excludePackages = with pkgs; [
+          xterm
+        ];
+      };
+    };
+
     environment = {
       gnome.excludePackages = with pkgs; [
         decibels
@@ -46,7 +60,5 @@
           window-is-ready-remover
         ]);
     };
-
-    services.gnome.gnome-keyring.enable = true;
   };
 }

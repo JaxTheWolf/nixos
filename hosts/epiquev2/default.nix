@@ -4,32 +4,26 @@
     ./hardware-configuration.nix
   ];
 
+  networking.hostName = "epiquev2";
+
   myConfig = {
     role = "desktop";
     hardware = {
       gpu = "amd";
       cpu = "amd";
     };
-    virtualisation = {
-      libvirtd = {
-        enable = true;
-        swtpm = true;
-      };
+    virtualisation.libvirtd = {
+      enable = true;
+      swtpm = true;
     };
   };
 
-  boot = {
-    loader.systemd-boot = {};
-    tmp.useTmpfs = true;
-  };
-
-  networking.hostName = "epiquev2";
+  boot.tmp.useTmpfs = true;
 
   environment = {
     systemPackages = with pkgs; [
       arch-install-scripts
       fahclient
-      swtpm
       zenmonitor
       gnomeExtensions.control-monitor-brightness-and-volume-with-ddcutil
     ];
@@ -42,13 +36,7 @@
     };
   };
 
-  virtualisation = {
-    spiceUSBRedirection.enable = true;
-  };
-
   services = {
-    lact.enable = true;
-
     hardware.openrgb = {
       enable = true;
       motherboard = "amd";
@@ -59,22 +47,18 @@
       SUBSYSTEM=="block", ENV{ID_FS_UUID}=="39c48cb1-233c-4921-a614-3a193574df67", ENV{UDISKS_IGNORE}="1"
     '';
 
-    btrbk.instances = {
-      home_backups = {
-        onCalendar = "daily";
-        settings = {
-          timestamp_format = "long";
+    btrbk.instances.home_backups = {
+      onCalendar = "daily";
+      settings = {
+        timestamp_format = "long";
+        snapshot_preserve_min = "latest";
+        snapshot_preserve = "7d";
 
-          snapshot_preserve_min = "latest";
-          snapshot_preserve = "7d";
-
-          volume."/" = {
-            snapshot_dir = "home/.snapshots";
-
-            subvolume."home" = {
-              target."/media/home-backup" = {
-                target_preserve = "0d 20w 0m";
-              };
+        volume."/" = {
+          snapshot_dir = "home/.snapshots";
+          subvolume."home" = {
+            target."/media/home-backup" = {
+              target_preserve = "0d 20w 0m";
             };
           };
         };

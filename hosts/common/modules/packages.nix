@@ -1,7 +1,7 @@
 {
   pkgs,
   lib,
-  self,
+  config,
   ...
 }: let
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
@@ -64,8 +64,6 @@
     btrfs-progs
     ddcutil
     distrobox
-    docker-buildx
-    docker-compose
     flatpak-xdg-utils
     fuse
     fuse3
@@ -76,15 +74,12 @@
     iotop
     linux-firmware
     lm_sensors
-    logitech-udev-rules
-    networkmanager-openconnect
     ntfs3g
     plymouth
     smartmontools
   ];
 
   desktop = with pkgs; [
-    gnome.gvfs
     gvfs
     libnotify
     wev
@@ -102,24 +97,12 @@
     zulu8
   ];
 in {
-  nixpkgs = {
-    config = {
-      permittedInsecurePackages = [
-        "ventoy-gtk3-1.1.17"
-      ];
-    };
-
-    overlays = [
-      self.overlays.nautilus
-    ];
-  };
-
   environment.systemPackages =
     coreUtils
     ++ archiveTools
     ++ mediaAndThumbnails
     ++ systemAdminAndHardware
-    ++ desktop
+    ++ lib.optionals config.myConfig.desktop.enable desktop
     ++ lib.optionals isx86 x86Packages;
 
   fonts = {

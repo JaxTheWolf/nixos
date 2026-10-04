@@ -1,5 +1,5 @@
-_: {
-  programs.zsh.shellAliases = {
-    update = "sudo apt update && sudo apt upgrade";
-  };
+{
+  imports = [
+    ../common/modules/home/profiles/apt-server.nix
+  ];
 }

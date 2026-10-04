@@ -45,6 +45,7 @@ build-home-all:
     just build-home dalaptop
     # just build-home pipa
     just build-home lenovo-server
+    just build-home vojtanet-vm
     just build-home-oracle
 
 vm host:

@@ -11,22 +11,17 @@ in {
       binfmt = true;
     };
 
-    fuse = {
-      enable = true;
-    };
-
+    fuse.enable = true;
     zsh.enable = true;
-    gamemode.enable = lib.mkIf isx86 true;
+    dconf.enable = true;
 
+    gamemode.enable = lib.mkIf isx86 true;
     weylus.enable = lib.mkIf isx86 true;
     gamescope.enable = lib.mkIf isx86 true;
-    virt-manager.enable = lib.mkIf isx86 true;
-
-    dconf.enable = true;
 
     nix-ld = {
       enable = true;
-      libraries = []; # with pkgs; [];
+      libraries = [];
     };
 
     steam = lib.mkIf isx86 {

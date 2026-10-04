@@ -6,20 +6,10 @@
 }: {
   services = {
     sshd.enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
 
-    blueman.enable = true;
+    blueman.enable = lib.mkIf (config.myConfig.hardware.bluetooth.enable && config.myConfig.desktop.enable) true;
 
     geoclue2.enable = true;
-
-    xserver = {
-      enable = true;
-      exportConfiguration = true;
-      excludePackages = with pkgs; [
-        xterm
-      ];
-    };
 
     pulseaudio.enable = false;
     pipewire = {
@@ -27,12 +17,6 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      #jack.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
     };
 
     printing = {

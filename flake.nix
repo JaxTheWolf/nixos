@@ -52,7 +52,6 @@
       pipa = mkNixos {
         name = "pipa";
         system = "aarch64-linux";
-        extraModules = [inputs.pipa-nixos.nixosModules.pipa];
       };
     };
 

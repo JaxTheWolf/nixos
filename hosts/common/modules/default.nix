@@ -1,13 +1,17 @@
 {...}: {
   imports = [
     ../options.nix
-    ./attic.nix
+    ./boot.nix
     ./flatpak.nix
     ./gnome.nix
+    ./hardware.nix
     ./locale.nix
+    ./networking.nix
+    ./nix.nix
     ./packages.nix
     ./programs.nix
+    ./security.nix
     ./services.nix
-    ./vpns.nix
+    ./virtualisation.nix
   ];
 }

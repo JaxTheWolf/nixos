@@ -2,7 +2,6 @@
   imports = [
     ../common
     ./hardware-configuration.nix
-    ./modules/nm-dispatch-scripts.nix
   ];
 
   networking.hostName = "dalaptop";
@@ -13,6 +12,7 @@
       gpu = "intel";
       cpu = "intel";
     };
+    networking.wgAutoToggle.enable = true;
   };
 
   services.libinput = {

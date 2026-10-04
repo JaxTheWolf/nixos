@@ -60,6 +60,9 @@ in {
             gnome.enable = false;
             flatpak.enable = false;
           };
+          hardware = {
+            battery.enable = false;
+          };
         };
       };
 
@@ -81,7 +84,7 @@ in {
           inputs.stylix.homeModules.stylix
           ../hosts/common/modules/home
         ]
-        ++ lib.optionals (osConfig.myConfig.desktop.enable or (!lib.strings.hasInfix "server" hostName)) [
+        ++ lib.optionals (osConfig.myConfig.desktop.enable or false) [
           ../hosts/common/modules/home/gui
         ]
         ++ lib.optionals hasHostHomeFile [
