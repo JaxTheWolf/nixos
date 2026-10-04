@@ -1,8 +1,27 @@
 {
   pkgs,
+  lib,
   config,
   ...
-}: {
+}: let
+  schedules = [
+    {
+      name = "day";
+      profile = "yee-day";
+      time = "07:00:00";
+    }
+    {
+      name = "night";
+      profile = "yee";
+      time = "22:00:00";
+    }
+    {
+      name = "dank";
+      profile = "yee-dank";
+      time = "23:00:00";
+    }
+  ];
+in {
   programs = {
     btop = {
       settings.cpu_sensor = "zenmonitor/Tdie";
@@ -86,7 +105,7 @@
       [Desktop Entry]
       Type=Application
       Name=OpenRGB
-      Exec=${pkgs.openrgb-with-all-plugins}/bin/openrgb --startminimized --profile "yee"
+      Exec=${pkgs.openrgb-with-all-plugins}/bin/openrgb --startminimized
       Terminal=false
       X-GNOME-Autostart-enabled=true
     '';
@@ -106,5 +125,40 @@
     "org/gnome/shell/extensions/dash-to-dock" = {
       preferred-monitor-by-connector = "DP-2";
     };
+  };
+
+  home.activation.setOpenRgbProfile = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    HOUR=$(${pkgs.coreutils}/bin/date +%-H)
+    if [ "$HOUR" -ge 7 ] && [ "$HOUR" -lt 22 ]; then
+      PROFILE="yee-day"
+    elif [ "$HOUR" -ge 22 ] && [ "$HOUR" -lt 23 ]; then
+      PROFILE="yee"
+    else
+      PROFILE="yee-dank"
+    fi
+    $DRY_RUN_CMD ${pkgs.openrgb-with-all-plugins}/bin/openrgb -p "$PROFILE" 2>/dev/null || true
+  '';
+
+  systemd.user = {
+    services = lib.listToAttrs (map (s:
+      lib.nameValuePair "openrgb-${s.name}" {
+        Unit.Description = "Apply OpenRGB profile: ${s.profile}";
+        Service = {
+          Type = "oneshot";
+          ExecStart = "${pkgs.openrgb-with-all-plugins}/bin/openrgb -p ${s.profile}";
+        };
+      })
+    schedules);
+
+    timers = lib.listToAttrs (map (s:
+      lib.nameValuePair "openrgb-${s.name}" {
+        Unit.Description = "Timer for OpenRGB profile: ${s.profile}";
+        Timer = {
+          OnCalendar = s.time;
+          Persistent = true;
+        };
+        Install.WantedBy = ["timers.target"];
+      })
+    schedules);
   };
 }
