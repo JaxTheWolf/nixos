@@ -70,11 +70,11 @@
     },
     "crane": {
       "locked": {
-        "lastModified": 1784564969,
-        "narHash": "sha256-TkTWNhJV/8Wk3czlbz4bwHZkFCaCHPsOy+oJe4PUiXg=",
+        "lastModified": 1790899423,
+        "narHash": "sha256-THGtz65UGJU+sonZidRboyCMk+9DclpMF7pwL4uDV4M=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "7930f6c291de6f83c257839d434592aa085f290a",
+        "rev": "47b6b27ed9a3a9181415e4367d0c30ab2a0e0250",
         "type": "github"
       },
       "original": {
@@ -92,11 +92,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1785009455,
-        "narHash": "sha256-eDaLFHJ4Mp4nxKb4XoKzVCl8rlvj2kxI0b8E4YKm2I8=",
+        "lastModified": 1791118950,
+        "narHash": "sha256-bMHo2rJ6hD9sjvmFkzLYX2TJHKzpJgbJhb8M5UeRL78=",
         "ref": "refs/heads/main",
-        "rev": "58ce6bf9e6b870f9cddbc2c4e426df357436f70f",
-        "revCount": 93,
+        "rev": "159e3ddf487b75c47bfb426d4c9447fd72b16c8e",
+        "revCount": 94,
         "type": "git",
         "url": "ssh://git@gt.awruff.fun:2220/esavojt/filefinder.git"
       },
@@ -260,11 +260,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790371268,
-        "narHash": "sha256-ZPrASFG89RMwh34HKuEVmZBLxwwNGnSvtzwoKdHMTmU=",
+        "lastModified": 1791118883,
+        "narHash": "sha256-HDwE56CG93rpjy8giUjnaSNXezOH6KtAzrznepbdQVE=",
         "owner": "JaxTheWolf",
         "repo": "pipa-nixos",
-        "rev": "a685a8b04733d88ed13ce6efe6bf7cd64a017f09",
+        "rev": "067e1c797d73df5e7438c28afa5bd8b1a3186f20",
         "type": "github"
       },
       "original": {
