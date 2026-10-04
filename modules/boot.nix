@@ -5,8 +5,19 @@
   ...
 }: let
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
+  isWorkstation = config.myConfig.role == "desktop" || config.myConfig.role == "laptop";
 in {
   boot = {
+    kernelPackages = lib.mkIf isWorkstation pkgs.linuxKernel.packages.linux_xanmod_latest;
+
+    extraModulePackages =
+      lib.optionals isWorkstation [
+        pkgs.linuxKernel.packages.linux_xanmod_latest.evdi
+      ]
+      ++ lib.optionals (config.myConfig.role == "desktop" && config.myConfig.hardware.cpu == "amd") [
+        pkgs.linuxKernel.packages.linux_xanmod_latest.zenpower
+      ];
+
     initrd = {
       systemd.enable = true;
       kernelModules =

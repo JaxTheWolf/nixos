@@ -44,6 +44,12 @@
         ];
       };
     });
+
+    formatter = inputs.nixpkgs.lib.genAttrs inputs.nixpkgs.lib.systems.flakeExposed (
+      system:
+        inputs.nixpkgs.legacyPackages.${system}.alejandra
+    );
+
     overlays = import ./overlays {inherit inputs;};
 
     nixosConfigurations = {

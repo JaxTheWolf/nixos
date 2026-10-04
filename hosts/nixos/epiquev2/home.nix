@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs = {
     btop = {
       settings.cpu_sensor = "zenmonitor/Tdie";
@@ -72,7 +76,7 @@
       toggle_hud=Shift_R+F12
       toggle_logging=Shift_L+F2
       upload_log=F5
-      output_folder=/home/jax
+      output_folder=${config.home.homeDirectory}
       media_player_name=spotify
     '';
 

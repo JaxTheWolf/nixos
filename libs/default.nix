@@ -17,7 +17,7 @@ in {
       inherit specialArgs;
       modules =
         [
-          ../hosts/${name}
+          ../hosts/nixos/${name}
           {nixpkgs.hostPlatform = lib.mkDefault system;}
         ]
         ++ extraModules;
@@ -65,7 +65,10 @@ in {
         };
       };
 
-    hostHomeFile = ../hosts/${hostName}/home.nix;
+    hostHomeFile =
+      if hasNixosConfig
+      then ../hosts/nixos/${hostName}/home.nix
+      else ../hosts/standalone/${hostName}/home.nix;
     hasHostHomeFile = builtins.pathExists hostHomeFile;
   in
     inputs.home-manager.lib.homeManagerConfiguration {

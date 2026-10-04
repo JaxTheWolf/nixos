@@ -34,9 +34,13 @@ in {
       LIBVIRT_DEFAULT_URI = "qemu:///system";
     };
 
-    systemPackages = lib.optionals dockerEnabled [
-      pkgs.docker-buildx
-      pkgs.docker-compose
-    ];
+    systemPackages =
+      lib.optionals dockerEnabled [
+        pkgs.docker-buildx
+        pkgs.docker-compose
+      ]
+      ++ lib.optionals (libvirtdEnabled && config.myConfig.virtualisation.libvirtd.swtpm) [
+        pkgs.swtpm
+      ];
   };
 }

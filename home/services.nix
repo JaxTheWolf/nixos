@@ -1,6 +1,10 @@
-{pkgs, ...}: let
-  devShellsDir = "$HOME/.config/nix-shells";
-  nixConfigDir = "$HOME/.config/nixos";
+{
+  pkgs,
+  config,
+  ...
+}: let
+  devShellsDir = "${config.xdg.configHome}/nix-shells";
+  nixConfigDir = "${config.xdg.configHome}/nixos";
 
   syncScript = pkgs.writeShellScript "sync-all-repos" ''
     # --- DRY Variables ---
