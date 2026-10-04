@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    inputs.stylix.homeModules.stylix
     inputs.filefinder.homeManagerModules.default
     ./programs
     ./activation.nix

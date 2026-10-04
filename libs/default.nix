@@ -42,8 +42,7 @@ in {
           inherit system;
           config.allowUnfree = true;
           overlays = [
-            inputs.filefinder.overlays.default
-            self.overlays.nautilus
+            self.overlays.default
           ];
         };
 
@@ -81,7 +80,6 @@ in {
 
       modules =
         [
-          inputs.stylix.homeModules.stylix
           ../hosts/common/modules/home
         ]
         ++ lib.optionals (osConfig.myConfig.desktop.enable or false) [

@@ -12,8 +12,7 @@
     };
 
     overlays = [
-      inputs.filefinder.overlays.default
-      self.overlays.nautilus
+      self.overlays.default
     ];
   };
 
