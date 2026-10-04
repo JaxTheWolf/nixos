@@ -4,7 +4,7 @@
   osConfig,
   ...
 }: let
-  sharedTheme = import ../../theming-shared.nix {inherit pkgs;};
+  sharedTheme = import ../theming {inherit pkgs;};
   isDesktop = osConfig.myConfig.desktop.enable or false;
 in {
   stylix =

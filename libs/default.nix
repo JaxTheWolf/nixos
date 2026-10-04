@@ -80,10 +80,10 @@ in {
 
       modules =
         [
-          ../hosts/common/modules/home
+          ../home
         ]
         ++ lib.optionals (osConfig.myConfig.desktop.enable or false) [
-          ../hosts/common/modules/home/gui
+          ../home/gui
         ]
         ++ lib.optionals hasHostHomeFile [
           hostHomeFile

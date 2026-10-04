@@ -11,12 +11,12 @@ in {
   imports = [
     inputs.stylix.nixosModules.stylix
     inputs.nix-flatpak.nixosModules.nix-flatpak
-    ./modules
+    ../../modules
     ./hardware-configuration.nix
   ];
 
   stylix =
-    (import ./theming-shared.nix {inherit pkgs;})
+    (import ../../theming {inherit pkgs;})
     // {
       targets = {
         plymouth.enable = false;
@@ -80,10 +80,10 @@ in {
       users.${user.name} = {
         imports =
           [
-            ./modules/home
+            ../../home
           ]
           ++ lib.optionals config.myConfig.desktop.enable [
-            ./modules/home/gui
+            ../../home/gui
           ]
           ++ lib.optionals (builtins.pathExists (../${config.networking.hostName}/home.nix)) [
             (../${config.networking.hostName}/home.nix)

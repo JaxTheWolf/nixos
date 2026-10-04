@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ../options.nix
+    ./options.nix
     ./boot.nix
     ./flatpak.nix
     ./gnome.nix

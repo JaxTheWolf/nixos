@@ -1,5 +1,5 @@
 {
   imports = [
-    ../common/modules/home/profiles/apt-server.nix
+    ../../home/profiles/apt-server.nix
   ];
 }
