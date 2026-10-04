@@ -18,11 +18,6 @@
 
     sessionPath = [
       "${config.home.homeDirectory}/.local/bin"
-      "/usr/local/LinkServer"
     ];
-
-    sessionVariables = {
-      FLAKE = "${config.xdg.configHome}/nixos";
-    };
   };
 }
