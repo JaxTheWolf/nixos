@@ -21,6 +21,7 @@
       time = "23:00:00";
     }
   ];
+  setOpenRgbProfileScript = import ./openrgb-init.nix {inherit pkgs;};
 in {
   programs = {
     btop = {
@@ -119,6 +120,14 @@ in {
       Terminal=false
       X-GNOME-Autostart-enabled=true
     '';
+
+    "autostart/04-set-orgb-profile.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=OpenRGB Init Profile
+      Exec=${setOpenRgbProfileScript}
+      X-GNOME-Autostart-enabled=true
+    '';
   };
 
   dconf.settings = {
@@ -126,18 +135,6 @@ in {
       preferred-monitor-by-connector = "DP-2";
     };
   };
-
-  home.activation.setOpenRgbProfile = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    HOUR=$(${pkgs.coreutils}/bin/date +%-H)
-    if [ "$HOUR" -ge 7 ] && [ "$HOUR" -lt 22 ]; then
-      PROFILE="yee-day"
-    elif [ "$HOUR" -ge 22 ] && [ "$HOUR" -lt 23 ]; then
-      PROFILE="yee"
-    else
-      PROFILE="yee-dank"
-    fi
-    $DRY_RUN_CMD ${pkgs.openrgb-with-all-plugins}/bin/openrgb -p "$PROFILE" 2>/dev/null || true
-  '';
 
   systemd.user = {
     services = lib.listToAttrs (map (s:

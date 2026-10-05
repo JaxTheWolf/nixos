@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  setOpenRgbProfileScript = import ./openrgb-init.nix {inherit pkgs;};
+in {
   imports = [
     ../common
     ./hardware-configuration.nix
@@ -35,6 +37,8 @@
       group = "root";
     };
   };
+
+  powerManagement.resumeCommands = "${setOpenRgbProfileScript}";
 
   services = {
     hardware.openrgb = {
