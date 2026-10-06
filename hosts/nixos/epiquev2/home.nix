@@ -4,24 +4,87 @@
   config,
   ...
 }: let
-  schedules = [
-    {
-      name = "day";
-      profile = "yee-day";
-      time = "07:00:00";
-    }
-    {
-      name = "night";
-      profile = "yee";
-      time = "22:00:00";
-    }
-    {
-      name = "dank";
-      profile = "yee-dank";
-      time = "23:00:00";
-    }
-  ];
-  setOpenRgbProfileScript = import ./openrgb-init.nix {inherit pkgs;};
+  MangoHudConf = ''
+    toggle_fps_limit=F1
+    legacy_layout=false
+    pci_dev=0:2d:00.0
+    cpu_stats
+    graphs=cpu_load
+    cpu_temp
+    cpu_power
+    cpu_mhz
+    cpu_load_change
+    cpu_color=DE0835
+    cpu_text=R7 5800X
+    gpu_stats
+    graphs=gpu_load
+    gpu_temp
+    gpu_core_clock
+    gpu_mem_clock
+    gpu_power
+    gpu_text=GPU
+    gpu_name
+    io_read
+    io_write
+    io_color=D8D8D8
+    swap
+    vram
+    vram_color=DE0835
+    ram
+    ram_color=DE0835
+    fps
+    engine_version
+    engine_color=950524
+    gpu_color=DE0835
+    vulkan_driver
+    vkbasalt
+    gpu_fan
+    wine_color=950524
+    frame_timing=1
+    frametime_color=DE0835
+    throttling_status
+    media_player_color=950524
+    table_columns=3
+    background_alpha=0.4
+    font_size=19
+    background_color=020202
+    position=top-left
+    text_color=D8D8D8
+    round_corners=4
+    toggle_hud=Shift_R+F12
+    toggle_logging=Shift_L+F2
+    upload_log=F5
+    output_folder=${config.home.homeDirectory}
+    media_player_name=spotify
+  '';
+
+  brightnessScript = ''
+    #! /usr/bin/env nix
+    #! nix shell nixpkgs#bash --command bash
+
+    case $1 in
+      full)
+        sub="255"
+      ;;
+      zero)
+        sub="0"
+      ;;
+      inc)
+        sub="+ 25"
+      ;;
+      dec)
+        sub="- 25"
+      ;;
+      *)
+        echo "No action"
+    esac
+
+    ddcutil --skip-ddc-checks --noverify setvcp -d 1 10 $sub & \
+    ddcutil --skip-ddc-checks --noverify setvcp -d 2 10 $sub
+  '';
+
+  setOpenRgbProfile = import ./openrgb-init.nix {inherit pkgs lib;};
+  inherit (setOpenRgbProfile) schedules orgbScript;
 in {
   programs = {
     btop = {
@@ -41,64 +104,19 @@ in {
     };
   };
 
-  home.packages = with pkgs; [
-    winbox
-  ];
+  home = {
+    packages = with pkgs; [
+      winbox
+    ];
+
+    file.".local/bin/brightness" = {
+      text = brightnessScript;
+      executable = true;
+    };
+  };
 
   xdg.configFile = {
-    "MangoHud/MangoHud.conf".text = ''
-      toggle_fps_limit=F1
-      legacy_layout=false
-      pci_dev=0:2d:00.0
-      cpu_stats
-      graphs=cpu_load
-      cpu_temp
-      cpu_power
-      cpu_mhz
-      cpu_load_change
-      cpu_color=DE0835
-      cpu_text=R7 5800X
-      gpu_stats
-      graphs=gpu_load
-      gpu_temp
-      gpu_core_clock
-      gpu_mem_clock
-      gpu_power
-      gpu_text=GPU
-      gpu_name
-      io_read
-      io_write
-      io_color=D8D8D8
-      swap
-      vram
-      vram_color=DE0835
-      ram
-      ram_color=DE0835
-      fps
-      engine_version
-      engine_color=950524
-      gpu_color=DE0835
-      vulkan_driver
-      vkbasalt
-      gpu_fan
-      wine_color=950524
-      frame_timing=1
-      frametime_color=DE0835
-      throttling_status
-      media_player_color=950524
-      table_columns=3
-      background_alpha=0.4
-      font_size=19
-      background_color=020202
-      position=top-left
-      text_color=D8D8D8
-      round_corners=4
-      toggle_hud=Shift_R+F12
-      toggle_logging=Shift_L+F2
-      upload_log=F5
-      output_folder=${config.home.homeDirectory}
-      media_player_name=spotify
-    '';
+    "MangoHud/MangoHud.conf".text = MangoHudConf;
 
     "autostart/01-zenmonitor.desktop".source = "${pkgs.zenmonitor}/share/applications/zenmonitor.desktop";
 
@@ -125,7 +143,7 @@ in {
       [Desktop Entry]
       Type=Application
       Name=OpenRGB Init Profile
-      Exec=${setOpenRgbProfileScript}
+      Exec=${orgbScript}
       X-GNOME-Autostart-enabled=true
     '';
   };

@@ -1,5 +1,10 @@
-{pkgs, ...}: let
-  setOpenRgbProfileScript = import ./openrgb-init.nix {inherit pkgs;};
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  setOpenRgbProfile = import ./openrgb-init.nix {inherit pkgs lib;};
+  inherit (setOpenRgbProfile) orgbScript;
 in {
   imports = [
     ../common
@@ -38,7 +43,7 @@ in {
     };
   };
 
-  powerManagement.resumeCommands = "${setOpenRgbProfileScript}";
+  powerManagement.resumeCommands = "${orgbScript}";
 
   services = {
     hardware.openrgb = {
