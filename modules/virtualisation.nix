@@ -5,8 +5,9 @@
   ...
 }: let
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
-  dockerEnabled = config.myConfig.virtualisation.docker.enable;
-  libvirtdEnabled = config.myConfig.virtualisation.libvirtd.enable;
+  isDesktop = config.myConfig.desktop.enable or false;
+  dockerEnabled = config.myConfig.virtualisation.docker.enable or false;
+  libvirtdEnabled = config.myConfig.virtualisation.libvirtd.enable or false;
 in {
   virtualisation = {
     docker = lib.mkIf dockerEnabled {
@@ -27,7 +28,7 @@ in {
     spiceUSBRedirection.enable = isx86 && libvirtdEnabled;
   };
 
-  programs.virt-manager.enable = lib.mkIf (isx86 && libvirtdEnabled) true;
+  programs.virt-manager.enable = lib.mkIf (isx86 && libvirtdEnabled && isDesktop) true;
 
   environment = {
     sessionVariables = lib.mkIf libvirtdEnabled {

@@ -5,6 +5,7 @@
   ...
 }: let
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
+  isDesktop = config.myConfig.desktop.enable or false;
 
   coreUtils = with pkgs; [
     curl
@@ -83,29 +84,32 @@
     gvfs
     libnotify
     wev
+    wl-clipboard
   ];
 
-  x86Packages = with pkgs; [
-    abootimg
-    android-tools
-    brscan4
-    brscan5
-    ffmpeg-full
-    graalvmPackages.graalvm-oracle_25
-    ventoy-full-gtk
-    zulu
-    zulu8
-  ];
+  x86Packages = with pkgs;
+    [
+      abootimg
+      android-tools
+      brscan4
+      brscan5
+      ffmpeg-full
+      graalvmPackages.graalvm-oracle_25
+      zulu
+      zulu8
+    ]
+    ++ lib.optionals isDesktop [
+      ventoy-full-gtk
+    ];
 in {
   environment.systemPackages =
     coreUtils
     ++ archiveTools
-    ++ mediaAndThumbnails
+    ++ lib.optionals isDesktop (mediaAndThumbnails ++ desktop)
     ++ systemAdminAndHardware
-    ++ lib.optionals config.myConfig.desktop.enable desktop
     ++ lib.optionals isx86 x86Packages;
 
-  fonts = {
+  fonts = lib.mkIf isDesktop {
     packages = with pkgs; [
       fira-code
       font-awesome

@@ -1,40 +1,47 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: let
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
+  isDesktop = config.myConfig.desktop.enable or false;
 in {
-  programs = {
-    appimage = {
-      enable = true;
-      binfmt = true;
-    };
+  programs =
+    lib.mkMerge
+    [
+      {
+        appimage = {
+          enable = true;
+          binfmt = true;
+        };
 
-    fuse.enable = true;
-    zsh.enable = true;
-    dconf.enable = true;
+        fuse.enable = true;
+        zsh.enable = true;
+        dconf.enable = true;
 
-    gamemode.enable = lib.mkIf isx86 true;
-    weylus.enable = lib.mkIf isx86 true;
-    gamescope.enable = lib.mkIf isx86 true;
+        nix-ld = {
+          enable = true;
+          libraries = [];
+        };
+      }
+      (lib.mkIf (isx86 && isDesktop) {
+        gamemode.enable = true;
+        weylus.enable = true;
+        gamescope.enable = true;
 
-    nix-ld = {
-      enable = true;
-      libraries = [];
-    };
+        steam = {
+          dedicatedServer.openFirewall = true;
+          enable = true;
+          gamescopeSession.enable = true;
+          protontricks.enable = true;
+          remotePlay.openFirewall = true;
+        };
 
-    steam = lib.mkIf isx86 {
-      dedicatedServer.openFirewall = true;
-      enable = true;
-      gamescopeSession.enable = true;
-      protontricks.enable = true;
-      remotePlay.openFirewall = true;
-    };
-
-    wireshark = lib.mkIf isx86 {
-      enable = true;
-      package = pkgs.wireshark;
-    };
-  };
+        wireshark = {
+          enable = true;
+          package = pkgs.wireshark;
+        };
+      })
+    ];
 }

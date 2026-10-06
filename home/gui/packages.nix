@@ -1,9 +1,11 @@
 {
   pkgs,
   lib,
+  osConfig,
   ...
 }: let
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
+  role = osConfig.myConfig.role or "";
 in {
   home.packages = with pkgs;
     [
@@ -19,7 +21,8 @@ in {
       high-tide
       vlc
     ]
-    ++ lib.optionals isx86 [
+    ++ lib.optionals (builtins.elem role ["desktop" "laptop"] && isx86) [
+      binwalk
       discord
       gimp
       mission-center

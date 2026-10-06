@@ -1,15 +1,16 @@
 {
   pkgs,
   config,
+  osConfig,
   ...
 }: let
   devShellsDir = "${config.xdg.configHome}/nix-shells";
   nixConfigDir = "${config.xdg.configHome}/nixos";
+  isDesktop = osConfig.myConfig.desktop.enable or false;
 
   syncScript = pkgs.writeShellScript "sync-all-repos" ''
     # --- DRY Variables ---
     GIT="${pkgs.git}/bin/git"
-    NOTIFY="${pkgs.libnotify}/bin/notify-send"
 
     repos=("${devShellsDir}" "${nixConfigDir}")
 
@@ -17,7 +18,15 @@
       echo "Syncing $repo..."
 
       if ! $GIT -C "$repo" pull --rebase --autostash; then
-        $NOTIFY -u critical "Sync Failed" "Conflict or network error in $repo"
+      ${
+      if isDesktop
+      then ''
+        ${pkgs.libnotify}/bin/notify-send -u critical "Sync Failed" "Conflict or network error in $repo"
+      ''
+      else ''
+        echo "ERROR: Sync Failed - Conflict or network error in $repo" >&2
+      ''
+    }
       else
         $GIT -C "$repo" add -N . 2>/dev/null || true
       fi

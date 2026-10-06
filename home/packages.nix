@@ -2,7 +2,6 @@
   home.packages = with pkgs; [
     alejandra
     attic-client
-    binwalk
     gitu
     just
     nil

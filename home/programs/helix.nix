@@ -67,7 +67,6 @@
     extraPackages = with pkgs; [
       alejandra
       nil
-      wl-clipboard
     ];
   };
 }
