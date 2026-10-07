@@ -41,6 +41,12 @@
     git = {
       enable = true;
       lfs.enable = true;
+      settings = {
+        user = {
+          name = "Roman Lubij";
+          email = "roman.lubij@gmail.com";
+        };
+      };
     };
 
     nh = {
