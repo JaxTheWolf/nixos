@@ -44,7 +44,7 @@ _: {
 
       "vojta-vm" = {
         User = "jax";
-        HostName = "10.1.0.11";
+        HostName = "10.30.30.4";
       };
     };
   };
