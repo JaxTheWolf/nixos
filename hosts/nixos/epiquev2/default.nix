@@ -62,12 +62,23 @@ in {
         timestamp_format = "long";
         snapshot_preserve_min = "latest";
         snapshot_preserve = "7d";
+        snapshot_create = "onchange";
 
         volume."/" = {
           snapshot_dir = "home/.snapshots";
+
           subvolume."home" = {
             target."/media/home-backup" = {
-              target_preserve = "0d 20w 0m";
+              target_preserve = "0d 10w 8m 0y";
+            };
+          };
+
+          subvolume."home/jax/.local/share/Steam" = {
+            snapshot_preserve = "3d";
+            stream_compress = "zstd";
+
+            target."/media/home-backup/steam" = {
+              target_preserve = "0d 4w 1m";
             };
           };
         };
