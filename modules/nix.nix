@@ -7,7 +7,7 @@
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [
-        "ventoy-gtk3-1.1.17"
+        "ventoy-gtk3-1.1.18"
       ];
     };
 
