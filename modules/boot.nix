@@ -6,18 +6,43 @@
 }: let
   isx86 = pkgs.stdenv.hostPlatform.isx86_64;
   isWorkstation = config.myConfig.role == "desktop" || config.myConfig.role == "laptop";
+  kernel =
+    if config.myConfig.role == "desktop"
+    then pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3
+    else if config.myConfig.role == "laptop"
+    then pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3
+    else pkgs.linuxPackages_latest;
+  kernelMakeFlags = kernel.kernel.commonMakeFlags;
 in {
   boot = {
-    kernelPackages = lib.mkIf isWorkstation pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelPackages = lib.mkIf isWorkstation kernel;
 
-    extraModulePackages = lib.optionals (config.myConfig.role == "desktop" && config.myConfig.hardware.cpu == "amd") [
-      pkgs.linuxKernel.packages.linux_xanmod_latest.zenpower
-    ];
+    extraModulePackages =
+      lib.optionals (config.myConfig.hardware.cpu == "amd") [
+        (kernel.zenpower.overrideAttrs (old: {
+          makeFlags = (old.makeFlags or []) ++ kernelMakeFlags;
+          postPatch =
+            (old.postPatch or "")
+            + ''
+              substituteInPlace Makefile --replace-fail "-Wimplicit-fallthrough=3" "-Wimplicit-fallthrough"
+            '';
+        }))
+      ]
+      ++ lib.optionals (config.myConfig.hardware.gpu == "amd") [
+        (kernel.amdgpu-i2c.overrideAttrs (old: {
+          postPatch =
+            (old.postPatch or "")
+            + ''
+              substituteInPlace Makefile --replace-fail "-Wimplicit-fallthrough=3" "-Wimplicit-fallthrough"
+            '';
+          buildPhase = "make -C ${kernel.kernel.dev}/lib/modules/${kernel.kernel.modDirVersion}/build M=/build/source ${builtins.concatStringsSep " " kernelMakeFlags} modules";
+        }))
+      ];
 
     initrd = {
       systemd.enable = true;
       kernelModules =
-        lib.optionals (config.myConfig.hardware.gpu == "amd") ["amdgpu"]
+        lib.optionals (config.myConfig.hardware.gpu == "amd") ["amdgpu" "amdgpu-i2c"]
         ++ lib.optionals (config.myConfig.hardware.gpu == "intel") ["i915"];
     };
 
