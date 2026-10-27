@@ -1,6 +1,5 @@
 {config, ...}: {
   imports = [
-    ./bottom.nix
     ./helix.nix
     ./ssh.nix
     ./starship.nix
