@@ -1,7 +1,7 @@
 _final: prev: {
-  nautilus = prev.nautilus.overrideAttrs (nprev: {
+  nautilus = prev.nautilus.overrideAttrs (old: {
     buildInputs =
-      nprev.buildInputs
+      old.buildInputs
       ++ (with prev.gst_all_1; [
         gst-plugins-bad
         gst-plugins-base
