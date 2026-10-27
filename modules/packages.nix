@@ -94,7 +94,6 @@
       brscan4
       brscan5
       ffmpeg-full
-      graalvmPackages.graalvm-oracle_25
       zulu
       zulu8
     ]

@@ -40,7 +40,6 @@ in {
       ];
 
     initrd = {
-      systemd.enable = true;
       kernelModules =
         lib.optionals (config.myConfig.hardware.gpu == "amd") ["amdgpu" "amdgpu-i2c"]
         ++ lib.optionals (config.myConfig.hardware.gpu == "intel") ["i915"];
