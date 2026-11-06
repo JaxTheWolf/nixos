@@ -95,7 +95,6 @@
       brscan5
       ffmpeg-full
       zulu
-      zulu8
     ]
     ++ lib.optionals isDesktop [
       ventoy-full-gtk
