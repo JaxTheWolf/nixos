@@ -20,23 +20,19 @@
     }
   ];
 
+  sortedSchedules = lib.sort (a: b: a.time < b.time) schedules;
+  defaultProfile = (lib.last sortedSchedules).profile;
+
   orgbScript = pkgs.writeShellScript "set-openrgb-profile" ''
-    HOUR=$(${pkgs.coreutils}/bin/date +%-H)
-    MINUTE=$(${pkgs.coreutils}/bin/date +%-M)
-    CURRENT_MINS=$(( HOUR * 60 + MINUTE ))
+    CURRENT_TIME=$(${pkgs.coreutils}/bin/date +%H:%M:%S)
+    PROFILE="${defaultProfile}"
 
-    ${lib.concatMapStringsSep "\n" (
-        s: ''
-          SCHED_H="10#${builtins.substring 0 2 s.time}"
-          SCHED_M="10#${builtins.substring 3 2 s.time}"
-          SCHED_MINS=$(( SCHED_H * 60 + SCHED_M ))
-
-          if [ "$CURRENT_MINS" -ge $SCHED_MINS ]; then
-            PROFILE="${s.profile}"
-          fi
-        ''
-      ) (lib.sort (a: b: a.time < b.time)
-        schedules)}
+    ${lib.concatMapStringsSep "\n" (s: ''
+        if [[ ! "$CURRENT_TIME" < "${s.time}" ]]; then
+          PROFILE="${s.profile}"
+        fi
+      '')
+      sortedSchedules}
 
     ${pkgs.openrgb-with-all-plugins}/bin/openrgb -p "$PROFILE" 2>/dev/null || true
   '';
