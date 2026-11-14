@@ -6,6 +6,7 @@
     just
     nil
     nix-output-monitor
+    prusa-slicer
     testdisk
     trash-cli
     treefmt

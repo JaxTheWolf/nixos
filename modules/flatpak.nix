@@ -18,10 +18,6 @@
         origin = "flathub";
       }
       {
-        appId = "com.prusa3d.PrusaSlicer";
-        origin = "flathub";
-      }
-      {
         appId = "com.github.tchx84.Flatseal";
         origin = "flathub";
       }
