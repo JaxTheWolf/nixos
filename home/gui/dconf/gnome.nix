@@ -63,7 +63,6 @@
       attach-modal-dialogs = false;
       experimental-features = [
         "scale-monitor-framebuffer"
-        "variable-refresh-rate"
         "xwayland-native-scaling"
       ];
     };
