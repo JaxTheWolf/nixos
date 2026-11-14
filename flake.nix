@@ -10,7 +10,7 @@
     filefinder.inputs.nixpkgs.follows = "nixpkgs";
 
     # stylix.url = "github:nix-community/stylix";
-    stylix.url = "github:nix-community/stylix/pull/2406/merge";
+    stylix.url = "github:JaxTheWolf/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
