@@ -1,7 +1,9 @@
 # --- Variables ---
-cache := "my-config"
-tablet_ip := "jax@192.168.0.54"
-user := "jax"
+cache := env("CACHE", "my-config")
+tablet_ip := env("TABLET_IP", "jax@192.168.0.54")
+user := env("USER", "jax")
+cores := env("CORES", "16")
+jobs := env("JOBS", "16")
 
 # --- Default ---
 default: sync-laptop
@@ -23,7 +25,7 @@ home *args:
 # --- Building System & Home Closures ---
 
 build-os host:
-     nix run nixpkgs#nix-output-monitor -- build .#nixosConfigurations.{{host}}.config.system.build.toplevel --log-format internal-json -o result-{{host}}
+     nh os build .#{{host}} --cores={{cores}} --max-jobs={{jobs}} -o result-{{host}}
 
 build-os-laptop:
     just build-os dalaptop
@@ -34,12 +36,12 @@ build-os-all:
     # just build-os pipa
     # just build-os lenovo-server
 
-build-home host:
-     nix run nixpkgs#nix-output-monitor -- build .#homeConfigurations."{{user}}@{{host}}".activationPackage -o result-home-{{host}}
+build-home host user_=user:
+     nh home build . -c "{{user_}}@{{host}}" --cores={{cores}} --max-jobs={{jobs}} -o result-home-{{user_}}-{{host}}
 
 build-home-oracle:
-    nix run nixpkgs#nix-output-monitor -- build .#homeConfigurations."ubuntu@oracle-server".activationPackage -o result-home-oracle-server
-
+    just build-home oracle-server ubuntu
+    
 build-home-all:
     just build-home epiquev2
     just build-home dalaptop
