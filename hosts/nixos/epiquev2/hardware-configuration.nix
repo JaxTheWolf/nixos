@@ -24,8 +24,7 @@
 
     kernelParams = [
       "rd.udev.log_priority=3"
-      "video=HDMI-A-1:1500x1000R@60"
-      "video=DP-2:1920x1080MR@75"
+      "video=HDMI-A-1:1504x1000@60"
     ];
   };
 
