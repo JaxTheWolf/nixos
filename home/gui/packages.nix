@@ -17,8 +17,8 @@ in {
       rquickshare
       seafile-client
       solaar
+      sone
       telegram-desktop
-      high-tide
       vlc
     ]
     ++ lib.optionals (builtins.elem role ["desktop" "laptop"] && isx86) [

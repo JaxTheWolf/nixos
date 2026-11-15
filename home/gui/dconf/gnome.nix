@@ -77,8 +77,7 @@
         "org.telegram.desktop.desktop"
         "org.gnome.Ptyxis.desktop"
         "io.missioncenter.MissionCenter.desktop"
-        "io.github.nokse22.high-tide.desktop"
-        # "tidal-hifi.desktop"
+        "SONE.desktop"
       ];
     };
 
