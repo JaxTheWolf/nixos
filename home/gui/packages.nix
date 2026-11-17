@@ -14,6 +14,7 @@ in {
       element-desktop
       freerdp
       libreoffice-stable
+      prusa-slicer
       rquickshare
       seafile-client
       solaar
