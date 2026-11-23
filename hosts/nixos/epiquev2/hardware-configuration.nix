@@ -127,18 +127,6 @@
       ];
     };
 
-    "/media/home-backup" = {
-      device = "/dev/disk/by-uuid/4c0c8b24-6fca-49c1-8e34-e00e240576e3";
-      fsType = "btrfs";
-      options = [
-        "subvol=home-backup"
-        "space_cache=v2"
-        "compress=zstd:10"
-        "noatime"
-        "autodefrag"
-      ];
-    };
-
     "/media/pipa" = {
       device = "/dev/disk/by-uuid/0013f713-acf4-496b-b43f-25258283b884";
       fsType = "f2fs";
@@ -148,6 +136,29 @@
         "atgc"
         "gc_merge"
         "lazytime"
+      ];
+    };
+
+    "/media/spidy" = {
+      device = "/dev/disk/by-uuid/c3cf1707-7fe0-4778-8142-5b950745b816";
+      fsType = "btrfs";
+      options = [
+        "space_cache=v2"
+        "ssd"
+        "compress=zstd:10"
+        "noatime"
+        "autodefrag"
+      ];
+    };
+
+    "/media/hm-back" = {
+      device = "/dev/disk/by-uuid/9d4951a7-5770-4a94-8847-03ab30ac6a33";
+      fsType = "btrfs";
+      options = [
+        "space_cache=v2"
+        "compress=zstd:15"
+        "noatime"
+        "autodefrag"
       ];
     };
   };
