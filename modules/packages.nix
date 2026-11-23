@@ -17,6 +17,7 @@
     ncdu
     nmap
     pciutils
+    pv
     tree
     usbutils
     wget
