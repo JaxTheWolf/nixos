@@ -50,6 +50,7 @@
     gst_all_1.gst-plugins-ugly
     gst_all_1.gstreamer
     libgsf
+    pipewire.jack
     poppler-utils
     pulseaudio
     sushi
