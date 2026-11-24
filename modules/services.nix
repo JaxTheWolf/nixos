@@ -68,6 +68,8 @@
       useXkbConfig = true;
     };
 
+    bootvine.enable = true;
+
     fwupd.enable = true;
 
     udev.packages = with pkgs; [

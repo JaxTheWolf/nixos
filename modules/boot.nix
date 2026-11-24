@@ -58,11 +58,6 @@ in {
       };
     };
 
-    plymouth = {
-      enable = true;
-      theme = "solar";
-    };
-
     consoleLogLevel = 3;
     tmp.cleanOnBoot = true;
   };

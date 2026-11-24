@@ -16,6 +16,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    bootvine.url = "git+https://codeberg.org/wvhulle/bootvine";
+    bootvine.inputs.nixpkgs.follows = "nixpkgs";
+
     pipa-nixos.url = "github:JaxTheWolf/pipa-nixos";
     # pipa-nixos.url = "/media/pipa/pipa-nixos";
     pipa-nixos.inputs.nixpkgs.follows = "nixpkgs";

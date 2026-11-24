@@ -78,7 +78,6 @@
     linux-firmware
     lm_sensors
     ntfs3g
-    plymouth
     smartmontools
   ];
 
