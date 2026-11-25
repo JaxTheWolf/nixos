@@ -1,13 +1,9 @@
-{modulesPath, ...}: {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
-
+_: {
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-partlabel/linux_boot";
       fsType = "vfat";
-      options = ["fmask=0022" "dmask=0022"];
+      options = ["fmask=0077" "dmask=0077"];
     };
 
     "/" = {
@@ -20,7 +16,6 @@
       device = "/dev/disk/by-partlabel/linux_root";
       fsType = "btrfs";
       options = ["subvol=nix" "compress=zstd" "noatime"];
-      neededForBoot = true;
     };
 
     "/home" = {
