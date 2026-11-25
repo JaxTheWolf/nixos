@@ -421,11 +421,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795167644,
-        "narHash": "sha256-4EjQoifw7UJ0vUSywPpzvaAdLAI6WeZ6YbtxxdXLCK8=",
+        "lastModified": 1795597285,
+        "narHash": "sha256-QteD7bfOm3ThHQhYxsmacvJMgY3hgOJEIdhy55YtCQM=",
         "owner": "JaxTheWolf",
         "repo": "pipa-nixos",
-        "rev": "eb81bb6891082f254e0414349c174cc1ec96236d",
+        "rev": "f5ad12d876e79d8340044108905eab9eac36cb90",
         "type": "github"
       },
       "original": {
